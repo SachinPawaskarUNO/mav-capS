@@ -1,95 +1,43 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
+@extends('layouts.app')
+@section('content')
+    <div class="container">
+        <img src="{{asset('/images/homePage.png')}}" class="img-fluid" alt="Home Page Image">
+        <p id="text">
+            SME Financing made simple,<br>
+            while diversifying investor returns
+        </p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-block">
+                      <h1 class="card-title">Financing</h1>
+                        <img style="float:left;width: 50%;padding: 5px" src="{{asset('/images/financing.png')}}" alt="FInancing Image">
+                        <p class="card-text">CapSphere Services enables SMEs to raise capital to fund business expansion and operational activities in an efficient, transparent and consumer-friendly manner.
+                            We work with qualified SMEs to enhance their fundraising capabilities, with the goal of improving the maturity and effectiveness of capital market participants. Our operations are
+                            digitally-enabled with no branch infrastructure and the use of cutting-edge technology allows us to optimise costs and deliver better value to our clients.</p>
+                    </div>
+                    <img style="float:left;width: 100%;padding: 5px" src="{{asset('/images/awschart.png')}}" alt="FInancing Image">
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-block">
+                        <h1 class="card-title">World Class Security to protect your data</h1>
+                        <img src="{{asset('/images/aws.png')}}" alt="FInancing Image">
+                        <p class="card-text" style="padding:5px">We invest to protect your data and comes up with these benefits:</p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Infrastructure Security</li>
+                            <li class="list-group-item">DDos Mitigation</li>
+                            <li class="list-group-item">Data Encryption</li>
+                            <li class="list-group-item">Multi-Factor Authentication</li>
+                            <li class="list-group-item">24/7 Data Monitoring and Protection</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+
+@endsection

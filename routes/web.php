@@ -14,6 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('investing', function () {
+    return view('home.investing');
+});
+Route::get('businessloans', function () {
+    return view('home.businessLoans');
+});
+Route::get('howitworks', function () {
+    return view('home.howItWorks');
+});
+Route::get('aboutus', function () {
+    return view('home.aboutUs');
+});
 
 Auth::routes();
 
