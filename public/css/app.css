@@ -46,6 +46,15 @@ body {
     left:350px;
     top:100px;
 }
+
+.investmentTableLayout tbody tr td,
+.investmentTableLayout thead tr th,
+.investmentTableLayout tbody tr th,
+.investmentTableLayout thead tr td,
+.investmentTableLayout tfoot tr th,
+.investmentTableLayout tfoot tr td {
+    border: none;
+}
 .card-blockquote p:before {
     content: open-quote;
     font-size:50px;

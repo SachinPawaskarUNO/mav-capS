@@ -11,13 +11,14 @@
     </div>
     </div>
 
-
-<footer class="footer">
+    <footer class="footer">
         <div class="container">
             @include('includes.footer')
         </div>
-</footer>
+    </footer>
+
 
     @stack('scripts')
 </body>
+
 </html>
