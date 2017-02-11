@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-fixed-top" style="padding-bottom: 25px;padding-top: 5px">
     <div class="container">
         <div class="navbar-header">
 

@@ -46,3 +46,14 @@ body {
     left:350px;
     top:100px;
 }
+.card-blockquote p:before {
+    content: open-quote;
+    font-size:50px;
+    color:#889c0b;
+}
+.card-blockquote p:after {
+    content: close-quote;
+    font-size:50px;
+    color:#889c0b;
+
+}
