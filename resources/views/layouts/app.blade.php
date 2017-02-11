@@ -6,8 +6,9 @@
 <body>
     <div id="app">
         @include('includes.header')
-
+    <div class="container" style="padding-top: 90px">
         @yield('content')
+    </div>
     </div>
 
 

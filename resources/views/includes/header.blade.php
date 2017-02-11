@@ -19,18 +19,18 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('investing') }}">Investing</a></li>
-                <li><a href="{{ url('businessloans') }}">Business Loans</a></li>
-                <li><a href="{{ url('howitworks') }}">How It Works</a></li>
-                &nbsp;<li><a href="{{ url('aboutus') }}">About Us</a></li>
+                <li id="investing"><a href="{{ url('investing') }}">Investing</a></li>
+                <li id="businessloans"><a href="{{ url('businessloans') }}">Business Loans</a></li>
+                <li id="howitworks"><a href="{{ url('howitworks') }}">How It Works</a></li>
+                &nbsp;<li id="aboutus"><a href="{{ url('aboutus') }}">About Us</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li id="login"><a href="{{ route('login') }}">Login</a></li>
+                    <li id="register"><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -38,7 +38,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li>
+                            <li id="logout">
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
