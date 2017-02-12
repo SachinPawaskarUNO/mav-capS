@@ -27,6 +27,8 @@ Route::get('aboutus', function () {
     return view('home.aboutUs');
 });
 
+Route::resource('managers','ManagerController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
