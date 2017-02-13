@@ -12,6 +12,11 @@
 
                         <img src = {{asset('/images/borrower.png')}}  height="400" width="1050">
 
+                        <p id="cap">
+                            Grow your business,<br>
+                            Funded by interested customers
+                        </p>
+
                     </div>
                 </div>
             </div>

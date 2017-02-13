@@ -66,3 +66,12 @@ body {
     color:#889c0b;
 
 }
+#cap {
+    z-index:100;
+    position:absolute;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    left:25px;
+    top:25px;
+}
