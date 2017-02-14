@@ -2,52 +2,69 @@
 @section('content')
     <head>
         <link rel="stylesheet" type="text/css" href="css/app.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
    <div class = "aboutimg" >
-       <img src="images/logo.png" alt="image" height="200" width="800" style=" margin:0 auto;" >
+       <div class="col-sm-6">
+       <img src="images/logo.png" alt="newsLetterImage" class="img-fluid">
+           </div>
        </div>
+
     <div class="aboutdown"></div>
-<div class ="abouttext">
-    <p>
-        <h2>What We Do?</h2>
-    Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-    totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt,
-    explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur
-    magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia
-    quo voluptas nulla pariatur?
-    </p>
-</div>
+   <div class="container-fluid">
+       <div class="row">
+           <div class="col-sm-12">
+           <div class="col-sm-6">
+               <p>
+               <h2>What We Do?</h2>
+               Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+               totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt,
+               explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur
+               magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia
+               quo voluptas nulla pariatur?
+               </p>
+               </div>
+       <div class="col-sm-6">
+           <h1>News Letter SignUp</h1>
+           @if (session('status'))
+               <div class="alert alert-success">
+                   {{ session('status') }}
+               </div>
+           @endif
+           {!! Form::open(['url' => 'newsletter']) !!}
+           <div class="form-group">
+               {!! Form::label('newsletter_first_name', 'First Name:') !!}
+               {!! Form::text('newsletter_first_name',null,['class'=>'form-control']) !!}
+           </div>
+           <div class="form-group">
+               {!! Form::label('newsletter_last_name', 'Last Name:') !!}
+               {!! Form::text('newsletter_last_name',null,['class'=>'form-control']) !!}
+           </div>
+           <div class="form-group">
+               {!! Form::label('newsletter_email', 'Email:') !!}
+               {!! Form::text('newsletter_email',null,['class'=>'form-control']) !!}
+           </div>
+           <div class="form-group">
+               {!! Form::label('newsletter_user_type', 'UserType:') !!}
+               {!! Form::select('newsletter_user_type', array('businessOwner' =>'Business Owner','investor' =>'Investor')) !!}
+           </div>
+           <div class="form-group">
+               {!! Form::submit('Save', ['class' => 'btn btn-primary form-control', 'style'=>'width:70px;']) !!}
 
 
-    <div class="aboutform" id="News Letter Sign Up" >
-        {{ csrf_field() }}
-        <p><b>News Letter Sign Up</b></p>
+           </div>
+           </div>
+           </div>
+   </div>
+       </div>
 
-        <br>
-
-    First Name: <input type="text" STYLE="height:30px" id="First Name">
-        <br>
-        <br>
-    Last Name: <input type ="text" STYLE="height:30px" id="Last Name">
-        <br>
-        <br>
-    email : &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type ="text" STYLE="height:30px"id="Email">
-        <br>
-        <br>
-        <form class="form-inline">
-            <label class="mr-sm-2" for="inlineFormCustomSelect" id="User Type">User Type</label>
-            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
-                <option selected>Choose...</option>
-                <option value="1">Business Owner</option>
-                <option value="2">Investor</option>
-            </select>
-        <br>
-        <br>
-    <button>Submit</button>
-
-    </div>
-</div>
 </body>
 @endsection

@@ -26,13 +26,13 @@ Route::get('howitworks', function () {
 Route::get('aboutus', function () {
     return view('home.aboutUs');
 });
-//Route::get('/register', function () {
-//    return view('/auth/inv_register');
-//});
+
+Route::resource('managers','ManagerController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::post('newsletter','NewsletterController@store');
 
 
 //Route::get('register', function () {
