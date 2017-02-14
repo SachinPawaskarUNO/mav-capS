@@ -26,9 +26,26 @@ Route::get('howitworks', function () {
 Route::get('aboutus', function () {
     return view('home.aboutUs');
 });
-
-Route::resource('managers','ManagerController');
+//Route::get('/register', function () {
+//    return view('/auth/inv_register');
+//});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+//Route::get('register', function () {
+//    return view('/auth/register');
+//});
+
+//Route::get('/inv_register', function () {
+//    return view('/auth/inv_register');
+//});
+
+Route::get('bor_register', function () {
+    return view('/auth/bor_register');
+});
+Route::get('inv_register', function () {
+    return view('/auth/inv_register');
+});
