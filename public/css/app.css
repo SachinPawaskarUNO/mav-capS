@@ -37,15 +37,6 @@ body {
     width: 105%;
     height: 0%;
 }
-#text {
-    z-index:100;
-    position:absolute;
-    color:white;
-    font-size:24px;
-    font-weight:bold;
-    left:350px;
-    top:100px;
-}
 
 .investmentTableLayout tbody tr td,
 .investmentTableLayout thead tr th,

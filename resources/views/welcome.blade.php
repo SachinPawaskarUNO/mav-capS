@@ -2,10 +2,6 @@
 @section('content')
     <div class="container">
         <img src="{{asset('/images/homePage.png')}}" class="img-fluid" alt="Home Page Image">
-        <p id="text">
-            SME Financing made simple,<br>
-            while diversifying investor returns
-        </p>
     </div>
     <div class="container">
         <div class="row">
@@ -18,14 +14,14 @@
                             We work with qualified SMEs to enhance their fundraising capabilities, with the goal of improving the maturity and effectiveness of capital market participants. Our operations are
                             digitally-enabled with no branch infrastructure and the use of cutting-edge technology allows us to optimise costs and deliver better value to our clients.</p>
                     </div>
-                    <img style="float:left;width: 100%;padding: 5px" src="{{asset('/images/awschart.png')}}" alt="AWS Chart Image">
+                    <img style="float:left;width: 105%;padding: 15px" src="{{asset('/images/awschart.png')}}" alt="AWS Chart Image">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-block">
                         <h1 class="card-title">World Class Security to protect your data</h1>
-                        <img style="width: 110%" src="{{asset('/images/aws.png')}}" alt="AWS Image">
+                        <img style="width: 110%;padding:10px" src="{{asset('/images/aws.png')}}" alt="AWS Image">
                         <p class="card-text" style="padding:5px;font-size: 24px;"><b>We invest to protect your data</b> and our platform comes with these benefits:</p>
                         <ul class="list-group list-group-flush" style="font-size: 20px">
                             <li class="list-group-item">Infrastructure Security</li>

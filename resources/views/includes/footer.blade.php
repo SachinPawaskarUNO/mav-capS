@@ -2,6 +2,7 @@
 
 @push('scripts')
 <!-- Scripts -->
-<script src="/js/app.js"></script>
+{{Html::script('https://code.jquery.com/jquery-3.1.1.min.js')}}
+{{Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')}}
 
 @endpush
