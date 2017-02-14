@@ -44,8 +44,8 @@ Route::post('newsletter','NewsletterController@store');
 //});
 
 Route::get('bor_register', function () {
-    return view('/auth/bor_register');
+    return view('/auth/registeruser');
 });
 Route::get('inv_register', function () {
-    return view('/auth/inv_register');
+    return view('/auth/registeruser');
 });
