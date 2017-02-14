@@ -19,6 +19,15 @@
                </div>
        <div class="col-sm-6">
            <h1>News Letter SignUp</h1>
+           @if (count($errors) > 0)
+               <div class = "alert alert-danger">
+                   <ul>
+                       @foreach ($errors->all() as $error)
+                       <li>{{ $error }}</li>
+                       @endforeach
+                       </ul>
+               </div>
+           @endif
            @if (session('status'))
                <div class="alert alert-success">
                    {{ session('status') }}
@@ -43,8 +52,6 @@
            </div>
            <div class="form-group">
                {!! Form::submit('Save', ['class' => 'btn btn-primary form-control', 'style'=>'width:70px;']) !!}
-
-
            </div>
            </div>
            </div>
