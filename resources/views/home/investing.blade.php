@@ -2,21 +2,8 @@
 @section('content')
     <link rel ="stylesheet" src ="css/app.css">
     <div class="container">
-        <img src="{{asset('/images/investmentHomePage.jpg')}}" class="img-fluid" alt="Investment Image1">
-        <p id="text">
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            Help Malaysia Grow,<br>
-            Lend to SME businesses at rates that suits you.
-        </p>
+        <img src="{{asset('/images/investmentHomePicture1.png')}}" class="img-fluid" alt="Investment Image1">
+
         </br>
         </br>
         </br>
@@ -68,18 +55,18 @@
             <img style="height: 10cm"  src="{{asset('/images/investmentMadeEasy.jpg')}}" class="img-fluid" alt="Invesment Image2">
             <div class="wrapper">
                 <div class="caption post-content">
-                    <h3>INvESTMENT MADE IN EASY STEPS</h3>
+                    <h3>INVESTMENT MADE IN EASY STEPS</h3>
                     <div class="media">
                         <table class="investmentTableLayout process  table">
                             <tr>
                                 <td><img style="float:left;width: 90px ;padding: 5px" src="{{asset('/images/step1.jpg')}}" class="img-responsive"></td>
-                                <td>  </br><b>Setp 1- Register </b></td>
+                                <td>  </br><b>Step 1- Register </b></td>
                                 <td><img style="float:left;width: 90px ;padding: 5px" src="{{asset('/images/step2.jpg')}}" class="img-responsive"></td>
-                                <td>  </br><b>Setp 2- Search for SME </b></td>
+                                <td>  </br><b>Step 2- Search for SME </b></td>
                                 <td><img style="float:left;width: 90px ;padding: 5px" src="{{asset('/images/step3.jpg')}}" class="img-responsive"></td>
-                                <td>  </br><b>Setp 3- Invest </b></td>
+                                <td>  </br><b>Step 3- Invest </b></td>
                                 <td><img style="float:left;width: 90px ;padding: 5px" src="{{asset('/images/step4.jpg')}}" class="img-responsive"></td>
-                                <td>  </br><b>Setp 4- Earn Returns </b></td>
+                                <td>  </br><b>Step 4- Earn Returns </b></td>
                             </tr>
                         </table>
                     </div>
