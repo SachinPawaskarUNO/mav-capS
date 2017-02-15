@@ -164,6 +164,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         // HTML Collective
         Collective\Html\HtmlServiceProvider::class,
+        // Entrust
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -230,6 +232,8 @@ return [
         // HTML Collective
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        // Entrust
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 

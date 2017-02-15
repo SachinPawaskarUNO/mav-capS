@@ -25,26 +25,44 @@
                </div>
            @endif
            {!! Form::open(['url' => 'newsletter']) !!}
-           <div class="form-group">
+           <div class="form-group{{ $errors->has('newsletter_first_name') ? ' has-error' : '' }}">
                {!! Form::label('newsletter_first_name', 'First Name:') !!}
                {!! Form::text('newsletter_first_name',null,['class'=>'form-control']) !!}
+               @if ($errors->has('newsletter_first_name'))
+                   <span class="help-block">
+                       <strong>{{ $errors->first('newsletter_first_name') }}</strong>
+                   </span>
+               @endif
            </div>
-           <div class="form-group">
+           <div class="form-group{{ $errors->has('newsletter_last_name') ? ' has-error' : '' }}">
                {!! Form::label('newsletter_last_name', 'Last Name:') !!}
                {!! Form::text('newsletter_last_name',null,['class'=>'form-control']) !!}
+               @if ($errors->has('newsletter_last_name'))
+                   <span class="help-block">
+                       <strong>{{ $errors->first('newsletter_last_name') }}</strong>
+                   </span>
+               @endif
            </div>
-           <div class="form-group">
+           <div class="form-group{{ $errors->has('newsletter_email') ? ' has-error' : '' }}">
                {!! Form::label('newsletter_email', 'Email:') !!}
-               {!! Form::text('newsletter_email',null,['class'=>'form-control']) !!}
+               {!! Form::email('newsletter_email',null,['class'=>'form-control']) !!}
+               @if ($errors->has('newsletter_email'))
+                   <span class="help-block">
+                       <strong>{{ $errors->first('newsletter_email') }}</strong>
+                   </span>
+               @endif
            </div>
-           <div class="form-group">
-               {!! Form::label('newsletter_user_type', 'UserType:') !!}
-               {!! Form::select('newsletter_user_type', array('businessOwner' =>'Business Owner','investor' =>'Investor')) !!}
+           <div class="form-group{{ $errors->has('newsletter_user_type') ? ' has-error' : '' }}">
+               {!! Form::label('newsletter_user_type', ' User Type:') !!}
+               {!! Form::select('newsletter_user_type', array(''=>'-- Please Select a User Type --','businessOwner' =>'Business Owner','investor' =>'Investor'),'',['class'=>'form-control']) !!}
+               @if ($errors->has('newsletter_user_type'))
+                   <span class="help-block">
+                       <strong>{{ $errors->first('newsletter_user_type') }}</strong>
+                   </span>
+               @endif
            </div>
            <div class="form-group">
                {!! Form::submit('Save', ['class' => 'btn btn-primary form-control', 'style'=>'width:70px;']) !!}
-
-
            </div>
            </div>
            </div>
