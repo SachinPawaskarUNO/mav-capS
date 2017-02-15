@@ -15,10 +15,11 @@ class CreateNewsletterTable extends Migration
     public function up()
     {
         Schema::create('newsletters', function (Blueprint $table) {
-            $table->string('newsletter_first_name')->index();
-            $table->string('newsletter_last_name')->index();
-            $table->string('newsletter_email')->index();
-            $table->string('newsletter_user_type')->index();
+            $table->increments('id');
+            $table->string('newsletter_first_name');
+            $table->string('newsletter_last_name');
+            $table->string('newsletter_email');
+            $table->string('newsletter_user_type');
             $table->timestamps();
         });
     }

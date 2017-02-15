@@ -27,25 +27,18 @@ Route::get('aboutus', function () {
     return view('home.aboutUs');
 });
 
-Route::resource('managers','ManagerController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::post('newsletter','NewsletterController@store');
+Route::get('home', 'HomeController@index');
+Route::resource('newsletter','NewsletterController');
+Route::get('inv_register','UserController@investorRegistration');
+Route::get('bor_register','UserController@businessOwnerRegistration');
 
-
-//Route::get('register', function () {
-//    return view('/auth/register');
-//});
-
-//Route::get('/inv_register', function () {
-//    return view('/auth/inv_register');
-//});
-
-Route::get('bor_register', function () {
-    return view('/auth/registeruser');
+Route::group([ 'middleware' => ['role:admin']], function() {
+    Route::resource('managers','ManagerController');
 });
-Route::get('inv_register', function () {
-    return view('/auth/registeruser');
-});
+
+Route::get('/{any}', function ($any) {
+    return redirect('/');
+})->where('any', '.*');
