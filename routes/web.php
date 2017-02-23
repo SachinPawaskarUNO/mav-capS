@@ -38,6 +38,7 @@ Route::get('bor_register','UserController@businessOwnerRegistration');
 Route::group([ 'middleware' => ['role:admin']], function() {
     Route::resource('managers','ManagerController');
 });
+Route::resource('bo_application','BusinessOwnerApplicationController');
 
 Route::get('/{any}', function ($any) {
     return redirect('/');

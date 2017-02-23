@@ -32,9 +32,9 @@ class HomeController extends Controller
             if ($user->hasRole('admin'))
                 return view('admin.index', compact('users'));
              else if ($user->hasRole('investor') || $user->role_request === 'investor')
-                 return view('Investor.index', compact('user'));
+                 return view('investor.index', compact('user'));
              else if ($user->hasRole('businessowner') || $user->role_request === 'businessowner')
-                 return view('BusinessOwner.index',compact('user'));
+                 return view('businessowner.index',compact('user'));
              else
                  return view ('home', compact('user'));
 }

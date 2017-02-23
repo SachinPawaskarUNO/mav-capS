@@ -54,7 +54,6 @@ class RegisterController extends Controller
             'role_request' => 'required',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'password-confirmation' =>'required|min:6|confirmed',
         ]);
     }
 

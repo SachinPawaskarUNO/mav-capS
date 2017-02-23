@@ -11,9 +11,10 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 <!-- Styles -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link href="/css/app.css" rel="stylesheet">
+{{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">--}}
+{{--<link href="/css/app.css" rel="stylesheet">--}}
 
 <!-- Styles -->
 {{Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')}}
 {{Html::style('/css/app.css')}}
+{{Html::style('//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')}}

@@ -3,35 +3,16 @@
 
 @section('content')
 
-
     <div class="col-lg-12" align="center">
         <div class="panel panel-default" align="center">
             <div class="panel-heading" align="center"><h2>Business Owner Application</h2></div>
             <div class="panel-body" align="center">
-                <button type="submit" class="btn btn-primary" >
-                    Apply!!
-                </button>
+                <a href="{{url('/bo_application/create')}}" class="btn btn-primary">Apply!!</a>
 
             </div>
 
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

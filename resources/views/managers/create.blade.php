@@ -9,6 +9,7 @@
             <span class="help-block">
                 <strong>{{ $errors->first('first_name') }}</strong>
             </span>
+
         @endif
     </div>
     <div class="form-group{{ $errors->has('middle_name') ? ' has-error' : '' }}">
