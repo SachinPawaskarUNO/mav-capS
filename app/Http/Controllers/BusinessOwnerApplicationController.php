@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BusinessOwnerApplication;
 use Illuminate\Http\Request;
 
 class BusinessOwnerApplicationController extends Controller
@@ -12,7 +13,9 @@ class BusinessOwnerApplicationController extends Controller
     }
     public function store(Request $request)
     {
-
+        $businessownerapplication = new BusinessOwnerApplication($request->all());
+        $businessownerapplication->save();
+        return view('businessowner.index');
 
     }
 

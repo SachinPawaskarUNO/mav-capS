@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <div class="container">
         <div class="row">
             <div class="process">
@@ -19,7 +18,8 @@
                     </div>
                 </div>
             </div>
-            <form class="form-horizontal" id="bo_application">
+            {!! Form::open(['url' => 'bo_application', 'class' => 'form-horizontal', 'id' => 'bo_application']) !!}
+                {{ csrf_field() }}
             <div class="tab-content">
                 <div id="menu1" class="tab-pane fade active in">
                     <!-- Personal Details Section Start -->
@@ -225,7 +225,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_registration_year', 'Date of Birth', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_registration_year', 'Registration Year', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_registration_year',null,['class'=>'form-control', 'id'=>'bo_registration_year']) !!}
                                             </div>
@@ -364,11 +364,11 @@
                     <!-- Business Terms and Conditions End -->
                     <ul class="list-unstyled list-inline pull-right">
                         <li><button type="button" class="btn btn-default prev-step" id="bo_prev_step3"><i class="fa fa-chevron-left"></i> Back</button></li>
-                        <li><button type="button" class="btn btn-success next-step" id="bo_next_step3"><i class="fa fa-check"></i>Submit</button></li>
+                        <li><button type="submit" class="btn btn-success next-step" id="bo_next_step3"><i class="fa fa-check"></i>Submit</button></li>
                     </ul>
                 </div>
             </div>
-            </form>
+            {!! Form::close() !!}
         </div>
     </div>
 @endsection
