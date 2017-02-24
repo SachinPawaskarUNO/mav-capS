@@ -22,8 +22,8 @@ class NewsletterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'newsletter_first_name' => 'required',
-            'newsletter_last_name' => 'required',
+            'newsletter_first_name' => 'required|Alpha',
+            'newsletter_last_name' => 'required|Alpha',
             'newsletter_email' => 'required|email|max:255|unique:newsletters',
             'newsletter_user_type' => 'required',
         ]);
