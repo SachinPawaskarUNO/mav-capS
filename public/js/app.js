@@ -1,6 +1,15 @@
 $(document).ready(function(){
     $( "#bo_date_of_birth" ).datepicker();
 
+    $("#bo_next_step3").attr('disabled','disabled');
+    $("#bo_agree_terms, #bo_agree_fees").change(function () {
+        if ($("#bo_agree_terms").is(':checked') && $("#bo_agree_fees").is(':checked') ) {
+            $("#bo_next_step3").attr('disabled', false);
+        } else {
+            $("#bo_next_step3").attr('disabled', true);
+        }
+    });
+
     // $('.btn-circle').on('click',function(){
     //     $('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
     //     $(this).addClass('btn-info').removeClass('btn-default').blur();
@@ -23,7 +32,36 @@ $(document).ready(function(){
                 bo_last_name: {required: true,},
                 bo_identification_card_number: {required: true,},
                 bo_date_of_birth: {required: true,},
-                bo_gender: {required: true,}
+                bo_gender: {required: true,},
+                bo_personal_street: {required: true,},
+                bo_personal_city: {required: true,},
+                bo_personal_state: {required: true,},
+                bo_personal_zipcode: {required: true,},
+                bo_personal_country: {required: true,},
+                bo_personal_phonenumber: {required: true,},
+                //bo_upload_IC: {required: true,},
+                bo_business_street: {required: true,},
+                bo_business_city: {required: true,},
+                bo_business_state: {required: true,},
+                bo_business_zipcode: {required: true,},
+                bo_business_country: {required: true,},
+                bo_business_phonenumber: {required: true,},
+                bo_industry: {required: true,},
+                bo_type: {required: true,},
+                bo_legal_entity: {required: true,},
+                bo_registration_number: {required: true,},
+                bo_registration_year: {required: true,},
+                bo_court_judgement: {required: true,},
+                //bo_business_license: {required: true,},
+                //bo_entity_type: {required: true,},
+                //bo_CTOS: {required: true,},
+                bo_bank_name: {required: true,},
+                bo_bank_account: {required: true,},
+                bo_audited_statements: {required: true,},
+                bo_operating_statements: {required: true,},
+                bo_tax_returns: {required: true,}
+                // bo_agree_terms: {required: true,},
+                // bo_agree_fees: {required: true,}
             }
         });
 

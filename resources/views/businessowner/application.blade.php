@@ -82,26 +82,26 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_personal_city', 'City', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::text('bo_personal_street',null,['class'=>'form-control', 'id'=>'bo_personal_street']) !!}
+                                                {!! Form::text('bo_personal_city',null,['class'=>'form-control', 'id'=>'bo_personal_city']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_personal_state', 'State', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::text('bo_personal_street',null,['class'=>'form-control', 'id'=>'bo_personal_street']) !!}
+                                                {!! Form::text('bo_personal_state',null,['class'=>'form-control', 'id'=>'bo_personal_state']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_personal_zipcode', 'Zip Code', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::text('bo_personal_street',null,['class'=>'form-control', 'id'=>'bo_personal_street']) !!}
+                                                {!! Form::text('bo_personal_zipcode',null,['class'=>'form-control', 'id'=>'bo_personal_zipcode']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_personal_country', 'Country', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::select('bo_personal_street', array(''=>'-- Please Select --','male' =>'Male','female' =>'Female'),'',
-                                                ['class'=>'form-control', 'id'=>'bo_personal_street']) !!}
+                                                {!! Form::select('bo_personal_country', array(''=>'-- Please Select --','male' =>'Male','female' =>'Female'),'',
+                                                ['class'=>'form-control', 'id'=>'bo_personal_country']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -275,8 +275,8 @@
                     </div>
                     <!-- Business Documents End -->
                     <ul class="list-unstyled list-inline pull-right">
-                        <li><button type="button" class="btn btn-default prev-step"><i class="fa fa-chevron-left"></i> Back</button></li>
-                        <li><button type="button" class="btn btn-info next-step">Next <i class="fa fa-chevron-right"></i></button></li>
+                        <li><button type="button" class="btn btn-default prev-step" id="bo_prev_step2"><i class="fa fa-chevron-left"></i> Back</button></li>
+                        <li><button type="button" class="btn btn-info next-step" id="bo_next_step2">Next <i class="fa fa-chevron-right"></i></button></li>
                     </ul>
                 </div>
                 <div id="menu3" class="tab-pane fade">
@@ -346,13 +346,13 @@
                                         <h4>Please review the terms and conditions as a business on our platform</h4>
                                         <div class="form-group">
                                             <div class="col-md-1" style="text-align: center">
-                                            {{ Form::checkbox('bo_agree_terms') }}
+                                            {{ Form::checkbox('bo_agree_terms',1,null,['id'=>'bo_agree_terms']) }}
                                             </div>
                                             {!! Form::label('bo_agree_terms', 'I agree with Capshere Terms & Conditions') !!}
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-1" style="text-align: center">
-                                                {{ Form::checkbox('bo_agree_fees') }}
+                                                {{ Form::checkbox('bo_agree_fees',1,null,['id'=>'bo_agree_fees']) }}
                                             </div>
                                             {!! Form::label('bo_agree_fees', 'I agree with Capshere Platform Fees') !!}
                                         </div>
@@ -363,8 +363,8 @@
                     </div>
                     <!-- Business Terms and Conditions End -->
                     <ul class="list-unstyled list-inline pull-right">
-                        <li><button type="button" class="btn btn-default prev-step"><i class="fa fa-chevron-left"></i> Back</button></li>
-                        <li><button type="button" class="btn btn-success"><i class="fa fa-check"></i>Submit</button></li>
+                        <li><button type="button" class="btn btn-default prev-step" id="bo_prev_step3"><i class="fa fa-chevron-left"></i> Back</button></li>
+                        <li><button type="button" class="btn btn-success next-step" id="bo_next_step3"><i class="fa fa-check"></i>Submit</button></li>
                     </ul>
                 </div>
             </div>
