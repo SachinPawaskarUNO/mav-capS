@@ -1,27 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 use App\Manager;
-use App\Role;
 
 class ManagerController extends Controller
 {
     public function index()
     {
         //
-        $users=User::all();
-        return view('managers.index',compact('users'));
+        $managers=Manager::all();
+        return view('managers.index',compact('managers'));
     }
 
     public function show($id)
     {
-        $manager = User::findOrFail($id);
+        $manager = Manager::findOrFail($id);
         return view('managers.show',compact('manager'));
     }
+
 
     public function create()
     {
@@ -30,36 +29,34 @@ class ManagerController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly     created resource in storage.
      *
      * @return Response
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
-
-        $manager= new User();
+        $manager= new Manager($request->all());
         $manager->first_name=$request->input('first_name');
         $manager->middle_name=$request->input('middle_name');
         $manager->last_name=$request->input('last_name');
         $manager->email=$request->input('email');
         $manager->password=bcrypt($request->input('password'));
-        $manager->role_request='manager';
-        $manager->save();
-        $role = Role::where('name','manager')->first();
-        $manager->attachRole($role);
-        $users = User::all();
-        return redirect('home');
+        $this->validate($request,[
+            'first_name' => 'required|max:255',
+            'middle_name' => 'max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
+       $manager->save();
+
+        return redirect('managers');
     }
 
     public function edit($id)
     {
-        $manager=User::find($id);
+        $manager=Manager::find($id);
         return view('managers.edit',compact('manager'));
     }
 
@@ -71,24 +68,28 @@ class ManagerController extends Controller
      */
     public function update($id,Request $request)
     {
-        //
-        $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-        ]);
 
-        $manager=User::find($id);
+        $manager= new Manager($request->all());
+        $manager=Manager::find($id);
+        $manager->first_name=$request->input('first_name');
+        $manager->middle_name=$request->input('middle_name');
+        $manager->last_name=$request->input('last_name');
+        $manager->email=$request->input('email');
+        $manager->password=bcrypt($request->input('password'));
+        $this->validate($request,[
+            'first_name' => 'required|max:255',
+            'middle_name' => 'max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+        ]);
         $manager->update($request->all());
-        return redirect('home');
+        return redirect('managers');
     }
 
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->detachRoles($user->roles);
-        $user->delete();
-        return redirect('home');
+        Manager::find($id)->delete();
+        return redirect('managers');
     }
 
 

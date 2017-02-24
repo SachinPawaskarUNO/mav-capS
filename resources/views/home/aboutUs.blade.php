@@ -17,6 +17,7 @@
                quo voluptas nulla pariatur?
                </p>
                </div>
+
        <div class="col-sm-6">
            <h1>News Letter SignUp</h1>
            @if (session('status'))
