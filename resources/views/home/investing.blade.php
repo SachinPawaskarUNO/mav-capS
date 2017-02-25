@@ -25,7 +25,7 @@
             </br>
             <img style="float:left;width: 210px ;padding: 5px" src="{{asset('/images/investNow.jpg')}}" class="img-responsive">
         </div>
-        <div class="   col-sm-8">
+        <div class="col-sm-8">
             </br>
             <table class=" investmentTableLayout  table">
                 <tr> <td> <img style="float:left;width: 85px ;padding: 5px" src="{{asset('/images/whyInvestPic1.jpg')}}" class="img-responsive"> </td>
