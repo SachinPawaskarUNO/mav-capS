@@ -1,8 +1,12 @@
 @extends('layouts.app')
 @section('content')
+    <div class="container" >
+        <div class="col-sm-12" >
+            <h1 ><b>Investing </b></h1>
+            <div class="container">
     <link rel ="stylesheet" src ="css/app.css">
     <div class="container">
-        <img src="{{asset('/images/investmentHomePicture1.png')}}" class="img-fluid" alt="Investment Image1">
+        <img src="{{asset('/images/investmentHomePicture1.png')}}" class="img-responsive" alt="Investment Image1">
 
         </br>
         </br>

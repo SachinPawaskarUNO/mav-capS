@@ -68,10 +68,9 @@
         </div>
 
          <div class="col-lg-6">
-        <div class="panel panel-default" align="right">
+        <div class="panel panel-default" align="left">
         <div class="panel-heading" align="center"><h2>Data Security</h2></div>
         <div class="panel-body" align="right">
-
 
     Data security refers to protective digital privacy measures that are applied to prevent unauthorized access to computers,
     databases and websites.
@@ -81,9 +80,8 @@
             Data security also protects data from corruption.
             Data security is the main priority for organizations of every size and genre.
             Data security is the main priority for organizations of every size and genre.
-            Data security is the main priority for organizations of every size and genre.
-
-
+            Data security is the main priority for organizations of every size and genre.<br>
+    <br>
         </div>
 
         </div>

@@ -19,7 +19,7 @@
                </div>
 
        <div class="col-sm-6">
-           <h1>News Letter SignUp</h1>
+           <h1>Newsletter SignUp</h1>
            @if (session('status'))
                <div class="alert alert-success">
                    {{ session('status') }}
@@ -63,7 +63,7 @@
                @endif
            </div>
            <div class="form-group">
-               {!! Form::submit('Save', ['class' => 'btn btn-primary form-control', 'style'=>'width:70px;']) !!}
+               {!! Form::submit('Submit', ['class' => 'btn btn-primary form-control', 'style'=>'width:70px;']) !!}
            </div>
            </div>
            </div>

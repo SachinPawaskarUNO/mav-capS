@@ -39,7 +39,7 @@ class ManagerController extends Controller
         $this->validate($request, [
             'first_name' => 'required|Alpha',
             'last_name' => 'required|Alpha',
-            'middle_name' => 'Alpha',
+            //'middle_name' => 'Alpha',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
 

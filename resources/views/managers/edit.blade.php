@@ -10,6 +10,7 @@
             </ul>
         </div>
     @endif
+
     {!! Form::model($manager,['method' => 'PATCH','route'=>['managers.update',$manager->id]]) !!}
     <div class="form-group">
         {!! Form::label('first_name', 'First Name') !!}
@@ -34,7 +35,33 @@
     </div>
     !-->
     <div class="form-group">
-        {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Update</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Confirm?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to update?</p>
+                        </div>
+                        <div class="modal-footer">
+                            {!! Form::submit('Update', ['class' => 'btn btn-primary'])!!}
+                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {!! Form::submit('Cancel', ['class' => 'btn btn-primary']) !!}
     </div>
+
+
     {!! Form::close() !!}
 @stop
