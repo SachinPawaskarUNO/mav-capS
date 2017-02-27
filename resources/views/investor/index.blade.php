@@ -8,9 +8,7 @@
     <div class="panel panel-default" align="center">
         <div class="panel-heading" align="center"><h2>Investor Application</h2></div>
         <div class="panel-body" align="center">
-            <button type="submit" class="btn btn-primary" >
-                Apply!!
-            </button>
+            <a href="{{url('/inv_application/create')}}" class="btn btn-primary">Apply!!</a>
 
         </div>
 

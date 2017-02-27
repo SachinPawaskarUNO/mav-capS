@@ -1,59 +1,47 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="container" >
-        <div class="col-sm-12" >
-            <h1 ><b>Business Loans </b></h1>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="card">
-                    <div class="card-block">
+    <div class="container-responsive"  >
 
-                        <img src = {{asset('/images/borrower.png')}}  height="400" width="1050">
 
-                        <p id="cap">
-                            Grow your business,<br>
-                            Funded by interested customers
-                        </p>
+            <div class="col-sm-12" style="padding-top:25px">
+            <div class="container-fluid">
+        <h1 ><b>Business Loans </b></h1>
+                        <img src = {{asset('/images/borrower.png')}} class="img-fluid" class="img-responsive" >
 
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-
-    <div class="container">
+            <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-11">
-                <div class="card">
-                    <div class="card-block">
-    <table class="Business Loans table">
-        <thead>
+            <div class="col-sm-12">
+
+
+    <table class="Business Loans table-responsive">
+        <thead><br><br>
         <tr><th> Borrow MYR 50,000– MYR3mm <br> unsecured   </th>
-            <th> |<br>| </th>
+
             <th>Online application. Decision <br> in 2 working days  </th>
-            <th> | <br>|</th>
+
             <th>Flexible terms up to <br> 3 years </th>
-            <th> | <br>|</th>
+
             <th>Dedicated help <br> desk</th>
         </tr></table>
         </thead>
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </div>
 
-    <div class="container">
 
 
+        <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-8">
-                <div class="card">
+            <div class="col-sm-12" style="background-color:#122b40;">
 
-                    <div class="card-block" align="left" >
-                        <table style ="background-color:#122b40" class ="simple application" height="50" width="1050">
+
+
+
             <thead>
             <tr>
                 <th><b><font color="WHITE" size="05">Simple Application</font></b><br><br></th>
@@ -71,13 +59,13 @@
             <td><b><font color="WHITE">step 3 : Up to 7 days to get funding</font></b><br><br></td>
             </tr>
             </tbody>
-        </table>
-                    </div>
-                </div>
+
+
+            </div>
             </div>
                      </div>
-                </div>
-    <div class="container">
+
+    <div class="container" class="img-fluid">
 
         <div class="row">
             <div class="col-sm-5">
@@ -163,7 +151,7 @@
                     </div>
         </div>
     </div>
-        </div>
+
 
     </div>
     </div>

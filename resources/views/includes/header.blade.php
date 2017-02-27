@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" style="padding-bottom: 25px;padding-top: 5px">
+    <nav class="navbar navbar-default navbar-fixed-top" style="padding-bottom: 25px;padding-top: 5px">
     <div class="container">
         <div class="navbar-header">
 
@@ -15,22 +15,22 @@
                 <img src="{{asset('/images/logo.png')}}" alt="CapSphere">
             </a>
         </div>
-
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li id="investing"><a href="{{ url('investing') }}">Investing</a></li>
-                <li id="businessloans"><a href="{{ url('businessloans') }}">Business Loans</a></li>
-                <li id="howitworks"><a href="{{ url('howitworks') }}">How It Works</a></li>
-                &nbsp;<li id="aboutus"><a href="{{ url('aboutus') }}">About Us</a></li>
+                <li class="@if (Request::is('investing'))active @endif" id="investing"><a href="{{ url('investing') }}">Investing</a></li>
+                <li class="@if (Request::is('businessloans'))active @endif" id="businessloans"><a href="{{ url('businessloans') }}">Business Loans</a></li>
+                <li class="@if (Request::is('howitworks')) active @endif" id="howitworks"><a href="{{ url('howitworks') }}">How It Works</a></li>
+                <li class="@if (Request::is('aboutus'))active @endif" id="aboutus"><a href="{{ url('aboutus') }}">About Us</a></li>
             </ul>
+
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li id="login"><a href="{{ route('login') }}">Login</a></li>
-                    <li id="register"><a href="{{ url('register') }}">Register</a></li>
+                    <li class="@if (Request::is('login'))active @endif" id="login"><a href="{{ route('login') }}">Login</a></li>
+                    <li class="@if (Request::is('register'))active @endif" id="register"><a href="{{ url('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -46,7 +46,7 @@
                             <li id="logout">
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                   document.getElementById('logout-form').submit();">
                                     Logout
                                 </a>
 
