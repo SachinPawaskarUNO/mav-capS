@@ -11,7 +11,8 @@ class BusinessOwnerApplicationController extends Controller
     public function create()
     {
         if (Auth::check()) {
-        return view('businessowner.application');
+            $user = Auth::user();
+        return view('businessowner.application', compact('user'));
         } else return redirect('/');
     }
     public function store(Request $request)

@@ -103,7 +103,6 @@ $(document).ready(function() {
         }
 
     });
-});
 
     $('.next-step1, .prev-step1').on('click', function (e) {
         var $activeTab = $('.tab-pane.active');
@@ -151,7 +150,7 @@ $(document).ready(function() {
 
         if (form1.valid() === true) {
             $('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
-            if ($(e.target).hasClass('next-step')) {
+            if ($(e.target).hasClass('next-step1')) {
                 var nextTab = $activeTab.next('.tab-pane').attr('id');
                 $('[href="#' + nextTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + nextTab + '"]').tab('show');
@@ -164,3 +163,40 @@ $(document).ready(function() {
         }
 
     });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    var form = document.forms.namedItem("file-loader");
+    var formData = new FormData();
+    formData.append('file', $('input[type=file]')[0].files[0]);
+    jQuery(function($) {
+        $('input[type="file"]').change(function() {
+            if ($(this).val()) {
+                var filename = $(this).val();
+
+                $.ajax({
+                    method: 'POST',
+                    url: "upload",
+                    enctype: 'multipart/form-data',
+                    data: formData,
+                    success: function (res) {
+                        console.log("Data Uploaded: " + res);
+                        window.href = res;
+                        download.attr('href', href);
+                    },
+
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                })
+
+                var name = filename.split('\\').pop();
+                download = $(this).closest('.file-upload').find('.file-name');
+                download.html(name);
+            }
+        });
+
+    });
+});

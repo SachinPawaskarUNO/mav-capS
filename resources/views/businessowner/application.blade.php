@@ -365,12 +365,16 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading"><h3><b>Business Owner Self Identification</b></h3></div>
                                     <div class="panel-body">
-                                        <div class="form-group">
-                                            {!! Form::label('bo_upload_IC', 'Upload IC', ['class'=>'col-md-4 control-label']) !!}
-                                            <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'bo_upload_IC']) !!}
+                                        <form action="" method="POST" enctype="multipart/form-data" name="file-loader" id="file-loader">
+                                            <div class="form-group">
+                                                {!! Form::label('bo_upload_IC', 'Upload IC', ['class'=>'col-md-4 control-label']) !!}
+                                                <div class="col-md-4">
+                                                    <input type="file" name="file" id="upload">
+                                                    <a href="" id="download" class="file-name" target="_blank"></a>
+                                                    <input type="hidden" name="user_id" value="{{$user->id}}" />
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

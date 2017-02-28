@@ -28,8 +28,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function isInvestor(){
-        return $this->hasRole('investor');
+    public function files() {
+        return $this->hasMany('App\File');
     }
-
 }
