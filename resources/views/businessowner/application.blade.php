@@ -371,7 +371,6 @@
                                                 <div class="col-md-4">
                                                     <input type="file" name="file" id="upload">
                                                     <a href="" id="download" class="file-name" target="_blank"></a>
-                                                    <input type="hidden" name="user_id" value="{{$user->id}}" />
                                                 </div>
                                             </div>
                                         </form>

@@ -175,7 +175,6 @@ $(document).ready(function() {
         $('input[type="file"]').change(function() {
             if ($(this).val()) {
                 var filename = $(this).val();
-
                 $.ajax({
                     method: 'POST',
                     url: "upload",
@@ -186,17 +185,14 @@ $(document).ready(function() {
                         window.href = res;
                         download.attr('href', href);
                     },
-
                     cache: false,
                     contentType: false,
                     processData: false,
                 })
-
                 var name = filename.split('\\').pop();
                 download = $(this).closest('.file-upload').find('.file-name');
                 download.html(name);
             }
         });
-
     });
 });
