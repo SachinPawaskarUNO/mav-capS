@@ -275,13 +275,13 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_first_name', 'First Name', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                            {!! Form::text('bo_first_name', Auth::user()->first_name,['class'=>'form-control', 'id'=>'bo_first_name', 'disabled'=>'true']) !!}
+                                            {!! Form::text('bo_first_name', null,['class'=>'form-control', 'id'=>'bo_first_name']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_last_name', 'Last Name', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::text('bo_last_name',Auth::user()->last_name,['class'=>'form-control', 'id'=>'bo_last_name', 'disabled'=>'true']) !!}
+                                                {!! Form::text('bo_last_name',null,['class'=>'form-control', 'id'=>'bo_last_name']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -343,8 +343,7 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_personal_country', 'Country', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::select('bo_personal_country',$countries,'',
-                                                ['class'=>'form-control', 'id'=>'bo_personal_country']) !!}
+                                                {!! Form::select('bo_personal_country',$countries,'',['class'=>'form-control', 'id'=>'bo_personal_country']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -417,8 +416,7 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_business_country', 'Country', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::select('bo_business_country', array(''=>'-- Please Select --','male' =>'Male','female' =>'Female'),'',
-                                                ['class'=>'form-control', 'id'=>'bo_business_country']) !!}
+                                                {!! Form::select('bo_business_country',$countries,'',['class'=>'form-control', 'id'=>'bo_business_country']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -451,7 +449,7 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_type', 'Type', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::select('bo_type', array(''=>'Please Select a type','male' =>'Male','female' =>'Female'),'',
+                                                {!! Form::select('bo_type', array(''=>'Please Select a type','private' =>'Private','public' =>'Public'),'',
                                                 ['class'=>'form-control', 'id'=>'bo_type']) !!}
                                             </div>
                                         </div>
