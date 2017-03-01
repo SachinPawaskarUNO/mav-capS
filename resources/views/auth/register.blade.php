@@ -9,8 +9,8 @@
                         <div align="center"><h4>Are you registering as an Investor or a Borrower?</h4></div><br><br>
                         <div class="center-block" align="center">
                                 <div class="center-block">
-                                    <a href="{{ url('inv_register') }}"><button type="button" class="btn btn-primary btn-lg">Investor</button></a>  &nbsp <b>OR </b> &nbsp
-                                    <a href="{{ url('bor_register') }}"><button type="button" class="btn btn-primary btn-lg">Business Owner</button></a>
+                                    <a href="{{ url('inv_register') }}"><button type="button" class="btn btn-primary btn-lg" id="investor">Investor</button></a>  &nbsp <b>OR </b> &nbsp
+                                    <a href="{{ url('bor_register') }}"><button type="button" class="btn btn-primary btn-lg" id="borrower">Business Owner</button></a>
                                 </div>
                         </div>
                 </div>

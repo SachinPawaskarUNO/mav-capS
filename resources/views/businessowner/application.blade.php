@@ -261,7 +261,7 @@
                     </div>
                 </div>
             </div>
-            {!! Form::open(['url' => 'bo_application', 'class' => 'form-horizontal', 'id' => 'bo_application']) !!}
+            {!! Form::open(['url' => 'bo_application', 'class' => 'form-horizontal', 'id' => 'bo_application', 'files' => true]) !!}
                 {{ csrf_field() }}
             <div class="tab-content">
                 <div id="menu1" class="tab-pane fade active in">
@@ -275,13 +275,13 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_first_name', 'First Name', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                            {!! Form::text('bo_first_name', Auth::user()->first_name,['class'=>'form-control', 'id'=>'bo_first_name', 'disabled'=>'true']) !!}
+                                            {!! Form::text('bo_first_name', null,['class'=>'form-control', 'id'=>'bo_first_name']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_last_name', 'Last Name', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::text('bo_last_name',Auth::user()->last_name,['class'=>'form-control', 'id'=>'bo_last_name', 'disabled'=>'true']) !!}
+                                                {!! Form::text('bo_last_name',null,['class'=>'form-control', 'id'=>'bo_last_name']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -343,8 +343,7 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_personal_country', 'Country', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::select('bo_personal_country',$countries,'',
-                                                ['class'=>'form-control', 'id'=>'bo_personal_country']) !!}
+                                                {!! Form::select('bo_personal_country',$countries,'',['class'=>'form-control', 'id'=>'bo_personal_country']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -366,12 +365,11 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading"><h3><b>Business Owner Self Identification</b></h3></div>
                                     <div class="panel-body">
-                                        <div class="form-group">
-                                            {!! Form::label('bo_upload_IC', 'Upload IC', ['class'=>'col-md-4 control-label']) !!}
-                                            <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'bo_upload_IC']) !!}
+                                            <div class="form-group">
+                                                {!! Form::label('bo_upload_IC', 'Upload IC', ['class'=>'col-md-4 control-label']) !!}
+                                                <div class="col-md-4">
+                                                    {!! Form::file('bo_upload_IC',['id'=>'bo_upload_IC']) !!}                                                </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -417,8 +415,7 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_business_country', 'Country', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::select('bo_business_country', array(''=>'-- Please Select --','male' =>'Male','female' =>'Female'),'',
-                                                ['class'=>'form-control', 'id'=>'bo_business_country']) !!}
+                                                {!! Form::select('bo_business_country',$countries,'',['class'=>'form-control', 'id'=>'bo_business_country']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -451,8 +448,7 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_type', 'Type', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::select('bo_type', array(''=>'Please Select a type','male' =>'Male','female' =>'Female'),'',
-                                                ['class'=>'form-control', 'id'=>'bo_type']) !!}
+                                                {!! Form::text('bo_type',null,['class'=>'form-control', 'id'=>'bo_type']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -498,19 +494,19 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_business_license', 'Business License', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'bo_business_license']) !!}
+                                                {!! Form::file('bo_business_license',['id'=>'bo_business_license']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_entity_type', 'Business Entity Type', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'bo_entity_type']) !!}
+                                                {!! Form::file('bo_entity_type',['id'=>'bo_entity_type']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_CTOS', 'CTOS Documents', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'bo_CTOS']) !!}
+                                                {!! Form::file('bo_CTOS',['id'=>'bo_CTOS']) !!}
                                             </div>
                                         </div>
                                     </div>
@@ -560,19 +556,19 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_audited_statements', 'Audited Financial Statements', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'bo_audited_statements']) !!}
+                                                {!! Form::file('bo_audited_statements',['id'=>'bo_audited_statements']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_operating_statements', 'Operating Bank Statements', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'bo_operating_statements']) !!}
+                                                {!! Form::file('bo_operating_statements',['id'=>'bo_operating_statements']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_tax_returns', 'Tax Return Forms', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'bo_tax_returns']) !!}
+                                                {!! Form::file('bo_tax_returns',['id'=>'bo_tax_returns']) !!}
                                             </div>
                                         </div>
                                     </div>
@@ -591,13 +587,13 @@
                                         <h4>Please review the terms and conditions as a business on our platform</h4>
                                         <div class="form-group">
                                             <div class="col-md-1" style="text-align: center">
-                                            {{ Form::checkbox('bo_agree_terms',1,null,['id'=>'bo_agree_terms']) }}
+                                            {{ Form::checkbox('bo_agree_terms',true,null,['id'=>'bo_agree_terms']) }}
                                             </div>
                                             <a href="{{ asset('files/borrower_terms.pdf') }}" target="_blank">I agree with Capshere Terms & Conditions</a>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-1" style="text-align: center">
-                                                {{ Form::checkbox('bo_agree_fees',1,null,['id'=>'bo_agree_fees']) }}
+                                                {{ Form::checkbox('bo_agree_fees',true,null,['id'=>'bo_agree_fees']) }}
                                             </div>
                                             {!! Form::label('bo_agree_fees', 'I agree with Capshere Platform Fees') !!}
                                         </div>

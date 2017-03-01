@@ -49,6 +49,6 @@ class CreateInvestorApplicationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('investor_applications');
+        Schema::dropIfExists('investor_application');
     }
 }

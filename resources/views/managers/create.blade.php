@@ -55,7 +55,8 @@
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Save', ['class' => 'btn btn-primary form-control']) !!}
+        {!! Form::submit('Save', ['class' => 'btn btn-primary form-control', 'id' =>'save_manager']) !!}
     </div>
+
     {!! Form::close() !!}
 @stop

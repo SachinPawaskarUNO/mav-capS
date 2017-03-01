@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#bo_date_of_birth").datepicker({dateFormat: "yy-mm-dd"}).val();
     $("#inv_date_of_birth").datepicker({dateFormat: "yy-mm-dd"}).val();
-    $('.date-picker-year').datepicker({
+    $("#bo_registration_year").datepicker({
         changeYear: true,
         showButtonPanel: true,
         dateFormat: 'yy',
@@ -10,7 +10,7 @@ $(document).ready(function() {
             $(this).datepicker('setDate', new Date(year, 1));
         }
     });
-    $('.date-picker-year').focus(function () {
+    $("#bo_registration_year").focus(function () {
         $(".ui-datepicker-month").hide();
         $(".ui-datepicker-calendar").hide();
     });
@@ -71,7 +71,7 @@ $(document).ready(function() {
                 bo_business_country: {required: true, alpha: true,},
                 bo_business_phonenumber: {required: true, number: true,},
                 bo_industry: {required: true,},
-                bo_type: {required: true,},
+                // bo_type: {required: true,},
                 bo_legal_entity: {required: true,},
                 bo_registration_number: {required: true,},
                 bo_registration_year: {required: true, number: true,},
@@ -103,12 +103,11 @@ $(document).ready(function() {
         }
 
     });
-});
 
-    $('.next-step, .prev-step').on('click', function (e) {
+    $('.next-step1, .prev-step1').on('click', function (e) {
         var $activeTab = $('.tab-pane.active');
-        var form = $("#inv_application");
-        form.validate({
+        var form1 = $("#inv_application");
+        form1.validate({
             errorElement: 'span',
             errorClass: 'help-block',
             highlight: function (element, errorClass, validClass) {
@@ -149,9 +148,9 @@ $(document).ready(function() {
             }
         });
 
-        if (form.valid() === true) {
+        if (form1.valid() === true) {
             $('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
-            if ($(e.target).hasClass('next-step')) {
+            if ($(e.target).hasClass('next-step1')) {
                 var nextTab = $activeTab.next('.tab-pane').attr('id');
                 $('[href="#' + nextTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + nextTab + '"]').tab('show');
@@ -164,3 +163,4 @@ $(document).ready(function() {
         }
 
     });
+});
