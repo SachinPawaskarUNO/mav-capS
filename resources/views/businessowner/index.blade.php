@@ -2,7 +2,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="col-lg-12" align="center">
         <div class="panel panel-default" align="center">
             <div class="panel-heading" align="center"><h2>Business Owner Application</h2></div>
