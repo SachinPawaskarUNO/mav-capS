@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('user/confirmation{token}','Auth\RegisterController@confirmation')->name('confirmation');
+
 Route::get('investing', function () {
     return view('home.investing');
 });
@@ -40,6 +43,7 @@ Route::group([ 'middleware' => ['role:admin']], function() {
 });
 Route::resource('bo_application','BusinessOwnerApplicationController');
 Route::resource('inv_application','InvestorApplicationController');
+
 Route::get('/{any}', function ($any) {
     return redirect('/');
 })->where('any', '.*');
