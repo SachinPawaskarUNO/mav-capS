@@ -9,6 +9,7 @@ class File extends Model
     protected $fillable=[
         'user_id',
         'file_path',
+        'file_type',
         'original_filename',
     ];
 

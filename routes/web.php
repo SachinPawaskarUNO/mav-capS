@@ -34,8 +34,6 @@ Route::get('home', 'HomeController@index');
 Route::resource('newsletter','NewsletterController');
 Route::get('inv_register','UserController@investorRegistration');
 Route::get('bor_register','UserController@businessOwnerRegistration');
-Route::post('bo_application/upload', 'FileController@upload');
-Route::get('bo_application/file/{id}/download', 'FileController@download');
 
 Route::group([ 'middleware' => ['role:admin']], function() {
     Route::resource('managers','ManagerController');

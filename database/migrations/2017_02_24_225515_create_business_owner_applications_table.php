@@ -33,15 +33,15 @@ class CreateBusinessOwnerApplicationsTable extends Migration
             $table->string('bo_business_country');
             $table->integer('bo_business_phonenumber');
             $table->string('bo_industry');
-            $table->string('bo_type');
+            $table->string('bo_type')->nullable();
             $table->string('bo_legal_entity');
             $table->string('bo_registration_number');
             $table->integer('bo_registration_year');
             $table->string('bo_court_judgement');
             $table->string('bo_bank_name');
             $table->string('bo_bank_account');
-            $table->boolean('bo_agree_terms')->default(0);
-            $table->boolean('bo_agree_fees')->default(0);
+            $table->boolean('bo_agree_terms')->default(false);
+            $table->boolean('bo_agree_fees')->default(false);
             $table->timestamps();
         });
     }

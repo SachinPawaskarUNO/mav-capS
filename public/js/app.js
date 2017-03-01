@@ -71,7 +71,7 @@ $(document).ready(function() {
                 bo_business_country: {required: true, alpha: true,},
                 bo_business_phonenumber: {required: true, number: true,},
                 bo_industry: {required: true,},
-                bo_type: {required: true,},
+                // bo_type: {required: true,},
                 bo_legal_entity: {required: true,},
                 bo_registration_number: {required: true,},
                 bo_registration_year: {required: true, number: true,},
@@ -162,37 +162,5 @@ $(document).ready(function() {
             }
         }
 
-    });
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    var form = document.forms.namedItem("file-loader");
-    var formData = new FormData();
-    formData.append('file', $('input[type=file]')[0].files[0]);
-    jQuery(function($) {
-        $('input[type="file"]').change(function() {
-            if ($(this).val()) {
-                var filename = $(this).val();
-                $.ajax({
-                    method: 'POST',
-                    url: "upload",
-                    enctype: 'multipart/form-data',
-                    data: formData,
-                    success: function (res) {
-                        console.log("Data Uploaded: " + res);
-                        window.href = res;
-                        download.attr('href', href);
-                    },
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                })
-                var name = filename.split('\\').pop();
-                download = $(this).closest('.file-upload').find('.file-name');
-                download.html(name);
-            }
-        });
     });
 });
