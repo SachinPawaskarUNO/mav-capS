@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\BusinessOwnerApplication;
+use App\Mail\ApplicationNotification;
 use Illuminate\Http\Request;
 use Auth;
 use App\File;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class BusinessOwnerApplicationController extends Controller
@@ -96,6 +98,7 @@ class BusinessOwnerApplicationController extends Controller
             $file->file_type = 'bo_tax_returns';
             $file->save();
         }
+        Mail::to($user)->send(new ApplicationNotification($user));
         $request->session()->flash('status','Your application has been successfully submitted');
         return view('businessowner.index');
     }
