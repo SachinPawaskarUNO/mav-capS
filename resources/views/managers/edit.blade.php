@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
         {!! Form::label('middle_name', 'Middle Name') !!}
-        {!! Form::text('middle_name',null,['class'=>'form-control']) !!}
+        {!! Form::text('middle_name',null,['class'=>'form-control' ,'pattern'=> '[a-zA-Z ]', 'oninvalid'=>"setCustomValidity('Please enter alphabets only')"]) !!}
     </div>
     <div class="form-group">
         {!! Form::label('last_name', 'Last Name') !!}

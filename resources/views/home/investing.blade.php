@@ -7,7 +7,6 @@
     <link rel ="stylesheet" src ="css/app.css">
     <div class="container">
         <img src="{{asset('/images/investmentHomePicture1.png')}}" class="img-responsive" alt="Investment Image1">
-
         </br>
         </br>
         </br>
@@ -27,7 +26,7 @@
             </br>
             </br>
             </br>
-            <img style="float:left;width: 210px ;padding: 5px" src="{{asset('/images/investNow.jpg')}}" class="img-responsive">
+            <img style="float:left;width: 210px;padding:5px" src="{{asset('/images/investNow.jpg')}}" class="img-responsive">
         </div>
         <div class="col-sm-8">
             </br>
