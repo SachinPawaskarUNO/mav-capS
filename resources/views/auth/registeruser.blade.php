@@ -32,8 +32,7 @@ $role = 'Business Owner';
                                 <label for="middle_name" class="col-md-4 control-label">Middle Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}"
-                                    pattern = "[a-zA-Z ]" oninvalid ="setCustomValidity('Please enter alphabets only')">
+                                    <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}">
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">

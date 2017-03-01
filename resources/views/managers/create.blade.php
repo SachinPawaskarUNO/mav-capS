@@ -14,7 +14,7 @@
     </div>
     <div class="form-group{{ $errors->has('middle_name') ? ' has-error' : '' }}">
         {!! Form::label('middle_name', 'Middle Name') !!}
-        {!! Form::text('middle_name',null,['class'=>'form-control', 'pattern'=> '[a-zA-Z ]', 'oninvalid'=>"setCustomValidity('Please enter alphabets only')"]) !!}
+        {!! Form::text('middle_name',null,['class'=>'form-control']) !!}
         @if ($errors->has('middle_name'))
             <span class="help-block">
                 <strong>{{ $errors->first('middle_name') }}</strong>
