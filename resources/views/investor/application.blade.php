@@ -272,13 +272,13 @@
                                         <div class="form-group">
                                             {!! Form::label('inv_first_name', 'First Name', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::text('inv_first_name',Auth::user()->first_name,['class'=>'form-control', 'id'=>'inv_first_name', 'disabled'=>'true']) !!}
+                                                {!! Form::text('inv_first_name',null,['class'=>'form-control', 'id'=>'inv_first_name',]) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('inv_last_name', 'Last Name', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::text('inv_last_name',Auth::user()->last_name,['class'=>'form-control', 'id'=>'inv_last_name', 'disabled'=>'true']) !!}
+                                                {!! Form::text('inv_last_name',null,['class'=>'form-control', 'id'=>'inv_last_name', ]) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -331,7 +331,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_zipcode', 'Zipcode', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_zipcode', 'Zip Code', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_zipcode',null,['class'=>'form-control', 'id'=>'inv_zipcode']) !!}
                                             </div>
@@ -509,7 +509,7 @@
                                 <button type="button" class="btn btn-default prev-step1" id="inv_prev_step_2"><i class="fa fa-chevron-left"></i> Back</button>
                             </li>
                             <li>
-                                <button type="button" class="btn btn-info next-step1" id="inv_next_step2">Submit <i class="fa fa-chevron-right"></i></button>
+                                <button type="submit" class="btn btn-success next-step1" id="inv_next_step2">Submit <i class="fa fa-chevron-right"></i></button>
                             </li>
                         </ul>
                     </div>
