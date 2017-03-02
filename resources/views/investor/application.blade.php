@@ -257,7 +257,7 @@
                     </div>
                 </div>
             </div>
-            {!! Form::open(['url' => 'inv_application', 'class' => 'form-horizontal', 'id' => 'inv_application']) !!}
+            {!! Form::open(['url' => 'inv_application', 'class' => 'form-horizontal', 'id' => 'inv_application', 'files'=> true]) !!}
             {{ csrf_field() }}
             <div class="tab-content">
                 <div id="menu1" class="tab-pane fade active in">
@@ -387,6 +387,7 @@
                             <button type="button" class="btn btn-info next-step1" id="inv_next_step1">Next<i class="fa fa-chevron-right"></i></button>
                         </li>
                     </ul>
+
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <!-- Investor Profile Section Start -->
@@ -485,25 +486,28 @@
                                         <div class="form-group">
                                             {!! Form::label('inv_income_slip', 'Income_Slip', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'inv_income_slip']) !!}
+                                                {!! Form::file('inv_income_slip',['id'=>'inv_income_slip']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('inv_bank_statements', 'Bank Statements', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'inv_bank_statements']) !!}
+                                                {!! Form::file('inv_bank_statements',['id'=>'inv_bank_statements']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('inv_financial_statements', 'Audited Financial Statements', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-4">
-                                                {!! Form::button('Browse',['class'=>'btn btn-primary', 'id'=>'inc_financial_statements']) !!}
+                                                {!! Form::file('inv_financial_statements',['id'=>'inv_financial_statements']) !!}
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                         <ul class="list-unstyled list-inline pull-right">
                             <li>
                                 <button type="button" class="btn btn-default prev-step1" id="inv_prev_step_2"><i class="fa fa-chevron-left"></i> Back</button>
@@ -517,5 +521,5 @@
                 {!! Form::close() !!}
             </div>
         </div>
-    </div>
+
 @endsection

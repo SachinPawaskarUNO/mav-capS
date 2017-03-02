@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Auth;
+use App\File;
+use Illuminate\Support\Facades\Storage;
+use App\Mail\ApplicationNotification;
+use Illuminate\Support\Facades\Mail;
 use App\InvestorApplication;
 use Illuminate\Http\Request;
 
@@ -42,6 +47,31 @@ class InvestorApplicationController extends Controller
         $investorapplication->inv_sme_business=$request->input('inv_sme_business');
         $investorapplication->inv_p2p_lending=$request->input('inv_p2p_lending');
         $investorapplication->save();
+        $user =Auth::user();
+        if($request->hasFile('inv_income_slip')) {
+            $file = new File();
+            $file->user_id = $user->id;
+            $file->original_filename = $request->file('inv_income_slip')->getClientOriginalName();
+            $file->file_path = Storage::putFile('inv_applications/', $request->file('inv_income_slip'));
+            $file->file_type = 'inv_income_slip';
+            $file->save();
+        } if($request->hasFile('inv_bank_statements')) {
+        $file = new File();
+        $file->user_id = $user->id;
+        $file->original_filename = $request->file('inv_bank_statements')->getClientOriginalName();
+        $file->file_path = Storage::putFile('inv_applications/', $request->file('inv_bank_statements'));
+        $file->file_type = 'inv_bank_statements';
+        $file->save();
+        } if($request->hasFile('inv_financial_statements')) {
+        $file = new File();
+        $file->user_id = $user->id;
+        $file->original_filename = $request->file('inv_financial_statements')->getClientOriginalName();
+        $file->file_path = Storage::putFile('inv_applications/', $request->file('inv_financial_statements'));
+        $file->file_type = 'inv_financial_statements';
+        $file->save();
+        }
+        Mail::to($user)->send(new ApplicationNotification($user));
+        $request->session()->flash('status','Your application has been successfully submitted');
         return view('investor.index');
     }
 }
