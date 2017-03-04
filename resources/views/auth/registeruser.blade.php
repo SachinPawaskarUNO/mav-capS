@@ -32,8 +32,7 @@ $role = 'Business Owner';
                                 <label for="middle_name" class="col-md-4 control-label">Middle Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}" >
-
+                                    <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}">
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
@@ -85,7 +84,7 @@ $role = 'Business Owner';
                             <input id="role_request" type="hidden" class="form-control" name="role_request" value="{{$role_request}}" >
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">Register</button>
+                                    <button type="submit" class="btn btn-primary" id="register">Register</button>
                                     <a href="{{url('register')}}"  class="btn btn-primary"  role="button">Cancel</a></button>
                                 </div>
                             </div>

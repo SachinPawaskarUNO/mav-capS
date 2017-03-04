@@ -13,7 +13,7 @@ class CreateInvestorApplicationTable extends Migration
      */
     public function up()
     {
-        Schema::create('investor_application', function (Blueprint $table) {
+        Schema::create('investor_applications', function (Blueprint $table) {
             $table->increments('id');
             $table->string('inv_first_name');
             $table->string('inv_last_name');
@@ -29,7 +29,7 @@ class CreateInvestorApplicationTable extends Migration
             $table->string('inv_identity');
             $table->boolean('inv_agree_terms')->default(0);
             $table->string('inv_income');
-            $table->integer('inv_net_worth');
+            $table->string('inv_net_worth');
             $table->string('inv_liquid_asset');
             $table->integer('inv_estimated_p2p');
             $table->string('inv_risk_tolerance');
@@ -49,6 +49,6 @@ class CreateInvestorApplicationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('investor_application');
+        Schema::dropIfExists('investor_applications');
     }
 }

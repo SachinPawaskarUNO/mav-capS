@@ -35,7 +35,6 @@ Route::resource('newsletter','NewsletterController');
 Route::get('inv_register','UserController@investorRegistration');
 Route::get('bor_register','UserController@businessOwnerRegistration');
 
-
 Route::group([ 'middleware' => ['role:admin']], function() {
     Route::resource('managers','ManagerController');
 });

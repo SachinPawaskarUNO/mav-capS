@@ -17,7 +17,7 @@ class InvestorApplication extends Model
         'inv_state',
         'inv_zipcode',
         'inv_country',
-        'inv_phone_number',
+        'inv_phonenumber',
         'inv_identity',
         'inv_income',
         'inv_agree_terms',
@@ -30,9 +30,5 @@ class InvestorApplication extends Model
         'inv_mutual_funds',
         'inv_sme_business',
         'inv_p2p_lending',
-
-
-
-
     ];
 }

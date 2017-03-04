@@ -2,7 +2,7 @@
 @section('content')
 
     <h1>Manager</h1>
-    <a href="{{url('/managers/create')}}" class="btn btn-success">Create Manager</a>
+    <a href="{{url('/managers/create')}}" class="btn btn-success" id="create_manager">Create Manager</a>
     <hr>
     <table class="table table-striped">
         <thead>

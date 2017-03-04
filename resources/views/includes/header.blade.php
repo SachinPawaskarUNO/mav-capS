@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" id="logo" href="{{ url('/') }}">
                 <img src="{{asset('/images/logo.png')}}" alt="CapSphere">
             </a>
         </div>
@@ -33,11 +33,11 @@
                     <li class="@if (Request::is('register'))active @endif" id="register"><a href="{{ url('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="first_name">
                             {{ Auth::user()->first_name }} <span class="caret"></span>
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu" role="menu" id="home">
                             <li>
                                 <a href="{{url('/home')}}">
                                     Home

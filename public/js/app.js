@@ -71,7 +71,7 @@ $(document).ready(function() {
                 bo_business_country: {required: true, alpha: true,},
                 bo_business_phonenumber: {required: true, number: true,},
                 bo_industry: {required: true,},
-                bo_type: {required: true,},
+                // bo_type: {required: true,},
                 bo_legal_entity: {required: true,},
                 bo_registration_number: {required: true,},
                 bo_registration_year: {required: true, number: true,},
@@ -103,7 +103,6 @@ $(document).ready(function() {
         }
 
     });
-});
 
     $('.next-step1, .prev-step1').on('click', function (e) {
         var $activeTab = $('.tab-pane.active');
@@ -128,7 +127,7 @@ $(document).ready(function() {
                 inv_state: {required: true, alpha: true,},
                 inv_zipcode: {required: true, number: true,},
                 inv_country: {required: true, alpha: true,},
-                inv__phonenumber: {required: true, number: true,},
+                inv_phonenumber: {required: true, number: true,},
                 inv_identity: {required: true,},
                 inv_income: {required: true,},
                 inv_agree_terms: {required: true,},
@@ -151,7 +150,7 @@ $(document).ready(function() {
 
         if (form1.valid() === true) {
             $('.btn-circle.btn-info').removeClass('btn-info').addClass('btn-default');
-            if ($(e.target).hasClass('next-step')) {
+            if ($(e.target).hasClass('next-step1')) {
                 var nextTab = $activeTab.next('.tab-pane').attr('id');
                 $('[href="#' + nextTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + nextTab + '"]').tab('show');
@@ -164,3 +163,4 @@ $(document).ready(function() {
         }
 
     });
+});
