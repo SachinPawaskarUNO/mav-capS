@@ -18,5 +18,5 @@
 {{Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')}}
 {{Html::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')}}
 {{Html::style('//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')}}
-{{Html::style('/css/app.css', array(), true)}}
+{{Html::style('/css/app.css', array(), false)}}
 
