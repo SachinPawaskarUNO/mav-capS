@@ -127,7 +127,7 @@ $(document).ready(function() {
                 inv_state: {required: true, alpha: true,},
                 inv_zipcode: {required: true, number: true,},
                 inv_country: {required: true, alpha: true,},
-                inv__phonenumber: {required: true, number: true,},
+                inv_phonenumber: {required: true, number: true,},
                 inv_identity: {required: true,},
                 inv_income: {required: true,},
                 inv_agree_terms: {required: true,},
