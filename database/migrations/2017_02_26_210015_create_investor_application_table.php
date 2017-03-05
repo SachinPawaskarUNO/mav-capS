@@ -23,15 +23,15 @@ class CreateInvestorApplicationTable extends Migration
             $table->string('inv_street');
             $table->string('inv_city');
             $table->string('inv_state');
-            $table->integer('inv_zipcode');
+            $table->bigInteger('inv_zipcode');
             $table->string('inv_country');
-            $table->integer('inv_phonenumber');
+            $table->bigInteger('inv_phonenumber');
             $table->string('inv_identity');
             $table->boolean('inv_agree_terms')->default(0);
             $table->string('inv_income');
             $table->string('inv_net_worth');
             $table->string('inv_liquid_asset');
-            $table->integer('inv_estimated_p2p');
+            $table->bigInteger('inv_estimated_p2p');
             $table->string('inv_risk_tolerance');
             $table->string('inv_stock_market');
             $table->string('inv_bonds_notes');
