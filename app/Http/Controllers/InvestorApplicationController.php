@@ -16,9 +16,7 @@ class InvestorApplicationController extends Controller
 {
     public function create()
     {
-        if (Auth::check()) {
         return view('investor.application');
-        } else return redirect('/');
     }
     public function store(Request $request)
     {
