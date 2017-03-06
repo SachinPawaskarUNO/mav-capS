@@ -60,6 +60,7 @@
     </div>!-->
 
     <div class="form-group">
+        
             <!--Update Button-->
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_update">Update</button>

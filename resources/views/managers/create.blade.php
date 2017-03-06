@@ -56,7 +56,7 @@
 
         <div class="form-group">
 
-            <!--Create Button--!>
+            <!--Create Button-->
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_create">Create</button>
 

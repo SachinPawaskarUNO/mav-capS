@@ -78,7 +78,7 @@ class ManagerController extends Controller
         $this->validate($request, [
             'first_name' => 'required|Alpha|max:255',
             'middle_name' => 'nullable|Alpha|max:255',
-            //*Alternative*
+            //*Alternative*//
             //'middle_name' => $request->middle_name != null ?'sometimes|required|Alpha':'',
             'last_name' => 'required|Alpha|max:255',
             'email' => 'required',
