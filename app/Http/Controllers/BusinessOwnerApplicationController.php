@@ -19,8 +19,8 @@ class BusinessOwnerApplicationController extends Controller
     public function store(Request $request)
     {
         $businessownerapplication = new BusinessOwnerApplication();
-        $businessownerapplication->bo_first_name=$request->input('bo_first_name');
-        $businessownerapplication->bo_last_name=$request->input('bo_last_name');
+        $businessownerapplication->bo_first_name=ucfirst($request->input('bo_first_name'));
+        $businessownerapplication->bo_last_name=ucfirst($request->input('bo_last_name'));
         $businessownerapplication->bo_identification_card_number=$request->input('bo_identification_card_number');
         $businessownerapplication->bo_date_of_birth=$request->input('bo_date_of_birth');
         $businessownerapplication->bo_gender=$request->input('bo_gender');

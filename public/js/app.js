@@ -94,11 +94,13 @@ $(document).ready(function() {
                 var nextTab = $activeTab.next('.tab-pane').attr('id');
                 $('[href="#' + nextTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + nextTab + '"]').tab('show');
+                top.location.href = '#top';
             }
             else {
                 var prevTab = $activeTab.prev('.tab-pane').attr('id');
                 $('[href="#' + prevTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + prevTab + '"]').tab('show');
+                top.location.href = '#top';
             }
         }
 
@@ -154,11 +156,13 @@ $(document).ready(function() {
                 var nextTab = $activeTab.next('.tab-pane').attr('id');
                 $('[href="#' + nextTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + nextTab + '"]').tab('show');
+                top.location.href = '#top';
             }
             else {
                 var prevTab = $activeTab.prev('.tab-pane').attr('id');
                 $('[href="#' + prevTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + prevTab + '"]').tab('show');
+                top.location.href = '#top';
             }
         }
 
