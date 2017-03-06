@@ -37,12 +37,13 @@ class ManagerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'first_name' => 'required|Alpha',
-            'last_name' => 'required|Alpha',
-            //'middle_name' => 'Alpha',
+            'first_name' => 'required|Alpha|max:255',
+            'last_name' => 'required|Alpha|max:255',
+            'middle_name' => 'nullable|Alpha|max:255',
+            //*Alternative*
+            //'middle_name' => $request->middle_name != null ?'sometimes|required|Alpha':'',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-
         ]);
 
         $manager= new User();
@@ -75,8 +76,11 @@ class ManagerController extends Controller
     {
         //
         $this->validate($request, [
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'first_name' => 'required|Alpha|max:255',
+            'middle_name' => 'nullable|Alpha|max:255',
+            //*Alternative*
+            //'middle_name' => $request->middle_name != null ?'sometimes|required|Alpha':'',
+            'last_name' => 'required|Alpha|max:255',
             'email' => 'required',
         ]);
 
