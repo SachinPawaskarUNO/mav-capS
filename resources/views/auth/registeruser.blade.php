@@ -28,11 +28,16 @@ $role = 'Business Owner';
                                     @endif
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('middle_name') ? ' has-error' : '' }}">
                                 <label for="middle_name" class="col-md-4 control-label">Middle Name</label>
 
                                 <div class="col-md-6">
                                     <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}">
+                                    @if ($errors->has('middle_name'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('middle_name') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
