@@ -94,6 +94,7 @@ $(document).ready(function() {
                 var nextTab = $activeTab.next('.tab-pane').attr('id');
                 $('[href="#' + nextTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + nextTab + '"]').tab('show');
+                top.location.href = '#top';
             }
             else {
                 var prevTab = $activeTab.prev('.tab-pane').attr('id');
@@ -154,6 +155,7 @@ $(document).ready(function() {
                 var nextTab = $activeTab.next('.tab-pane').attr('id');
                 $('[href="#' + nextTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + nextTab + '"]').tab('show');
+                top.location.href = '#top';
             }
             else {
                 var prevTab = $activeTab.prev('.tab-pane').attr('id');

@@ -9,7 +9,7 @@ use App\Mail\ApplicationNotification;
 use Illuminate\Support\Facades\Mail;
 use App\InvestorApplication;
 use Illuminate\Http\Request;
-use Auth;
+
 
 
 class InvestorApplicationController extends Controller
