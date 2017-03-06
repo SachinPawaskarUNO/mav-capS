@@ -11,6 +11,7 @@ use App\InvestorApplication;
 use Illuminate\Http\Request;
 
 
+
 class InvestorApplicationController extends Controller
 {
     public function create()
