@@ -38,8 +38,10 @@ Route::get('bor_register','UserController@businessOwnerRegistration');
 Route::group([ 'middleware' => ['role:admin']], function() {
     Route::resource('managers','ManagerController');
 });
-Route::resource('bo_application','BusinessOwnerApplicationController');
-Route::resource('inv_application','InvestorApplicationController');
+Route::group([ 'middleware' => 'auth'], function() {
+    Route::resource('bo_application','BusinessOwnerApplicationController');
+    Route::resource('inv_application','InvestorApplicationController');
+});
 Route::get('/{any}', function ($any) {
     return redirect('/');
 })->where('any', '.*');

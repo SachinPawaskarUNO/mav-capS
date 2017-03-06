@@ -11,20 +11,19 @@ use App\InvestorApplication;
 use Illuminate\Http\Request;
 
 
+
 class InvestorApplicationController extends Controller
 {
     public function create()
     {
-        if (Auth::check()) {
         return view('investor.application');
-        } else return redirect('/');
     }
     public function store(Request $request)
     {
 
         $investorapplication = new InvestorApplication();
-        $investorapplication->inv_first_name=$request->input('inv_first_name');
-        $investorapplication->inv_last_name=$request->input('inv_last_name');
+        $investorapplication->inv_first_name=ucfirst($request->input('inv_first_name'));
+        $investorapplication->inv_last_name=ucfirst($request->input('inv_last_name'));
         $investorapplication->inv_identification_card_number=$request->input('inv_identification_card_number');
         $investorapplication->inv_date_of_birth=$request->input('inv_date_of_birth');
         $investorapplication->inv_gender=$request->input('inv_gender');
