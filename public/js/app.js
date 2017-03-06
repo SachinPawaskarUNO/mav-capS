@@ -100,6 +100,7 @@ $(document).ready(function() {
                 var prevTab = $activeTab.prev('.tab-pane').attr('id');
                 $('[href="#' + prevTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + prevTab + '"]').tab('show');
+                top.location.href = '#top';
             }
         }
 
@@ -161,6 +162,7 @@ $(document).ready(function() {
                 var prevTab = $activeTab.prev('.tab-pane').attr('id');
                 $('[href="#' + prevTab + '"]').addClass('btn-info').removeClass('btn-default');
                 $('[href="#' + prevTab + '"]').tab('show');
+                top.location.href = '#top';
             }
         }
 
