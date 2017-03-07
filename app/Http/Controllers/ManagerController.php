@@ -37,18 +37,19 @@ class ManagerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
-            'middle_name' => 'nullable|regex:/^[a-zA-Z ]+$/',
-            'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
+            'first_name' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
+            'last_name' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
+            'middle_name' => 'nullable|regex:/^[a-zA-Z ]+$/|max:255',
+            //*Alternative*
+            //'middle_name' => $request->middle_name != null ?'sometimes|required|Alpha':'',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-
         ]);
 
         $manager= new User();
-        $manager->first_name=ucfirst($request->input('first_name'));
-        $manager->middle_name=ucfirst($request->input('middle_name'));
-        $manager->last_name=ucfirst($request->input('last_name'));
+        $manager->first_name=$request->input('first_name');
+        $manager->middle_name=$request->input('middle_name');
+        $manager->last_name=$request->input('last_name');
         $manager->email=$request->input('email');
         $manager->password=bcrypt($request->input('password'));
         $manager->role_request='manager';
@@ -75,10 +76,12 @@ class ManagerController extends Controller
     {
         //
         $this->validate($request, [
-            'first_name' => 'required|regex:/^[a-zA-Z ]+$/',
-            'middle_name' => 'nullable|regex:/^[a-zA-Z ]+$/',
-            'last_name' => 'required|regex:/^[a-zA-Z ]+$/',
-            'email' => 'required',
+            'first_name' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
+            'middle_name' => 'nullable|regex:/^[a-zA-Z ]+$/|max:255',
+            //*Alternative*//
+            //'middle_name' => $request->middle_name != null ?'sometimes|required|Alpha':'',
+            'last_name' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
+            'email' => 'required|email|max:255',
         ]);
 
         $manager=User::find($id);

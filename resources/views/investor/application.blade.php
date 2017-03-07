@@ -270,31 +270,31 @@
                                         <h3><b>Personal Details</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('inv_first_name', 'First Name', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_first_name', 'First Name', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_first_name',null,['class'=>'form-control', 'id'=>'inv_first_name',]) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_last_name', 'Last Name', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_last_name', 'Last Name', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_last_name',null,['class'=>'form-control', 'id'=>'inv_last_name', ]) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_identification_card_number', 'Identification Card Number', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_identification_card_number', 'Identification Card Number', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_identification_card_number',null,['class'=>'form-control', 'id'=>'inv_identification_card_number']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_date_of_birth', 'Date of Birth', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_date_of_birth', 'Date of Birth', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_date_of_birth',null,['class'=>'form-control', 'id'=>'inv_date_of_birth']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_gender', 'Gender', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_gender', 'Gender', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_gender', array(''=>'-- Please Select --','male' =>'Male','female' =>'Female'),'', ['class'=>'form-control', 'id'=>'inv_gender']) !!}
                                             </div>
@@ -313,37 +313,37 @@
                                         <h3><b>Contact Information</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('inv_street', 'Street', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_street', 'Street', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_street',null,['class'=>'form-control', 'id'=>'inv_street']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_city', 'City', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_city', 'City', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_city',null,['class'=>'form-control', 'id'=>'inv_city']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_state', 'State', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_state', 'State', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_state',null,['class'=>'form-control', 'id'=>'inv_state']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_zipcode', 'Zip Code', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_zipcode', 'Zip Code', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_zipcode',null,['class'=>'form-control', 'id'=>'inv_zipcode']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_country', 'Country', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_country', 'Country', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_country',$countries,'',['class'=>'form-control', 'id'=>'inv_country']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_phonenumber', 'Phone Number', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_phonenumber', 'Phone Number', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_phonenumber',null,['class'=>'form-control', 'id'=>'inv_phonenumber']) !!}
                                             </div>
@@ -364,9 +364,9 @@
                                         <h3><b>Investor Self Identification</b></h3></div>
                                     <div class="panel-body">
                                             <div class="form-group">
-                                                {!! Form::label('inv_identity', 'Investor Identity', ['class'=>'col-md-4 control-label']) !!}
+                                                {!! Form::label('inv_identity', 'Investor Identity', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                                 <div class="col-md-6">
-                                                    {!! Form::select('inv_identity', array(''=>'-- Please Select --','retail investor' =>'Retail Investor','sophisticated investor' =>'sophisticated investor','company'=>'Company','angel'=>'Angel'),'', ['class'=>'form-control', 'id'=>'inv_identity']) !!}
+                                                    {!! Form::select('inv_identity', array(''=>'-- Please Select --','retail investor' =>'Retail Investor','sophisticated investor' =>'Sophisticated Investor','company'=>'Company','angel'=>'Angel'),'', ['class'=>'form-control', 'id'=>'inv_identity']) !!}
                                                     <h4>Please review the terms and conditions as an Investor on our platform</h4>
                                                     <div class="form-group">
                                                         <div class="col-md-1" style="text-align: center">
@@ -387,7 +387,7 @@
                             <button type="button" class="btn btn-info next-step1" id="inv_next_step1">Next<i class="fa fa-chevron-right"></i></button>
                         </li>
                     </ul>
-
+                    <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <!-- Investor Profile Section Start -->
@@ -399,25 +399,19 @@
                                         <h3><b>Investor Profile</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('inv_income', 'Income (Annually)', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_income', 'Income (Annually)', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_income', array(''=>'-- Please Select --','below MYR30k' =>'below MYR30k','MYR30k – MYR60k' =>'MYR30k – MYR60k','MYR60k- MYR 120k'=>'MYR60k- MYR 120k','MYR120k – MYR240k'=>'MYR120k – MYR240k','Above MYR300k'=>'Above MYR300k'),'', ['class'=>'form-control', 'id'=>'inv_income']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_net_worth', 'Net Worth', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_net_worth', 'Net Worth', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_net_worth', array(''=>'-- Please Select --','MYR3mm' =>'MYR3mm','Above MYR3mm' =>'Above MYR3mm'),'', ['class'=>'form-control', 'id'=>'inv_net_worth']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_liquid_asset', 'Liquid Assests', ['class'=>'col-md-4 control-label']) !!}
-                                            <div class="col-md-6">
-                                                {!! Form::select('inv_liquid_asset', array(''=>'-- Please Select --','yes' =>'Yes','no' =>'No'),'', ['class'=>'form-control', 'id'=>'inv_liquid_asset']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            {!! Form::label('inv_estimated_p2p', 'Estimated Invested Funds in P2P', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_estimated_p2p', 'Estimated Invested Funds in P2P', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_estimated_p2p',null,['class'=>'form-control', 'id'=>'inv_estimated_p2p']) !!}
                                             </div>
@@ -433,40 +427,40 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3><b>Investor Profile</b></h3></div>
+                                        <h3><b>Investor Experience</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('inv_risk_tolerance', 'Risk Tolerance', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_risk_tolerance', 'Risk Tolerance', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_risk_tolerance', array(''=>'--Please Select --','yes' =>'Yes','no' =>'No'),'', ['class'=>'form-control', 'id'=>'inv_risk_tolerance']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_stock_market', 'Stock Market', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_stock_market', 'Stock Market', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_stock_market', array(''=>'-- Please Select --','yes' =>'Yes','no' =>'No'),'', ['class'=>'form-control', 'id'=>'inv_stock_market']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_bonds_notes', 'Bonds and Notes', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_bonds_notes', 'Bonds and Notes', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_bonds_notes', array(''=>'-- Please Select --','yes' =>'Yes','no' =>'No'),'', ['class'=>'form-control', 'id'=>'inv_bonds_notes']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_mutual_funds', 'Mutual Funds', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_mutual_funds', 'Mutual Funds', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_mutual_funds', array(''=>'-- Please Select --','yes' =>'Yes','no' =>'No'),'', ['class'=>'form-control', 'id'=>'inv_mutual_funds']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_sme_business', 'SME Business', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_sme_business', 'SME Business', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_sme_business', array(''=>'-- Please Select --','yes' =>'Yes','no' =>'No'),'', ['class'=>'form-control', 'id'=>'inv_sme_business']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_p2p_lending', 'P2P Lending', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_p2p_lending', 'P2P Lending', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('inv_p2p_lending', array(''=>'-- Please Select --','yes' =>'Yes','no' =>'No'),'', ['class'=>'form-control', 'id'=>'inv_p2p_lending']) !!}
                                             </div>
@@ -484,19 +478,19 @@
                                         <h3><b>Financial Documentation</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('inv_income_slip', 'Income_Slip', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_income_slip', 'Income_Slip', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-4">
                                                 {!! Form::file('inv_income_slip',['id'=>'inv_income_slip']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_bank_statements', 'Bank Statements', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_bank_statements', 'Bank Statements', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-4">
                                                 {!! Form::file('inv_bank_statements',['id'=>'inv_bank_statements']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_financial_statements', 'Audited Financial Statements', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('inv_financial_statements', 'Audited Financial Statements', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-4">
                                                 {!! Form::file('inv_financial_statements',['id'=>'inv_financial_statements']) !!}
                                             </div>
@@ -506,8 +500,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <ul class="list-unstyled list-inline pull-right">
                             <li>
                                 <button type="button" class="btn btn-default prev-step1" id="inv_prev_step_2"><i class="fa fa-chevron-left"></i> Back</button>
@@ -516,6 +508,7 @@
                                 <button type="submit" class="btn btn-success next-step1" id="inv_next_step2">Submit <i class="fa fa-chevron-right"></i></button>
                             </li>
                         </ul>
+                    <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
                     </div>
                 </div>
                 {!! Form::close() !!}

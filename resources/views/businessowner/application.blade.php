@@ -273,31 +273,33 @@
                                     <div class="panel-heading"><h3><b>Personal Details</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('bo_first_name', 'First Name', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_first_name', 'First Name', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                                             <div class="col-md-6">
                                             {!! Form::text('bo_first_name', null,['class'=>'form-control', 'id'=>'bo_first_name']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_last_name', 'Last Name', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_last_name', 'Last Name', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_last_name',null,['class'=>'form-control', 'id'=>'bo_last_name']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_identification_card_number', 'Identification Card Number', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_identification_card_number', 'Identification Card Number', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_identification_card_number',null,['class'=>'form-control', 'id'=>'bo_identification_card_number']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_date_of_birth', 'Date of Birth', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_date_of_birth', 'Date of Birth', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_date_of_birth',null,['class'=>'form-control', 'id'=>'bo_date_of_birth']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_gender', 'Gender', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_gender', 'Gender', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_gender', array(''=>'Please Select a gender','male' =>'Male','female' =>'Female'),'',
                                                 ['class'=>'form-control', 'id'=>'bo_gender']) !!}
@@ -317,37 +319,43 @@
                                     <div class="panel-heading"><h3><b>Contact Information</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('bo_personal_street', 'Street Address', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_personal_street', 'Street Address', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_personal_street',null,['class'=>'form-control', 'id'=>'bo_personal_street']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_personal_city', 'City', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_personal_city', 'City', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_personal_city',null,['class'=>'form-control', 'id'=>'bo_personal_city']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_personal_state', 'State', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_personal_state', 'State', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_personal_state',null,['class'=>'form-control', 'id'=>'bo_personal_state']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_personal_zipcode', 'Zip Code', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_personal_zipcode', 'Zip Code', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_personal_zipcode',null,['class'=>'form-control', 'id'=>'bo_personal_zipcode']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_personal_country', 'Country', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_personal_country', 'Country', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_personal_country',$countries,'',['class'=>'form-control', 'id'=>'bo_personal_country']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_personal_phonenumber', 'Phone Number', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_personal_phonenumber', 'Phone Number', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_personal_phonenumber',null,['class'=>'form-control', 'id'=>'bo_personal_phonenumber']) !!}
                                             </div>
@@ -366,7 +374,7 @@
                                     <div class="panel-heading"><h3><b>Business Owner Self Identification</b></h3></div>
                                     <div class="panel-body">
                                             <div class="form-group">
-                                                {!! Form::label('bo_upload_IC', 'Upload IC', ['class'=>'col-md-4 control-label']) !!}
+                                                {!! Form::label('bo_upload_IC', 'Upload IC',['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                                 <div class="col-md-4">
                                                     {!! Form::file('bo_upload_IC',['id'=>'bo_upload_IC']) !!}                                                </div>
                                             </div>
@@ -379,6 +387,7 @@
                     <ul class="list-unstyled list-inline pull-right">
                         <li><button type="button" class="btn btn-info next-step" id="bo_next_step1">Next<i class="fa fa-chevron-right"></i></button></li>
                     </ul>
+                    <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <!-- Business Operating Address Start -->
@@ -389,37 +398,43 @@
                                     <div class="panel-heading"><h3><b>Business Operating Address</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('bo_business_street', 'Street Address', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_business_street', 'Street Address', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_business_street',null,['class'=>'form-control', 'id'=>'bo_business_street']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_business_city', 'City', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_business_city', 'City', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_business_city',null,['class'=>'form-control', 'id'=>'bo_business_city']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_business_state', 'State', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_business_state', 'State', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_business_state',null,['class'=>'form-control', 'id'=>'bo_business_state']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_business_zipcode', 'Zip Code', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_business_zipcode', 'Zip Code', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_business_zipcode',null,['class'=>'form-control', 'id'=>'bo_business_zipcode']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_business_country', 'Country', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_business_country', 'Country', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_business_country',$countries,'',['class'=>'form-control', 'id'=>'bo_business_country']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_business_phonenumber', 'Phone Number', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_business_phonenumber', 'Phone Number', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_business_phonenumber',null,['class'=>'form-control', 'id'=>'bo_business_phonenumber']) !!}
                                             </div>
@@ -438,7 +453,8 @@
                                     <div class="panel-heading"><h3><b>Business Background</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('bo_industry', 'Industry', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_industry', 'Industry', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_industry', array(''=>'Please Select a industry','manufacturing' =>'Manufacturing','automotive' =>'Automotive',
                                                 'medical'=>'Medical','retail'=>'Retail','others'=>'Others'),'',
@@ -460,19 +476,19 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_registration_number', 'Registration Number', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_registration_number', 'Registration Number', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_registration_number',null,['class'=>'form-control', 'id'=>'bo_registration_number']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_registration_year', 'Registration Year', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_registration_year', 'Registration Year', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_registration_year',null,['class'=>'form-control date-picker-year', 'id'=>'bo_registration_year']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_court_judgement', 'Court Judgement (describe)', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_court_judgement', 'Court Judgement (describe)', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_court_judgement', array(''=>'Please Select an option','yes' =>'Yes','no' =>'No'),'',
                                                 ['class'=>'form-control', 'id'=>'bo_court_judgement']) !!}
@@ -492,19 +508,19 @@
                                     <div class="panel-heading"><h3><b>Business Documents</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('bo_business_license', 'Business License', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_business_license', 'Business License', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-4">
                                                 {!! Form::file('bo_business_license',['id'=>'bo_business_license']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_entity_type', 'Business Entity Type', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_entity_type', 'Business Entity Type', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-4">
                                                 {!! Form::file('bo_entity_type',['id'=>'bo_entity_type']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_CTOS', 'CTOS Documents', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_CTOS', 'CTOS Documents', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-4">
                                                 {!! Form::file('bo_CTOS',['id'=>'bo_CTOS']) !!}
                                             </div>
@@ -519,6 +535,7 @@
                         <li><button type="button" class="btn btn-default prev-step" id="bo_prev_step2"><i class="fa fa-chevron-left"></i> Back</button></li>
                         <li><button type="button" class="btn btn-info next-step" id="bo_next_step2">Next <i class="fa fa-chevron-right"></i></button></li>
                     </ul>
+                    <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
                 </div>
                 <div id="menu3" class="tab-pane fade">
                     <!-- Business Financial Account Start -->
@@ -529,13 +546,13 @@
                                     <div class="panel-heading"><h3><b>Business Financial Account</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('bo_bank_name', 'Bank Name', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_bank_name', 'Bank Name', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_bank_name',null,['class'=>'form-control', 'id'=>'bo_bank_name']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_bank_account', 'Bank Account Number', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_bank_account', 'Bank Account Number', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_bank_account',null,['class'=>'form-control', 'id'=>'bo_bank_account']) !!}
                                             </div>
@@ -554,19 +571,19 @@
                                     <div class="panel-heading"><h3><b>Business Financial Documents</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
-                                            {!! Form::label('bo_audited_statements', 'Audited Financial Statements', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_audited_statements', 'Audited Financial Statements', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-4">
                                                 {!! Form::file('bo_audited_statements',['id'=>'bo_audited_statements']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_operating_statements', 'Operating Bank Statements', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_operating_statements', 'Operating Bank Statements', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-4">
                                                 {!! Form::file('bo_operating_statements',['id'=>'bo_operating_statements']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_tax_returns', 'Tax Return Forms', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_tax_returns', 'Tax Return Forms', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-4">
                                                 {!! Form::file('bo_tax_returns',['id'=>'bo_tax_returns']) !!}
                                             </div>
@@ -607,6 +624,7 @@
                         <li><button type="button" class="btn btn-default prev-step" id="bo_prev_step3"><i class="fa fa-chevron-left"></i> Back</button></li>
                         <li><button type="submit" class="btn btn-success next-step" id="bo_next_step3"><i class="fa fa-check"></i>Submit</button></li>
                     </ul>
+                    <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
                 </div>
             </div>
             {!! Form::close() !!}

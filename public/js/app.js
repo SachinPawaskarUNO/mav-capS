@@ -1,10 +1,18 @@
 $(document).ready(function() {
-    $("#bo_date_of_birth").datepicker({dateFormat: "yy-mm-dd"}).val();
-    $("#inv_date_of_birth").datepicker({dateFormat: "yy-mm-dd"}).val();
+    $("#bo_date_of_birth").datepicker({
+        dateFormat: "yy-mm-dd",
+        maxDate:'0'
+    });
+
+    $("#inv_date_of_birth").datepicker({
+        dateFormat: "yy-mm-dd",
+        maxDate:'0'
+    });
     $("#bo_registration_year").datepicker({
         changeYear: true,
         showButtonPanel: true,
         dateFormat: 'yy',
+        maxDate:'0',
         onClose: function (dateText, inst) {
             var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
             $(this).datepicker('setDate', new Date(year, 1));
@@ -63,7 +71,7 @@ $(document).ready(function() {
                 bo_personal_zipcode: {required: true, number: true,},
                 bo_personal_country: {required: true, alpha: true,},
                 bo_personal_phonenumber: {required: true, number: true,},
-                //bo_upload_IC: {required: true,},
+                bo_upload_IC: {required: true,},
                 bo_business_street: {required: true,},
                 bo_business_city: {required: true, alpha: true,},
                 bo_business_state: {required: true, alpha: true,},
@@ -71,19 +79,19 @@ $(document).ready(function() {
                 bo_business_country: {required: true, alpha: true,},
                 bo_business_phonenumber: {required: true, number: true,},
                 bo_industry: {required: true,},
-                // bo_type: {required: true,},
+                //bo_type: {required: true,},
                 bo_legal_entity: {required: true,},
-                bo_registration_number: {required: true,},
+                bo_registration_number: {required: true,}, //alpha_num: true,//
                 bo_registration_year: {required: true, number: true,},
                 bo_court_judgement: {required: true,},
-                //bo_business_license: {required: true,},
-                //bo_entity_type: {required: true,},
-                //bo_CTOS: {required: true,},
+                bo_business_license: {required: true,},
+                bo_entity_type: {required: true,},
+                bo_CTOS: {required: true,},
                 bo_bank_name: {required: true,},
-                bo_bank_account: {required: true,}
-                // bo_audited_statements: {required: true,},
-                // bo_operating_statements: {required: true,},
-                // bo_tax_returns: {required: true,}
+                bo_bank_account: {required: true, number: true,},
+                bo_audited_statements: {required: true,},
+                bo_operating_statements: {required: true,},
+                bo_tax_returns: {required: true,}
                 // bo_agree_terms: {required: true,},
                 // bo_agree_fees: {required: true,}
             }
@@ -135,16 +143,16 @@ $(document).ready(function() {
                 inv_agree_terms: {required: true,},
                 inv_net_worth: {required: true,},
                 inv_liquid_asset: {required: true,},
-                inv_estimated_p2p: {required: true, number:true,},
+                inv_estimated_p2p: {required: true, number:true,min:1,},
                 inv_risk_tolerance: {required: true,},
                 inv_stock_market: {required: true,},
                 inv_bonds_notes: {required: true,},
                 inv_mutual_funds: {required: true,},
                 inv_sme_business: {required: true,},
-                inv_p2p_lending: {required: true,}
-                // // bo_audited_statements: {required: true,},
-                // // bo_operating_statements: {required: true,},
-                // // bo_tax_returns: {required: true,}
+                inv_p2p_lending: {required: true,},
+                inv_income_slip: {required: true,},
+                inv_bank_statements: {required: true,},
+                inv_financial_statements: {required: true,}
                 // // bo_agree_terms: {required: true,},
                 // // bo_agree_fees: {required: true,}
             }

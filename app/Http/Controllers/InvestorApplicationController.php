@@ -20,7 +20,6 @@ class InvestorApplicationController extends Controller
     }
     public function store(Request $request)
     {
-
         $investorapplication = new InvestorApplication();
         $investorapplication->inv_first_name=ucfirst($request->input('inv_first_name'));
         $investorapplication->inv_last_name=ucfirst($request->input('inv_last_name'));
@@ -37,7 +36,7 @@ class InvestorApplicationController extends Controller
         $investorapplication->inv_income=$request->input('inv_income');
         $investorapplication->inv_agree_terms=$request->input('inv_agree_terms');
         $investorapplication->inv_net_worth=$request->input('inv_net_worth');
-        $investorapplication->inv_liquid_asset=$request->input('inv_liquid_asset');
+//        $investorapplication->inv_liquid_asset=$request->input('inv_liquid_asset');
         $investorapplication->inv_estimated_p2p=$request->input('inv_estimated_p2p');
         $investorapplication->inv_risk_tolerance=$request->input('inv_risk_tolerance');
         $investorapplication->inv_stock_market=$request->input('inv_stock_market');

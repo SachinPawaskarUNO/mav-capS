@@ -16,7 +16,8 @@ $role = 'Business Owner';
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-                                <label for="first_name" class="col-md-4 control-label">First Name</label>
+                                <label for="first_name" class="col-md-4 control-label" id="mandatory-field">First Name</label>
+
 
                                 <div class="col-md-6">
                                     <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" >
@@ -27,6 +28,7 @@ $role = 'Business Owner';
                                     </span>
                                     @endif
                                 </div>
+
                             </div>
                             <div class="form-group{{ $errors->has('middle_name') ? ' has-error' : '' }}">
                                 <label for="middle_name" class="col-md-4 control-label">Middle Name</label>
@@ -41,7 +43,7 @@ $role = 'Business Owner';
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-                                <label for="last_name" class="col-md-4 control-label">Last Name</label>
+                                <label for="last_name" class="col-md-4 control-label" id="mandatory-field">Last Name</label>
 
                                 <div class="col-md-6">
                                     <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" >
@@ -54,7 +56,7 @@ $role = 'Business Owner';
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <label for="email" class="col-md-4 control-label" id="mandatory-field">E-Mail Address</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" >
@@ -67,7 +69,7 @@ $role = 'Business Owner';
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
+                                <label for="password" class="col-md-4 control-label" id="mandatory-field">Password</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password" >
@@ -80,7 +82,7 @@ $role = 'Business Owner';
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                                <label for="password-confirm" class="col-md-4 control-label" id="mandatory-field">Confirm Password</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
@@ -89,10 +91,11 @@ $role = 'Business Owner';
                             <input id="role_request" type="hidden" class="form-control" name="role_request" value="{{$role_request}}" >
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary" id="register">Register</button>
-                                    <a href="{{url('register')}}"  class="btn btn-primary"  role="button">Cancel</a></button>
+                                    <button type="submit" class="btn btn-primary" id="user_register">Register</button>
+                                    <a href="{{url('register')}}"  class="btn btn-primary"  role="button" id="user_register_cancel">Cancel</a></button>
                                 </div>
                             </div>
+                            <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
                         </form>
                     </div>
                 </div>

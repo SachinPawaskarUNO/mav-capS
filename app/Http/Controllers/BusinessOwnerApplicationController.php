@@ -37,7 +37,6 @@ class BusinessOwnerApplicationController extends Controller
         $businessownerapplication->bo_business_country=$request->input('bo_business_country');
         $businessownerapplication->bo_business_phonenumber=$request->input('bo_business_phonenumber');
         $businessownerapplication->bo_industry=$request->input('bo_industry');
-        $businessownerapplication->bo_type=$request->input('bo_type');
         $businessownerapplication->bo_legal_entity=$request->input('bo_legal_entity');
         $businessownerapplication->bo_registration_number=$request->input('bo_registration_number');
         $businessownerapplication->bo_registration_year=$request->input('bo_registration_year');

@@ -25,7 +25,6 @@ class BusinessOwnerApplication extends Model
         'bo_business_country',
         'bo_business_phonenumber',
         'bo_industry',
-        'bo_type',
         'bo_legal_entity',
         'bo_registration_number',
         'bo_registration_year',

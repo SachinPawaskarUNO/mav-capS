@@ -7,7 +7,7 @@
             <tbody>
             <tr class="bg-info">
             <tr>
-                <td>First Name</td>
+                <td>First Name<span style="color:red">*</span></td>
                 <td><?php echo ($manager['first_name']); ?></td>
             </tr>
             <tr>
@@ -15,18 +15,18 @@
                 <td><?php echo ($manager['middle_name']); ?></td>
             </tr>
             <tr>
-                <td>Last Name</td>
+                <td>Last Name<span style="color:red">*</span></td>
                 <td><?php echo ($manager['last_name']); ?></td>
             </tr>
             <tr>
-                <td>Email</td>
+                <td>Email<span style="color:red">*</span></td>
                 <td><?php echo ($manager['email']); ?></td>
             </tr>
             <tr>
-                <td>Password</td>
+                <td>Password<span style="color:red">*</span></td>
                 <td><?php echo ($manager['password']); ?></td>
             </tr>
-
+            <div id="mandatory text-right"> <span style="color:red">*</span>Indicates mandatory field.</div>
 
             </tbody>
         </table>

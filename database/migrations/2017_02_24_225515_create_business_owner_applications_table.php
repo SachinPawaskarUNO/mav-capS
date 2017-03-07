@@ -33,7 +33,6 @@ class CreateBusinessOwnerApplicationsTable extends Migration
             $table->string('bo_business_country');
             $table->bigInteger('bo_business_phonenumber');
             $table->string('bo_industry');
-            $table->string('bo_type')->nullable();
             $table->string('bo_legal_entity');
             $table->string('bo_registration_number');
             $table->bigInteger('bo_registration_year');
