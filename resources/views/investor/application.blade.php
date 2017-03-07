@@ -343,7 +343,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_phonenumber', 'Phone Number', ['class'=>'col-md-4 control-label'],'id'=>'mandatory-field') !!}
+                                            {!! Form::label('inv_phonenumber', 'Phone Number', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_phonenumber',null,['class'=>'form-control', 'id'=>'inv_phonenumber']) !!}
                                             </div>
