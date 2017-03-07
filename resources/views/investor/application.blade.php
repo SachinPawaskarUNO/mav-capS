@@ -366,7 +366,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('inv_identity', 'Investor Identity', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                                 <div class="col-md-6">
-                                                    {!! Form::select('inv_identity', array(''=>'-- Please Select --','retail investor' =>'Retail Investor','sophisticated investor' =>'sophisticated investor','company'=>'Company','angel'=>'Angel'),'', ['class'=>'form-control', 'id'=>'inv_identity']) !!}
+                                                    {!! Form::select('inv_identity', array(''=>'-- Please Select --','retail investor' =>'Retail Investor','sophisticated investor' =>'Sophisticated Investor','company'=>'Company','angel'=>'Angel'),'', ['class'=>'form-control', 'id'=>'inv_identity']) !!}
                                                     <h4>Please review the terms and conditions as an Investor on our platform</h4>
                                                     <div class="form-group">
                                                         <div class="col-md-1" style="text-align: center">
@@ -433,7 +433,7 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3><b>Investor Profile</b></h3></div>
+                                        <h3><b>Investor Experience</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
                                             {!! Form::label('inv_risk_tolerance', 'Risk Tolerance', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}

@@ -293,15 +293,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_date_of_birth', 'Date of Birth', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
-
+                                            {!! Form::label('bo_date_of_birth', 'Date of Birth', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_date_of_birth',null,['class'=>'form-control', 'id'=>'bo_date_of_birth']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_gender', 'Gender', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
-
+                                            {!! Form::label('bo_gender', 'Gender', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_gender', array(''=>'Please Select a gender','male' =>'Male','female' =>'Female'),'',
                                                 ['class'=>'form-control', 'id'=>'bo_gender']) !!}
@@ -464,14 +462,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_type', 'Type', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+                                            {!! Form::label('bo_type', 'Type', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_type',null,['class'=>'form-control', 'id'=>'bo_type']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_legal_entity', 'Legal Entity', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
-
+                                            {!! Form::label('bo_legal_entity', 'Legal Entity', ['class'=>'col-md-4 control-label']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_legal_entity', array(''=>'Please Select a legal entity','sole_proprietor' =>'Sole Proprietor','partnership' =>'Partnership',
                                                 'private_company'=>'Private Company','unlisted'=>'Unlisted Public Company'),'',
