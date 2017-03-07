@@ -135,7 +135,7 @@ $(document).ready(function() {
                 inv_agree_terms: {required: true,},
                 inv_net_worth: {required: true,},
                 inv_liquid_asset: {required: true,},
-                inv_estimated_p2p: {required: true, number:true,},
+                inv_estimated_p2p: {required: true, number:true,min:1,},
                 inv_risk_tolerance: {required: true,},
                 inv_stock_market: {required: true,},
                 inv_bonds_notes: {required: true,},
