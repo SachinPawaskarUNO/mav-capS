@@ -20,7 +20,6 @@ class InvestorApplicationController extends Controller
     }
     public function store(Request $request)
     {
-
         $investorapplication = new InvestorApplication();
         $investorapplication->inv_first_name=ucfirst($request->input('inv_first_name'));
         $investorapplication->inv_last_name=ucfirst($request->input('inv_last_name'));

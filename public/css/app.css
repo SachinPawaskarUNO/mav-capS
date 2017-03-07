@@ -1,10 +1,18 @@
 html {
     position: relative;
     min-height: 100%;
+
 }
+.container-medium{
+    padding-left: 20%;
+}
+
+
+
 body {
     margin-bottom: 60px;
     font-family: 'Raleway', sans-serif;
+    margin-right:13%;
 }
 .footer {
     position: absolute;
@@ -34,8 +42,8 @@ body {
     width: auto;
 }
 .img-fluid {
-    width: 105%;
-    height: 0%;
+    width: 115%;
+    height: 40%;
 }
 
 .investmentTableLayout tbody tr td,

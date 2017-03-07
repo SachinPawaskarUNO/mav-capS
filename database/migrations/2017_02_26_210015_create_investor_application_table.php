@@ -30,7 +30,6 @@ class CreateInvestorApplicationTable extends Migration
             $table->boolean('inv_agree_terms')->default(0);
             $table->string('inv_income');
             $table->string('inv_net_worth');
-            $table->string('inv_liquid_asset');
             $table->bigInteger('inv_estimated_p2p');
             $table->string('inv_risk_tolerance');
             $table->string('inv_stock_market');

@@ -22,7 +22,6 @@ class InvestorApplication extends Model
         'inv_income',
         'inv_agree_terms',
         'inv_net_worth',
-        'inv_liquid_asset',
         'inv_estimated_p2p',
         'inv_risk_tolerance',
         'inv_stock_market',

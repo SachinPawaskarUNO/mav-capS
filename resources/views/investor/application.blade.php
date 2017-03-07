@@ -411,12 +411,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('inv_liquid_asset', 'Liquid Assests', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
-                                            <div class="col-md-6">
-                                                {!! Form::select('inv_liquid_asset', array(''=>'-- Please Select --','yes' =>'Yes','no' =>'No'),'', ['class'=>'form-control', 'id'=>'inv_liquid_asset']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
                                             {!! Form::label('inv_estimated_p2p', 'Estimated Invested Funds in P2P', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('inv_estimated_p2p',null,['class'=>'form-control', 'id'=>'inv_estimated_p2p']) !!}
