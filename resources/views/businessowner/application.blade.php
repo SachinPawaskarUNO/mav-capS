@@ -293,13 +293,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_date_of_birth', 'Date of Birth', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_date_of_birth', 'Date of Birth', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::text('bo_date_of_birth',null,['class'=>'form-control', 'id'=>'bo_date_of_birth']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_gender', 'Gender', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_gender', 'Gender', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_gender', array(''=>'Please Select a gender','male' =>'Male','female' =>'Female'),'',
                                                 ['class'=>'form-control', 'id'=>'bo_gender']) !!}

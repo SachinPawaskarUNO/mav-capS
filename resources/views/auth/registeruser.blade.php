@@ -91,8 +91,8 @@ $role = 'Business Owner';
                             <input id="role_request" type="hidden" class="form-control" name="role_request" value="{{$role_request}}" >
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary" id="register">Register</button>
-                                    <a href="{{url('register')}}"  class="btn btn-primary"  role="button">Cancel</a></button>
+                                    <button type="submit" class="btn btn-primary" id="user_register">Register</button>
+                                    <a href="{{url('register')}}"  class="btn btn-primary"  role="button" id="user_register_cancel">Cancel</a></button>
                                 </div>
                             </div>
                             <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>

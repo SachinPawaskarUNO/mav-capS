@@ -75,7 +75,7 @@
                         </div>
                         <div class="modal-footer">
                             {!! Form::submit('Create', ['class' => 'btn btn-primary', 'id' =>'save_manager']) !!}
-                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="manager_no_create_confirm">No</button>
                         </div>
                     </div>
                 </div>
@@ -99,8 +99,8 @@
                             <p>Are you sure you want to cancel?</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="{{url('/home')}}" class="btn btn-primary">Cancel</a></button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                            <a href="{{url('/home')}}" class="btn btn-primary" id="create_manager_cancel_confirm">Cancel</a></button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="create_manager_no_cancel_confirm">No</button>
                         </div>
                     </div>
                 </div>

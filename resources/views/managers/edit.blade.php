@@ -60,7 +60,7 @@
     </div>!-->
 
     <div class="form-group">
-        
+
             <!--Update Button-->
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_update">Update</button>
@@ -79,8 +79,8 @@
                             <p>Are you sure you want to update?</p>
                         </div>
                         <div class="modal-footer">
-                            {!! Form::submit('Update', ['class' => 'btn btn-primary'])!!}
-                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                            {!! Form::submit('Update', ['class' => 'btn btn-primary','id' =>'update_manager_confirm'])!!}
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="update_manager_no_confirm">No</button>
 
                         </div>
                     </div>
@@ -104,8 +104,8 @@
                         <p>Are you sure you want to cancel?</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="{{url('/home')}}" class="btn btn-primary">Cancel</a></button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <a href="{{url('/home')}}" class="btn btn-primary" id="manager_update_cancel_confirm">Cancel</a></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="manager_update_no_cancel_confirm">No</button>
                     </div>
                 </div>
             </div>

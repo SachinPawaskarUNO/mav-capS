@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" id="logo" href="{{ url('/') }}">
+            <a class="navbar-brand" id="capsphere_logo" href="{{ url('/') }}">
                 <img src="{{asset('/images/logo.png')}}" alt="CapSphere">
             </a>
         </div>
