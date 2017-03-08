@@ -468,7 +468,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_legal_entity', 'Legal Entity', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_legal_entity', 'Legal Entity', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_legal_entity', array(''=>'Please Select a legal entity','sole_proprietor' =>'Sole Proprietor','partnership' =>'Partnership',
                                                 'private_company'=>'Private Company','unlisted'=>'Unlisted Public Company'),'',

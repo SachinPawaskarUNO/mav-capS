@@ -176,3 +176,7 @@ $(document).ready(function() {
 
     });
 });
+
+function resetform() {
+    document.getElementById("myform").reset();
+}

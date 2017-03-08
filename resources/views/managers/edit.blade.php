@@ -15,6 +15,7 @@
     {!! Form::model($manager,['method' => 'PATCH','route'=>['managers.update',$manager->id]]) !!}
     <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
         {!! Form::label('first_name', 'First Name') !!}
+        <span style="color:red">*</span>
         {!! Form::text('first_name',null,['class'=>'form-control']) !!}
         @if ($errors->has('first_name'))
             <span class="help-block">
@@ -35,6 +36,7 @@
 
     <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
         {!! Form::label('last_name', 'Last Name') !!}
+        <span style="color:red">*</span>
         {!! Form::text('last_name',null,['class'=>'form-control']) !!}
         @if ($errors->has('last_name'))
             <span class="help-block">
@@ -45,6 +47,7 @@
 
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
         {!! Form::label('email', 'Email') !!}
+        <span style="color:red">*</span>
         {!! Form::text('email',null,['class'=>'form-control']) !!}
         @if ($errors->has('email'))
             <span class="help-block">
@@ -56,7 +59,7 @@
     <!--Password Display-->
     <!--<div class="form-group">
         {!! Form::label('password', 'Password') !!}
-        {!! Form::text('password',null,['class'=>'form-control']) !!}
+          {!! Form::text('password',null,['class'=>'form-control']) !!}
     </div>!-->
 
     <div class="form-group">

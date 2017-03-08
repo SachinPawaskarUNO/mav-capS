@@ -11,6 +11,9 @@
             <div class="panel-body" align="center">
                 <a href="{{url('/bo_application/create')}}" class="btn btn-primary">Apply!!</a>
             </div>
+            <div class="panel-body" align="center">
+                <a href="{{url('/loan_application/create')}}" class="btn btn-primary">Apply Loan</a>
+            </div>
         </div>
     </div>
 @endsection
