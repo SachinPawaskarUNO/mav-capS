@@ -14,8 +14,7 @@
 
     {!! Form::model($manager,['method' => 'PATCH','route'=>['managers.update',$manager->id]]) !!}
     <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-        {!! Form::label('first_name', 'First Name') !!}
-        <span style="color:red">*</span>
+        {!! Form::label('first_name', 'First Name',['id'=>'mandatory-field']) !!}
         {!! Form::text('first_name',null,['class'=>'form-control']) !!}
         @if ($errors->has('first_name'))
             <span class="help-block">
@@ -35,8 +34,7 @@
     </div>
 
     <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-        {!! Form::label('last_name', 'Last Name') !!}
-        <span style="color:red">*</span>
+        {!! Form::label('last_name', 'Last Name',['id'=>'mandatory-field']) !!}
         {!! Form::text('last_name',null,['class'=>'form-control']) !!}
         @if ($errors->has('last_name'))
             <span class="help-block">
@@ -46,8 +44,7 @@
     </div>
 
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-        {!! Form::label('email', 'Email') !!}
-        <span style="color:red">*</span>
+        {!! Form::label('email', 'Email',['id'=>'mandatory-field']) !!}
         {!! Form::text('email',null,['class'=>'form-control']) !!}
         @if ($errors->has('email'))
             <span class="help-block">
@@ -55,12 +52,6 @@
             </span>
         @endif
     </div>
-
-    <!--Password Display-->
-    <!--<div class="form-group">
-        {!! Form::label('password', 'Password') !!}
-          {!! Form::text('password',null,['class'=>'form-control']) !!}
-    </div>!-->
 
     <div class="form-group">
 
