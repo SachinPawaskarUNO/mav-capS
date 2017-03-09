@@ -106,6 +106,6 @@
                 </div>
             </div>
         </div>
-
+    <div id="mandatory"> <p align="left"><span style="color:red">*</span>Indicates mandatory field</p></div>
     {!! Form::close() !!}
 @stop
