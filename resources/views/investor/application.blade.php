@@ -372,7 +372,7 @@
                                                         <div class="col-md-1" style="text-align: center">
                                                             {{ Form::checkbox('inv_agree_terms',1,null,['id'=>'inv_agree_terms']) }}
                                                         </div>
-                                                        <a href="{{ asset('files/investor_terms.pdf') }}" target="_blank">I agree with Capshere Terms & Conditions</a>
+                                                        <a href="{{ asset('files/investor_terms.pdf') }}" target="_blank">I agree with Capsphere Terms & Conditions</a>
                                                     </div>
                                                 </div>
                                             </div>

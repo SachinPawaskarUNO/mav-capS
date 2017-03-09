@@ -468,7 +468,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_legal_entity', 'Legal Entity', ['class'=>'col-md-4 control-label']) !!}
+                                            {!! Form::label('bo_legal_entity', 'Legal Entity', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_legal_entity', array(''=>'Please Select a legal entity','sole_proprietor' =>'Sole Proprietor','partnership' =>'Partnership',
                                                 'private_company'=>'Private Company','unlisted'=>'Unlisted Public Company'),'',
@@ -601,18 +601,18 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading"><h3><b>Terms and Conditions</b></h3></div>
                                     <div class="panel-body">
-                                        <h4>Please review the terms and conditions as a business on our platform</h4>
+                                        <h4>Please review the terms and conditions as a business owner on our platform</h4>
                                         <div class="form-group">
                                             <div class="col-md-1" style="text-align: center">
                                             {{ Form::checkbox('bo_agree_terms',true,null,['id'=>'bo_agree_terms']) }}
                                             </div>
-                                            <a href="{{ asset('files/borrower_terms.pdf') }}" target="_blank">I agree with Capshere Terms & Conditions</a>
+                                            <a href="{{ asset('files/borrower_terms.pdf') }}" target="_blank">I agree with Capsphere Terms & Conditions</a>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-1" style="text-align: center">
                                                 {{ Form::checkbox('bo_agree_fees',true,null,['id'=>'bo_agree_fees']) }}
                                             </div>
-                                            {!! Form::label('bo_agree_fees', 'I agree with Capshere Platform Fees') !!}
+                                            {!! Form::label('bo_agree_fees', 'I agree with Capsphere Platform Fees') !!}
                                         </div>
                                     </div>
                                 </div>
