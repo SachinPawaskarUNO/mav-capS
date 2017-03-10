@@ -175,8 +175,7 @@ $(document).ready(function() {
         }
 
     });
+    $('#loan_reset').click(function(){
+        $('#loan_application').reset();
+    })
 });
-
-function resetform() {
-    document.getElementById("myform").reset();
-}

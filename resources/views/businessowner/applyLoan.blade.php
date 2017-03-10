@@ -25,8 +25,13 @@
             <div class="col-md-6 col-md-offset--3">
                 <div class="panel panel-default">
                     <div class="panel-heading" align="center"><h2>Apply Loan</h2></div>
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     <div class="panel-body">
-                        {!! Form::open(['url' => 'loan_application', 'class' => 'form-horizontal', 'id' => 'loan_application', 'files' => true]) !!}
+                        {!! Form::open(['url' => 'loan_application', 'class' => 'form-horizontal', 'id' => 'loan_application']) !!}
                         {{ csrf_field() }}
 
                             <div class="form-group">
@@ -60,9 +65,9 @@
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="submit">Submit</button>
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#loan_submit">Submit</button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="submit" role="dialog">
+                                    <div class="modal fade" id="loan_submit" role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->
@@ -76,20 +81,19 @@
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                    {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'id' =>'save_loan']) !!}
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="submit_confirm">No</button>
+                                                    {!! Form::submit('Submit', ['class' => 'btn btn-success', 'id' =>'save_loan']) !!}
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="submit_confirm">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button type="reset" onclick="resetform()" class="btn btn-primary" >
+                                    <button type="reset" id="loan_reset" class="btn btn-danger" >
                                         Reset
                                     </button>
                                 </div>
                             </div>
                             <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
-                        </form>
                     </div>
                 </div>
                 {!! Form::close() !!}
