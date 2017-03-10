@@ -53,16 +53,35 @@
                                 {!! Form::label('loan_purpose', 'Loan Purpose', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
 
                                 <div class="col-md-6">
-                                    {!! Form::select('loan_purpose', array(''=>'Select','male' =>'Male','female' =>'Female'),'',
+                                    {!! Form::select('loan_purpose', array(''=>'Select','xyz' =>'XYZ','abc' =>'ABC'),'',
                                     ['class'=>'form-control', 'id'=>'bo_gender']) !!}
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary" >
-                                        Submit
-                                    </button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="submit">Submit</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="submit" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Confirm?</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure you want to submit?</p>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    {!! Form::submit('Submit', ['class' => 'btn btn-primary', 'id' =>'save_loan']) !!}
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="submit_confirm">No</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <button type="reset" onclick="resetform()" class="btn btn-primary" >
                                         Reset
@@ -73,8 +92,32 @@
                         </form>
                     </div>
                 </div>
+                {!! Form::close() !!}
             </div>
+
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" align="center"><h2>Loan Estimator</h2></div>
+            <div class="panel-body" align="center">
+                <body>
+                <br/>Loan Amount: MYR &nbsp;
+                <input type="text" id="loan_amount" name="loan_amount">
+                <br>
+                <br/> Rate (R): % &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id="rate" name="rate">
+                <br>
+                <br/> Time (t): months &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id="time" name="time">
+                <br>
+                <br>
+                <button onclick="compute_interest()">Compute Interest</button>
+                <br><br><br><br>
+                <p id="demo"></p>
+                </body>
+            </div>
+
         </div>
     </div>
-
+    </div>
+    </div>
 @endsection
