@@ -83,6 +83,7 @@
                                 @endif
                             </div>
                             <div id="mandatory" style="padding-left:50px"> <p align="left"><span style="color:red">*</span>Indicates mandatory field</p></div>
+                            <input type="hidden" name="inv_id" value="{{ $inv->id }}">
                     </div>
                 </div>
             </div>

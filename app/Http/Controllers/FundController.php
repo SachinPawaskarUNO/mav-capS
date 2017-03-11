@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\InvestorApplication;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -9,10 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class FundController extends Controller
 {
-    //
     public function create()
     {
-        return view('investor.fund');
+        $user = Auth::user();
+        $inv = InvestorApplication::where('inv_first_name',$user->first_name)->first();
+        return view('investor.fund', compact('inv'));
     }
 
     public function store(Request $request)
@@ -22,9 +24,9 @@ class FundController extends Controller
         $user = Auth::user();
         $fund->fund_amount = $request->input('fund_amount');
         $fund->fund_uid = $uid;
-        $fund->user_id = $user->id;
-        $fund->created_by = $user;
-        $fund->updated_by = $user;
+        $fund->investor_application_id = $request->input('inv_id');
+        $fund->created_by = $user->first_name;
+        $fund->updated_by = $user->first_name;
         $fund->save();
         return Redirect::back()->with('uid', $uid);
     }

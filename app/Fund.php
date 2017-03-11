@@ -11,9 +11,8 @@ class Fund extends Model
         'fund_amount',
         'fund_uid',
         'fund_status',
-        'funds_id'
     ];
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\InvestorApplication');
     }
 }
