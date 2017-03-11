@@ -3,15 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Manager</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                  <div class="row">
+                &nbsp; &nbsp;    <a href="{{url('bo_review')}}"class="btn btn-primary">Review BusinessOwner Application</a>
+<br><br><br><br>
+              &nbsp; &nbsp;    <a href="{{url('ia_review')}}"class="btn btn-primary">Review Investor Application</a>
+                  </div>
                 </div>
             </div>
-        </div>
+
     </div>
 </div>
 @endsection

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 
 class BusinessOwnerApplicationController extends Controller
 {
+
+
     public function create()
     {
         return view('businessowner.application');
@@ -99,4 +101,10 @@ class BusinessOwnerApplicationController extends Controller
         $request->session()->flash('status','Your application has been successfully submitted');
         return view('businessowner.index');
     }
+    public function show($id)
+    {
+        $businessowner = BusinessOwnerApplication::findOrFail($id);
+        return view('businessowner.show',compact('businessowner'));
+    }
+
 }
