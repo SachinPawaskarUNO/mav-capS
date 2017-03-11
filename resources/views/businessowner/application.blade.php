@@ -462,12 +462,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('bo_type', 'Type', ['class'=>'col-md-4 control-label']) !!}
-                                            <div class="col-md-6">
-                                                {!! Form::text('bo_type',null,['class'=>'form-control', 'id'=>'bo_type']) !!}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
                                             {!! Form::label('bo_legal_entity', 'Legal Entity', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_legal_entity', array(''=>'Please Select a legal entity','sole_proprietor' =>'Sole Proprietor','partnership' =>'Partnership',
