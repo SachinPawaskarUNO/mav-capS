@@ -43,6 +43,8 @@ Route::group([ 'middleware' => ['role:admin']], function() {
 Route::group([ 'middleware' => 'auth'], function() {
     Route::resource('bo_application','BusinessOwnerApplicationController');
     Route::resource('inv_application','InvestorApplicationController');
+    Route::resource('loan_application','LoanController');
+    Route::resource('add_funds','FundController');
 });
 Route::get('/{any}', function ($any) {
     return redirect('/');
