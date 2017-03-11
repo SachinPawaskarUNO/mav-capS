@@ -19,7 +19,7 @@ class CreateFundsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('files', function (Blueprint $table) {
+        Schema::table('funds', function (Blueprint $table) {
             $table->foreign('investor_application_id')->references('id')->on('investor_applications')->onDelete('cascade');
         });
 
