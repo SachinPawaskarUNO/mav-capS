@@ -14,7 +14,7 @@
 
     {!! Form::model($manager,['method' => 'PATCH','route'=>['managers.update',$manager->id]]) !!}
     <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-        {!! Form::label('first_name', 'First Name') !!}
+        {!! Form::label('first_name', 'First Name',['id'=>'mandatory-field']) !!}
         {!! Form::text('first_name',null,['class'=>'form-control']) !!}
         @if ($errors->has('first_name'))
             <span class="help-block">
@@ -34,7 +34,7 @@
     </div>
 
     <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-        {!! Form::label('last_name', 'Last Name') !!}
+        {!! Form::label('last_name', 'Last Name',['id'=>'mandatory-field']) !!}
         {!! Form::text('last_name',null,['class'=>'form-control']) !!}
         @if ($errors->has('last_name'))
             <span class="help-block">
@@ -44,7 +44,7 @@
     </div>
 
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-        {!! Form::label('email', 'Email') !!}
+        {!! Form::label('email', 'Email',['id'=>'mandatory-field']) !!}
         {!! Form::text('email',null,['class'=>'form-control']) !!}
         @if ($errors->has('email'))
             <span class="help-block">
@@ -53,14 +53,8 @@
         @endif
     </div>
 
-    <!--Password Display-->
-    <!--<div class="form-group">
-        {!! Form::label('password', 'Password') !!}
-        {!! Form::text('password',null,['class'=>'form-control']) !!}
-    </div>!-->
-
     <div class="form-group">
-        
+
             <!--Update Button-->
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_update">Update</button>
@@ -79,8 +73,8 @@
                             <p>Are you sure you want to update?</p>
                         </div>
                         <div class="modal-footer">
-                            {!! Form::submit('Update', ['class' => 'btn btn-primary'])!!}
-                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                            {!! Form::submit('Update', ['class' => 'btn btn-primary','id' =>'update_manager_confirm'])!!}
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="update_manager_no_confirm">No</button>
 
                         </div>
                     </div>
@@ -104,13 +98,13 @@
                         <p>Are you sure you want to cancel?</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="{{url('/home')}}" class="btn btn-primary">Cancel</a></button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <a href="{{url('/home')}}" class="btn btn-primary" id="manager_update_cancel_confirm">Cancel</a></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="manager_update_no_cancel_confirm">No</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <div id="mandatory"> <p align="left"><span style="color:red">*</span>Indicates mandatory field </p></div>
     {!! Form::close() !!}
 @stop

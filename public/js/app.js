@@ -1,10 +1,18 @@
 $(document).ready(function() {
-    $("#bo_date_of_birth").datepicker({dateFormat: "yy-mm-dd"}).val();
-    $("#inv_date_of_birth").datepicker({dateFormat: "yy-mm-dd"}).val();
+    $("#bo_date_of_birth").datepicker({
+        dateFormat: "yy-mm-dd",
+        maxDate:'0'
+    });
+
+    $("#inv_date_of_birth").datepicker({
+        dateFormat: "yy-mm-dd",
+        maxDate:'0'
+    });
     $("#bo_registration_year").datepicker({
         changeYear: true,
         showButtonPanel: true,
         dateFormat: 'yy',
+        maxDate:'0',
         onClose: function (dateText, inst) {
             var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
             $(this).datepicker('setDate', new Date(year, 1));
@@ -80,7 +88,7 @@ $(document).ready(function() {
                 bo_entity_type: {required: true,},
                 bo_CTOS: {required: true,},
                 bo_bank_name: {required: true,},
-                bo_bank_account: {required: true,},
+                bo_bank_account: {required: true, number: true,},
                 bo_audited_statements: {required: true,},
                 bo_operating_statements: {required: true,},
                 bo_tax_returns: {required: true,}
@@ -167,4 +175,7 @@ $(document).ready(function() {
         }
 
     });
+    $('#loan_reset').click(function(){
+        $('#loan_application').reset();
+    })
 });

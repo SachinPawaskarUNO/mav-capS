@@ -34,22 +34,13 @@ Route::get('home', 'HomeController@index');
 Route::resource('newsletter','NewsletterController');
 Route::get('inv_register','UserController@investorRegistration');
 Route::get('bor_register','UserController@businessOwnerRegistration');
-Route::get('bo_review','ManagerController@reviewboa');
-Route::get('ia_review','ManagerController@reviewia');
-
-
-
-
 
 Route::group([ 'middleware' => ['role:admin']], function() {
     Route::resource('managers','ManagerController');
-
-
 });
 Route::group([ 'middleware' => 'auth'], function() {
     Route::resource('bo_application','BusinessOwnerApplicationController');
     Route::resource('inv_application','InvestorApplicationController');
-
 });
 Route::get('/{any}', function ($any) {
     return redirect('/');

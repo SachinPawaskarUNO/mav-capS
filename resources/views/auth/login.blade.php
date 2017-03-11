@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" align="left">
-
-    <div class="row">
+<div class="container">
+    <div class="row is-table-row">
         <br><br><br>
-        <div class="col-md-6 col-md-offset--3">
+            <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading" align="center"><h2>Member Sign In</h2></div>
                 <div class="panel-body">
@@ -13,7 +12,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address </label>
+                            <label for="email" class="col-md-4 control-label" id="mandatory-field">E-Mail Address </label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" >
@@ -27,7 +26,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label" id="mandatory-field">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" >
@@ -42,7 +41,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
+                                <div class="checkbox" id="remember_me_checkbox">
                                     <label>
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                                     </label>
@@ -52,11 +51,11 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary" >
+                                <button type="submit" class="btn btn-primary" id="user_login">
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ route('password.request') }}" id="forgot_password">
                                     Forgot Your Password?
                                 </a>
                                 <span class="glyphicon glyphicon-lock"></span>
@@ -69,7 +68,7 @@
         </div>
 
          <div class="col-lg-6">
-        <div class="panel panel-default" align="left">
+        <div class="panel panel-default">
         <div class="panel-heading" align="center"><h2>Data Security</h2></div>
         <div class="panel-body" align="right">
 

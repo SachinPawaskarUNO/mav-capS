@@ -3,7 +3,7 @@
     <h1>Create New Manager</h1><br>
     {!! Form::open(['url' => 'managers']) !!}
     <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-        {!! Form::label('first_name', 'First Name') !!}
+        {!! Form::label('first_name', 'First Name',['id'=>'mandatory-field']) !!}
         {!! Form::text('first_name',null,['class'=>'form-control']) !!}
         @if ($errors->has('first_name'))
             <span class="help-block">
@@ -22,7 +22,7 @@
         @endif
     </div>
     <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-        {!! Form::label('last_name', 'Last Name') !!}
+        {!! Form::label('last_name', 'Last Name',['id'=>'mandatory-field']) !!}
         {!! Form::text('last_name',null,['class'=>'form-control']) !!}
         @if ($errors->has('last_name'))
             <span class="help-block">
@@ -31,7 +31,7 @@
         @endif
     </div>
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-        {!! Form::label('email', ' Email') !!}
+        {!! Form::label('email', ' Email',['id'=>'mandatory-field']) !!}
         {!! Form::email('email',null,['class'=>'form-control']) !!}
         @if ($errors->has('email'))
             <span class="help-block">
@@ -40,7 +40,7 @@
         @endif
     </div>
     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-        {!! Form::label('password', 'Password') !!}
+        {!! Form::label('password', 'Password',['id'=>'mandatory-field']) !!}
         {!! Form::password('password',['class'=>'form-control']) !!}
         @if ($errors->has('password'))
             <span class="help-block">
@@ -49,7 +49,7 @@
         @endif
     </div>
     <div class="form-group">
-        {!! Form::label('password_confirmation', 'Confirm Password') !!}
+        {!! Form::label('password_confirmation', 'Confirm Password',['id'=>'mandatory-field']) !!}
         {!! Form::password('password_confirmation',['class'=>'form-control']) !!}
 
     </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="modal-footer">
                             {!! Form::submit('Create', ['class' => 'btn btn-primary', 'id' =>'save_manager']) !!}
-                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="manager_no_create_confirm">No</button>
                         </div>
                     </div>
                 </div>
@@ -99,13 +99,13 @@
                             <p>Are you sure you want to cancel?</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="{{url('/home')}}" class="btn btn-primary">Cancel</a></button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                            <a href="{{url('/home')}}" class="btn btn-primary" id="create_manager_cancel_confirm">Cancel</a></button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="create_manager_no_cancel_confirm">No</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    <div id="mandatory"> <p align="left"><span style="color:red">*</span>Indicates mandatory field</p></div>
     {!! Form::close() !!}
 @stop
