@@ -95,3 +95,9 @@ body {
 #mandatory {
     text-align: center;
 }
+
+input {
+    border-radius: 5px;
+    font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+}
