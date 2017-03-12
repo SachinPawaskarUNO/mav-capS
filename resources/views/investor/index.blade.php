@@ -16,8 +16,13 @@
             <a href="{{url('/inv_application/create')}}" class="btn btn-primary">Apply!!</a>
 
         </div>
+        <div class="panel-body" align="center">
+            <a href="{{url('/add_funds/create')}}" class="btn btn-primary">Add Funds</a>
+
+        </div>
 
     </div>
+
 </div>
 
 

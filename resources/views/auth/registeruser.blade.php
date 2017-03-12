@@ -13,12 +13,15 @@ $role = 'Business Owner';
                 <div class="panel panel-default">
                     <div class="panel-heading" align="center"><h2><b> {{$role}} Registration</b></h2></div>
                     <div class="panel-body">
+                        @if (session('status'))
+                            <div class="alert alert-success text-center">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                                 <label for="first_name" class="col-md-4 control-label" id="mandatory-field">First Name</label>
-
-
                                 <div class="col-md-6">
                                     <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" >
 

@@ -7,15 +7,31 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Manager;
 use App\Role;
+use App\BusinessOwnerApplication;
 
 class ManagerController extends Controller
 {
+
+  public function reviewboa()
+  {
+      $businessownerapplication = BusinessOwnerApplication::all();
+      $data = [
+          'businessownerapplication'=> $businessownerapplication
+      ];
+      return view('businessowner.reviewboa',$data);
+  }
+  public function reviewia()
+  {
+      return view('managers.reviewia');
+  }
+
     public function index()
     {
         //
         $users=User::all();
         return view('managers.index',compact('users'));
     }
+
 
     public function show($id)
     {
@@ -60,6 +76,7 @@ class ManagerController extends Controller
         return redirect('home');
     }
 
+
     public function edit($id)
     {
         $manager=User::find($id);
@@ -88,6 +105,7 @@ class ManagerController extends Controller
         $manager->update($request->all());
         return redirect('home');
     }
+
 
     public function destroy($id)
     {
