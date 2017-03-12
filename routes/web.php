@@ -46,6 +46,7 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::resource('loan_application','LoanController');
     Route::resource('add_funds','FundController');
 });
+Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
 Route::get('/{any}', function ($any) {
     return redirect('/');
 })->where('any', '.*');

@@ -8,12 +8,20 @@
             <div class="panel panel-default">
                 <div class="panel-heading" align="center"><h2>Member Sign In</h2></div>
                 <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success text-center">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                        @if (session('warning'))
+                            <div class="alert alert-danger text-center">
+                                {{ session('warning') }}
+                            </div>
+                        @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label" id="mandatory-field">E-Mail Address </label>
-
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" >
 

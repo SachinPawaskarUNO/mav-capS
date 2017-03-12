@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\EmailVerification;
 use App\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -71,7 +76,34 @@ class RegisterController extends Controller
             'role_request' => $data['role_request'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-
+            'email_token' => str_random(30),
         ]);
+    }
+
+    // Override register function from RegisterUsersTrait
+    public function register(Request $request)
+    {
+        // Laravel validation
+        $this->validator($request->all())->validate();
+        //Create user
+        $user = $this->create($request->all());
+        // After creating the user send an email with the random token generated in the create method above
+        Mail::to($user)->send(new EmailVerification($user));
+        return Redirect::back()->with('status', 'Thank you for registering with us! Please check your email to complete the verification process.');
+    }
+
+    public function verify($token)
+    {
+        $current = Carbon::now();
+        $past = User::where('email_token',$token)->value('created_at');
+        $diff = $current->diffInHours($past);
+        if($diff <= 72){
+            User::where('email_token',$token)->firstOrFail()->verified();
+            return redirect('login')->with('status', 'Congratulations! You have successfully verified your account.');
+        } else {
+            User::where('email_token',$token)->delete();
+            return redirect('login')->with('warning', 'Sorry the verification token expired within 72 hours of the initial verification email. Please register again to receive new verification email.');
+        }
+
     }
 }

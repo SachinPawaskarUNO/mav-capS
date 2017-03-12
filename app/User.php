@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'middle_name', 'last_name','role_request', 'email', 'password',
+        'first_name', 'middle_name', 'last_name','role_request', 'email', 'password', 'email_token',
     ];
 
     /**
@@ -30,5 +30,16 @@ class User extends Authenticatable
 
     public function files() {
         return $this->hasMany('App\File');
+    }
+
+    public function funds() {
+        return $this->hasMany('App\Fund');
+    }
+
+    public function verified()
+    {
+        $this->verified = 1;
+        $this->email_token = null;
+        $this->save();
     }
 }
