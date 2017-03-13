@@ -42,6 +42,18 @@ class RolesTableSeeder extends Seeder
         $manager->display_name = 'Manager'; // optional
         $manager->description  = 'User is allowed to perform manager functions'; // optional
         $manager->save();
+
+        $investor = new Role();
+        $investor->name         = 'investor';
+        $investor->display_name = 'Investor'; // optional
+        $investor->description  = 'User is allowed to perform investor functions'; // optional
+        $investor->save();
+
+        $businessowner = new Role();
+        $businessowner->name         = 'businessowner';
+        $businessowner->display_name = 'Business Owner'; // optional
+        $businessowner->description  = 'User is allowed to perform business owner functions'; // optional
+        $businessowner->save();
     }
 }
 
@@ -101,5 +113,11 @@ class UsersRolesPermissionsTableSeeder extends Seeder {
 
         $manager = Role::where('name','=','manager')->first();
         $manager->attachPermissions(array($create,$read,$update,$delete));
+
+        $investor = Role::where('name','=','investor')->first();
+        $investor->attachPermissions(array($create,$read,$delete));
+
+        $businessowner = Role::where('name','=','businessowner')->first();
+        $businessowner->attachPermissions(array($create,$read,$delete));
     }
 }

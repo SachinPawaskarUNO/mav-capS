@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\LoanNotification;
 use Illuminate\Http\Request;
 use App\Loan;
 use Auth;
-use App\Mail\ApplicationNotification;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use App\User;
 
 class LoanController extends Controller
 {
 
     public function create()
     {
-        return view('businessowner.applyLoan');
+        return view('businessowner.applyloan');
     }
 
     public function store(Request $request)
@@ -34,10 +35,12 @@ class LoanController extends Controller
         $loan->created_by = $user->first_name;
         $loan->updated_by = $user->first_name;
         $loan->save();
-        Mail::to($user)->send(new ApplicationNotification($user));
+        Mail::to($user)->send(new LoanNotification($user, $loan));
+        $managers = User::where('role_request','manager')->get()->toArray();
+        if($managers){
+            Mail::to($managers)->send(new LoanNotification($user, $loan));
+        }
         return Redirect::back()->with('status','Your application has been successfully submitted');
-//        $request->session()->flash('status','Your application has been successfully submitted');
-//        return view('businessowner.applyLoan');
     }
 
 
