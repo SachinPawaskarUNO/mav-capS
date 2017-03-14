@@ -34,7 +34,6 @@ class FundController extends Controller
         $fund->created_by = $user->first_name;
         $fund->updated_by = $user->first_name;
         $fund->save();
-        $request->session()->flash('status','Your investment has been successfully submitted');
         Mail::to($user)->send(new FundsNotification($user, $fund));
         $managers = User::where('role_request','manager')->get()->toArray();
         if($managers){

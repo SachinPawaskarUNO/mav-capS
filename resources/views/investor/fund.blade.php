@@ -5,11 +5,6 @@
             <div class="row">
                 <h2 class="text-center">Add Funds</h2>
                 <hr>
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
                 {!! Form::open(['url' => 'add_funds', 'class' => 'form-horizontal', 'id' => 'inv_funds']) !!}
                 {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('fund_amount') ? ' has-error' : '' }}">
