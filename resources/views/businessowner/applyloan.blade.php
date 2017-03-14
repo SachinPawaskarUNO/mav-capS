@@ -112,19 +112,19 @@
                     <form name="loandata" class="form-horizontal">
                         <h4>Loan Information</h4>
                         <div class="form-group">
-                            {!! Form::label('loan_est_principal', 'Loan Amount (MYR) :', ['class'=>'col-md-4 control-label' ]) !!}
+                            {!! Form::label('loan_est_principal', 'Loan Amount (MYR) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_principal" name="principal" class="form-control" onchange="calculate();">
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_interest', 'Rate of Interest (%) :', ['class'=>'col-md-4 control-label' ]) !!}
+                            {!! Form::label('loan_est_interest', 'Rate of Interest (%) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_interest" name="interest" class="form-control" onchange="calculate();">
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_years', 'Time (months) :', ['class'=>'col-md-4 control-label' ]) !!}
+                            {!! Form::label('loan_est_years', 'Time (months) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_years" name="years" class="form-control" onchange="calculate();">
                             </div>
@@ -137,19 +137,19 @@
                         </div>
                         <h4>Payment Information</h4>
                         <div class="form-group">
-                            {!! Form::label('loan_est_payment', 'Monthly Payment (MYR) :', ['class'=>'col-md-4 control-label' ]) !!}
+                            {!! Form::label('loan_est_payment', 'Monthly Payment (MYR) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_payment" name="payment" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_total', 'Total Payment (MYR) :', ['class'=>'col-md-4 control-label' ]) !!}
+                            {!! Form::label('loan_est_total', 'Total Payment (MYR) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_total" name="total" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_totalinterest', 'Total Inetrest Payment (MYR) :', ['class'=>'col-md-4 control-label' ]) !!}
+                            {!! Form::label('loan_est_totalinterest', 'Total Inetrest Payment (MYR) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_totalinterst" name="totalinterest" class="form-control" readonly>
                             </div>
