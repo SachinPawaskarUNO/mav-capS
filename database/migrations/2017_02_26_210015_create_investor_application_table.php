@@ -40,7 +40,7 @@ class CreateInvestorApplicationTable extends Migration
             $table->string('inv_mutual_funds');
             $table->string('inv_sme_business');
             $table->string('inv_p2p_lending');
-            $table->string('STATUS');
+            $table->string('STATUS')->isnullable();
             $table->timestamps();
         });
     }

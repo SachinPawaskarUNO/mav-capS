@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Mail\ApplicationNotification;
 use Illuminate\Support\Facades\Mail;
 use App\InvestorApplication;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
 
@@ -72,6 +73,16 @@ class InvestorApplicationController extends Controller
         $request->session()->flash('status','Your application has been successfully submitted');
         return view('investor.index');
     }
+
+    public function update($id)
+    {
+        InvestorApplication::where('id',$id)->update(array('STATUS' =>'approved'));
+
+        return Redirect::back()->with('status1',$id);
+    }
+
+
+
     public function show($id)
     {
         $investor = InvestorApplication::findOrFail($id);
