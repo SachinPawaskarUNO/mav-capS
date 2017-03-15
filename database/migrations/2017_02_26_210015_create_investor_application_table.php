@@ -13,7 +13,10 @@ class CreateInvestorApplicationTable extends Migration
      */
     public function up()
     {
-        Schema::create('investor_applications', function (Blueprint $table) {
+        Schema::create(/**
+         * @param Blueprint $table
+         */
+            'investor_applications', function (Blueprint $table) {
             $table->increments('id');
             $table->string('inv_first_name');
             $table->string('inv_last_name');
@@ -37,6 +40,7 @@ class CreateInvestorApplicationTable extends Migration
             $table->string('inv_mutual_funds');
             $table->string('inv_sme_business');
             $table->string('inv_p2p_lending');
+            $table->string('STATUS')->isnullable();
             $table->timestamps();
         });
     }

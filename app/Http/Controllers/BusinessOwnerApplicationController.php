@@ -9,6 +9,9 @@ use Auth;
 use App\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
+use App\User;
+use Illuminate\Support\Facades\Redirect;
 
 class BusinessOwnerApplicationController extends Controller
 {
@@ -45,6 +48,7 @@ class BusinessOwnerApplicationController extends Controller
         $businessownerapplication->bo_court_judgement=$request->input('bo_court_judgement');
         $businessownerapplication->bo_bank_name=$request->input('bo_bank_name');
         $businessownerapplication->bo_bank_account=$request->input('bo_bank_account');
+        $businessownerapplication->bo_app_status=$request->input('bo_app_status');
         $businessownerapplication->save();
         $user = Auth::user();
         if($request->hasFile('bo_upload_IC')) {
@@ -101,6 +105,17 @@ class BusinessOwnerApplicationController extends Controller
         $request->session()->flash('status','Your application has been successfully submitted');
         return view('businessowner.index');
     }
+
+
+        public function update($id)
+       {
+          BusinessOwnerApplication::where('id',$id)->update(array('bo_app_status' =>'approved'));
+
+          return Redirect::back()->with('status1',$id);
+      }
+
+
+
     public function show($id)
     {
         $businessowner = BusinessOwnerApplication::findOrFail($id);

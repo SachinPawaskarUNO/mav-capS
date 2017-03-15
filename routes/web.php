@@ -37,6 +37,7 @@ Route::get('bor_register','UserController@businessOwnerRegistration');
 Route::get('bo_review','ManagerController@reviewboa');
 Route::get('ia_review','ManagerController@reviewia');
 
+
 Route::group([ 'middleware' => ['role:admin']], function() {
     Route::resource('managers','ManagerController');
 });

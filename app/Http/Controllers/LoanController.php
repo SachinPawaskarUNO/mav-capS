@@ -8,6 +8,7 @@ use App\Loan;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use App\InvestorApplication;
 use App\User;
 
 class LoanController extends Controller
@@ -43,5 +44,12 @@ class LoanController extends Controller
         return Redirect::back()->with('status','Your application has been successfully submitted');
     }
 
+
+    public function update($id)
+    {
+        InvestorApplication::where('id',$id)->update(array('STATUS' =>'rejected'));
+
+        return Redirect::back()->with('status1',$id);
+    }
 
 }

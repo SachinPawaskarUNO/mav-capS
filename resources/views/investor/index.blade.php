@@ -12,11 +12,6 @@
                 {{ session('status') }}
             </div>
         @endif
-        @if (session('status1'))
-            <div class="alert alert-success">
-                {{ session('status1') }}
-            </div>
-        @endif
         <div class="panel-body" align="center">
             <a href="{{url('/inv_application/create')}}" class="btn btn-primary">Apply!!</a>
 

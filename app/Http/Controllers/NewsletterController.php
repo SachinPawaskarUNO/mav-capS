@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Newsletter;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\BusinessOwnerApplication;
+use Illuminate\Support\Facades\Redirect;
 
 class NewsletterController extends Controller
 {
@@ -34,4 +36,10 @@ class NewsletterController extends Controller
 
 
     }
+    public function update($id)
+   {
+      BusinessOwnerApplication::where('id',$id)->update(array('bo_app_status' =>'rejected'));
+
+      return Redirect::back()->with('status1',$id);
+  }
 }
