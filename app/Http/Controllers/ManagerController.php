@@ -69,6 +69,7 @@ class ManagerController extends Controller
         $manager->email=$request->input('email');
         $manager->password=bcrypt($request->input('password'));
         $manager->role_request='manager';
+        $manager->verified = 1;
         $manager->save();
         $role = Role::where('name','manager')->first();
         $manager->attachRole($role);
