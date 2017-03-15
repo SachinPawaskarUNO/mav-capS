@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\InvestorApplication;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,8 +22,15 @@ class ManagerController extends Controller
       return view('businessowner.reviewboa',$data);
   }
   public function reviewia()
+      
   {
-      return view('managers.reviewia');
+      $investorapplication = InvestorApplication::all();
+      $data = [
+          'investorapplication'=> $investorapplication
+      ];
+      return view('investor.reviewia',$data);
+
+
   }
 
     public function index()
