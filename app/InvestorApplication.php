@@ -30,4 +30,8 @@ class InvestorApplication extends Model
         'inv_sme_business',
         'inv_p2p_lending',
     ];
+
+    public function funds() {
+        return $this->hasMany('App\Fund');
+    }
 }

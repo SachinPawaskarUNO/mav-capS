@@ -9,7 +9,14 @@ class UsersTableSeeder extends Seeder {
     public function run(){
         DB::table('users')->delete();
         User::create([  'first_name' => 'Administrator', 'middle_name' => 'A', 'last_name' => 'Admin',
-            'password' => bcrypt('testing'), 'email' => 'test@test.com', 'role_request' => 'admin', 'created_at' => date_create(), 'updated_at' => date_create()]);
+            'password' => bcrypt('testing'), 'email' => 'test@test.com', 'role_request' => 'admin',
+            'verified' => 1, 'created_at' => date_create(), 'updated_at' => date_create()]);
+        User::create([  'first_name' => 'Investor', 'middle_name' => 'I', 'last_name' => 'Investor',
+            'password' => bcrypt('testing'), 'email' => 'investor@investor.com', 'role_request' => 'investor',
+            'verified' => 1, 'created_at' => date_create(), 'updated_at' => date_create()]);
+        User::create([  'first_name' => 'Business', 'middle_name' => 'BO', 'last_name' => 'Owner',
+            'password' => bcrypt('testing'), 'email' => 'bo@bo.com', 'role_request' => 'businessowner',
+            'verified' => 1, 'created_at' => date_create(), 'updated_at' => date_create()]);
     }
 }
 
@@ -35,6 +42,18 @@ class RolesTableSeeder extends Seeder
         $manager->display_name = 'Manager'; // optional
         $manager->description  = 'User is allowed to perform manager functions'; // optional
         $manager->save();
+
+        $investor = new Role();
+        $investor->name         = 'investor';
+        $investor->display_name = 'Investor'; // optional
+        $investor->description  = 'User is allowed to perform investor functions'; // optional
+        $investor->save();
+
+        $businessowner = new Role();
+        $businessowner->name         = 'businessowner';
+        $businessowner->display_name = 'Business Owner'; // optional
+        $businessowner->description  = 'User is allowed to perform business owner functions'; // optional
+        $businessowner->save();
     }
 }
 
@@ -94,5 +113,11 @@ class UsersRolesPermissionsTableSeeder extends Seeder {
 
         $manager = Role::where('name','=','manager')->first();
         $manager->attachPermissions(array($create,$read,$update,$delete));
+
+        $investor = Role::where('name','=','investor')->first();
+        $investor->attachPermissions(array($create,$read,$delete));
+
+        $businessowner = Role::where('name','=','businessowner')->first();
+        $businessowner->attachPermissions(array($create,$read,$delete));
     }
 }
