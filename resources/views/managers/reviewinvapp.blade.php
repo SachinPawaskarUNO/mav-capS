@@ -23,7 +23,7 @@
                     </thead>
                     <tbody>
                     @foreach($invapps as $invapp)
-                        @if($invapp->bo_app_status == '')
+                        @if($invapp->inv_app_status == '')
                             <tr>
                                 <th scope="row">{{$invapp->inv_first_name}} {{$invapp->inv_last_name}}</th>
                                 <td><a href="{{url('inv_application',$invapp->id)}}" class="btn btn-info btn-sm">View Details</a>
