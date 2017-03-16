@@ -10,7 +10,7 @@ class CreateFundsTable extends Migration
     {
         Schema::create('funds', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('fund_amount');
+            $table->bigInteger('fund_amount');
             $table->string('fund_uid');
             $table->string('fund_status')->nullable();
             $table->integer('investor_application_id')->unsigned();

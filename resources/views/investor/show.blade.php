@@ -2,122 +2,105 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Investor Application</h1>
-
-    <div="container">
+<div class="col-md-10 col-md-offset-1">
+        <h2 class="text-center">Investor Application</h2>
     <table class="table table-striped table -bordered table hover">
         <tbody>
         <tr class="bg-info">
         <tr>
-            <td>First Name<span style="color:red"></span></td>
-            <td>{{$investor->inv_first_name}}</td>
+            <td>First Name</td>
+            <td>{{$invapp->inv_first_name}}</td>
         </tr>
         <tr>
-            <td>Last Name<span style="color:red"></span></td>
-            <td>{{$investor->inv_last_name}}</td>
+            <td>Last Name</td>
+            <td>{{$invapp->inv_last_name}}</td>
         </tr>
         <tr>
-            <td>Investor Identifictaion Number<span style="color:red"></span></td>
-            <td>{{$investor-> 	inv_identification_card_number}}</td>
+            <td>Investor Identifictaion Number</td>
+            <td>{{$invapp->inv_identification_card_number}}</td>
         </tr>
         <tr>
-            <td>Investor Date Of birth<span style="color:red"></span></td>
-            <td>{{$investor->inv_date_of_birth}}</td>
+            <td>Investor Date Of birth</td>
+            <td>{{$invapp->inv_date_of_birth}}</td>
         </tr>
         <tr>
-            <td>Gender<span style="color:red"></span></td>
-            <td>{{$investor->inv_gender}}</td>
+            <td>Gender</td>
+            <td>{{$invapp->inv_gender}}</td>
         </tr>
         <tr>
-            <td>Street Address<span style="color:red"></span></td>
-            <td>{{$investor->inv_street}}</td>
+            <td>Street Address</td>
+            <td>{{$invapp->inv_street}}</td>
         </tr>
         <tr>
-            <td>City<span style="color:red"></span></td>
-            <td>{{$investor->inv_city}}</td>
+            <td>City</td>
+            <td>{{$invapp->inv_city}}</td>
         </tr>
         <tr>
-            <td>State<span style="color:red"></span></td>
-            <td>{{$investor->inv_state}}</td>
+            <td>State</td>
+            <td>{{$invapp->inv_state}}</td>
         </tr>
         <tr>
-            <td>Zipcode<span style="color:red"></span></td>
-            <td>{{$investor->inv_zipcode}}</td>
+            <td>Zipcode</td>
+            <td>{{$invapp->inv_zipcode}}</td>
         </tr>
         <tr>
-            <td>Country<span style="color:red"></span></td>
-            <td>{{$investor->inv_country}}</td>
+            <td>Country</td>
+            <td>{{$invapp->inv_country}}</td>
         </tr>
         <tr>
-            <td>Phone Number<span style="color:red"></span></td>
-            <td>{{$investor->inv_phonenumber}}</td>
+            <td>Phone Number</td>
+            <td>{{$invapp->inv_phonenumber}}</td>
         </tr>
         <tr>
-            <td>Investor Identity<span style="color:red"></span></td>
-            <td>{{$investor->inv_identity}}</td>
+            <td>Investor Identity</td>
+            <td>{{$invapp->inv_identity}}</td>
         </tr>
         <tr>
-            <td>ainvestor Agreement<span style="color:red"></span></td>
-            <td>{{$investor-> 	inv_agree_terms}}</td>
+            <td>ainvestor Agreement</td>
+            <td>{{$invapp->inv_agree_terms}}</td>
         </tr>
         <tr>
-            <td>Investor Income<span style="color:red"></span></td>
-            <td>{{$investor-> 	 	inv_income}}</td>
+            <td>Investor Income</td>
+            <td>{{$invapp->inv_income}}</td>
         </tr>
         <tr>
-            <td>Investor Net Worth<span style="color:red"></span></td>
-            <td>{{$investor-> 	inv_net_worth}}</td>
+            <td>Investor Net Worth</td>
+            <td>{{$invapp->inv_net_worth}}</td>
         </tr>
         <tr>
-            <td>Investor Estimated p2p<span style="color:red"></span></td>
-            <td>{{$investor->inv_estimated_p2p}}</td>
+            <td>Investor Estimated p2p</td>
+            <td>{{$invapp->inv_estimated_p2p}}</td>
         </tr>
 
         <tr>
-            <td>Investor Risk Tolerance<span style="color:red"></span></td>
-            <td>{{$investor->inv_risk_tolerance}}</td>
+            <td>Investor Risk Tolerance</td>
+            <td>{{$invapp->inv_risk_tolerance}}</td>
         </tr>
 
         <tr>
-            <td>Investor Stock Market<span style="color:red"></span></td>
-            <td>{{$investor->	inv_stock_market}}</td>
+            <td>Investor Stock Market</td>
+            <td>{{$invapp->inv_stock_market}}</td>
         </tr>
 
         <tr>
-            <td> Investor Bonds Notes<span style="color:red"></span></td>
-            <td>{{$investor->	inv_bonds_notes}}</td>
+            <td> Investor Bonds Notes</td>
+            <td>{{$invapp->inv_bonds_notes}}</td>
         </tr>
 
         <tr>
-            <td>Investor Mutual Fundsr<span style="color:red"></span></td>
-            <td>{{$investor->inv_mutual_funds}}</td>
+            <td>Investor Mutual Funds</td>
+            <td>{{$invapp->inv_mutual_funds}}</td>
         </tr>
         <tr>
-            <td>Investor Sme Business<span style="color:red"></span></td>
-            <td>{{$investor-> 		inv_sme_business}}</td>
+            <td>Investor SME Business</td>
+            <td>{{$invapp->inv_sme_business}}</td>
         </tr>
         <tr>
-            <td>Investor p2p Lending<span style="color:red"></span></td>
-            <td>{{$investor->inv_p2p_lending}}</td>
+            <td>Investor p2p Lending</td>
+            <td>{{$invapp->inv_p2p_lending}}</td>
         </tr>
-        <tr>
-            <td>Investor Created at<span style="color:red"></span></td>
-            <td>{{$investor->created_at}}</td>
-        </tr>
-
-        <tr>
-            <td>Investor updated at<span style="color:red"></span></td>
-            <td>{{$investor->updated_at}}</td>
-        </tr>
-
-
-        </div>
-
-
-
-
         </tbody>
     </table>
-    <a href="{{url('ia_review')}}" class="btn btn-primary">Back</a>
-    </div>
+    <a href="{{url('review_inv_app')}}" class="btn btn-info">Back</a>
+</div>
 @stop

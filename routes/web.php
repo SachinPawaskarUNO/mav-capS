@@ -34,9 +34,6 @@ Route::get('home', 'HomeController@index');
 Route::resource('newsletter','NewsletterController');
 Route::get('inv_register','UserController@investorRegistration');
 Route::get('bor_register','UserController@businessOwnerRegistration');
-Route::get('bo_review','ManagerController@reviewboa');
-Route::get('ia_review','ManagerController@reviewia');
-
 
 Route::group([ 'middleware' => ['role:admin']], function() {
     Route::resource('managers','ManagerController');
@@ -46,6 +43,8 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::resource('inv_application','InvestorApplicationController');
     Route::resource('loan_application','LoanController');
     Route::resource('add_funds','FundController');
+    Route::get('review_bo_app','ManagerController@reviewboa');
+    Route::get('review_inv_app','ManagerController@reviewia');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
 Route::get('/{any}', function ($any) {

@@ -32,4 +32,8 @@ class BusinessOwnerApplication extends Model
         'bo_bank_name',
         'bo_bank_account',
     ];
+
+    public function loans() {
+        return $this->hasMany('App\Fund');
+    }
 }

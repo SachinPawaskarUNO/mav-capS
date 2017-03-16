@@ -44,7 +44,6 @@ class InvestorApplicationController extends Controller
         $investorapplication->inv_mutual_funds=$request->input('inv_mutual_funds');
         $investorapplication->inv_sme_business=$request->input('inv_sme_business');
         $investorapplication->inv_p2p_lending=$request->input('inv_p2p_lending');
-        $investorapplication->STATUS=$request->input('STATUS');
         $investorapplication->save();
         $user =Auth::user();
         if($request->hasFile('inv_income_slip')) {
@@ -76,18 +75,13 @@ class InvestorApplicationController extends Controller
 
     public function update($id)
     {
-        InvestorApplication::where('id',$id)->update(array('STATUS' =>'approved'));
-
-        return Redirect::back()->with('status1',$id);
+        InvestorApplication::where('id',$id)->update(array('inv_app_status' =>'Approved'));
+        return Redirect::back()->with('status','The application has been approved successfully');
     }
-
-
 
     public function show($id)
     {
-        $investor = InvestorApplication::findOrFail($id);
-        return view('investor.show',compact('investor'));
+        $invapp = InvestorApplication::findOrFail($id);
+        return view('investor.show',compact('invapp'));
     }
-
-
 }

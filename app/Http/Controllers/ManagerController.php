@@ -12,27 +12,6 @@ use App\BusinessOwnerApplication;
 
 class ManagerController extends Controller
 {
-
-  public function reviewboa()
-  {
-      $businessownerapplication = BusinessOwnerApplication::all();
-      $data = [
-          'businessownerapplication'=> $businessownerapplication
-      ];
-      return view('businessowner.reviewboa',$data);
-  }
-  public function reviewia()
-      
-  {
-      $investorapplication = InvestorApplication::all();
-      $data = [
-          'investorapplication'=> $investorapplication
-      ];
-      return view('investor.reviewia',$data);
-
-
-  }
-
     public function index()
     {
         //
@@ -115,7 +94,6 @@ class ManagerController extends Controller
         return redirect('home');
     }
 
-
     public function destroy($id)
     {
         $user = User::find($id);
@@ -124,5 +102,15 @@ class ManagerController extends Controller
         return redirect('home');
     }
 
+    public function reviewboa()
+    {
+        $boapps = BusinessOwnerApplication::all();
+        return view('managers.reviewboapp',compact('boapps'));
+    }
 
+    public function reviewia()
+    {
+        $invapps = InvestorApplication::all();
+        return view('managers.reviewinvapp',compact('invapps'));
+    }
 }

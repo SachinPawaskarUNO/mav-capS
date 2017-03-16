@@ -189,7 +189,7 @@ function calculate() {
     // to the number of monthly payments.
     var principal = document.loandata.principal.value;
     var interest = document.loandata.interest.value / 100 / 12;
-    var payments = document.loandata.years.value * 12;
+    var payments = document.loandata.years.value;
 
     // Now compute the monthly payment figure, using esoteric math.
     var x = Math.pow(1 + interest, payments);
