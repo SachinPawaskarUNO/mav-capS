@@ -23,7 +23,7 @@ class FundController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'fund_amount' => 'required|numeric|min:1',
+            'fund_amount' => 'numeric|required|min:1',
         ]);
         $uid =mt_rand(1000000000,9999999999);
         $fund = new Fund();

@@ -22,7 +22,7 @@ class LoanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'loan_amount' => 'required|numeric|min:1',
+            'loan_amount' => 'numeric|required|min:1',
             'loan_title' => 'required|Alpha',
             'loan_purpose' => 'required',
             'loan_duration' => 'required',
