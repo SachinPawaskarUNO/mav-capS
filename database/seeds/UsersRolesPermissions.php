@@ -11,6 +11,9 @@ class UsersTableSeeder extends Seeder {
         User::create([  'first_name' => 'Administrator', 'middle_name' => 'A', 'last_name' => 'Admin',
             'password' => bcrypt('testing'), 'email' => 'test@test.com', 'role_request' => 'admin',
             'verified' => 1, 'created_at' => date_create(), 'updated_at' => date_create()]);
+        User::create([  'first_name' => 'Manager', 'middle_name' => 'M', 'last_name' => 'Manager',
+            'password' => bcrypt('testing'), 'email' => 'manager@manager.com', 'role_request' => 'manager',
+            'verified' => 1, 'created_at' => date_create(), 'updated_at' => date_create()]);
         User::create([  'first_name' => 'Investor', 'middle_name' => 'I', 'last_name' => 'Investor',
             'password' => bcrypt('testing'), 'email' => 'investor@investor.com', 'role_request' => 'investor',
             'verified' => 1, 'created_at' => date_create(), 'updated_at' => date_create()]);

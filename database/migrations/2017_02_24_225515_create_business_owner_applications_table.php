@@ -41,6 +41,7 @@ class CreateBusinessOwnerApplicationsTable extends Migration
             $table->string('bo_bank_account');
             $table->boolean('bo_agree_terms')->default(false);
             $table->boolean('bo_agree_fees')->default(false);
+            $table->string('bo_app_status')->nullable();
             $table->timestamps();
         });
     }
