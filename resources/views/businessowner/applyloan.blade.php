@@ -98,19 +98,19 @@
                     <form name="loandata" class="form-horizontal">
                         <h4>Loan Information</h4>
                         <div class="form-group">
-                            {!! Form::label('loan_est_principal', 'Loan Amount (MYR) :', ['class'=>'col-md-4 control-label' ]) !!}
+                            {!! Form::label('loan_est_principal', 'Loan Amount (MYR) :', ['class'=>'col-md-4 control-label','id'=>'mandatory-field' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_principal" name="principal" class="form-control" onchange="calculate();">
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_interest', 'Rate of Interest (%) :', ['class'=>'col-md-4 control-label' ]) !!}
+                            {!! Form::label('loan_est_interest', 'Rate of Interest (%) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_interest" name="interest" class="form-control" onchange="calculate();">
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_years', 'Time (months) :', ['class'=>'col-md-4 control-label' ]) !!}
+                            {!! Form::label('loan_est_years', 'Time (months) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_years" name="years" class="form-control" onchange="calculate();">
                             </div>
@@ -120,6 +120,9 @@
                                 <input type="button" value="Compute" class="btn btn-primary" onclick="calculate();">
                                 <button type="reset" id="loan_est_reset" class="btn btn-warning">Reset</button>
                             </div>
+                            <br>
+                            <br>
+                            <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
                         </div>
                         <h4>Payment Information</h4>
                         <div class="form-group">
