@@ -9,6 +9,9 @@ use Auth;
 use App\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
+use App\User;
+use Illuminate\Support\Facades\Redirect;
 
 class BusinessOwnerApplicationController extends Controller
 {
@@ -101,10 +104,16 @@ class BusinessOwnerApplicationController extends Controller
         $request->session()->flash('status','Your application has been successfully submitted');
         return view('businessowner.index');
     }
-    public function show($id)
+
+    public function update($id)
     {
-        $businessowner = BusinessOwnerApplication::findOrFail($id);
-        return view('businessowner.show',compact('businessowner'));
+        BusinessOwnerApplication::where('id',$id)->update(array('bo_app_status' =>'Approved'));
+        return Redirect::back()->with('status','The application has been approved successfully');
     }
 
+    public function show($id)
+    {
+        $boapp = BusinessOwnerApplication::findOrFail($id);
+        return view('businessowner.show',compact('boapp'));
+    }
 }

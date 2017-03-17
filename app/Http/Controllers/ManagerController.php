@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\InvestorApplication;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,20 +12,6 @@ use App\BusinessOwnerApplication;
 
 class ManagerController extends Controller
 {
-
-  public function reviewboa()
-  {
-      $businessownerapplication = BusinessOwnerApplication::all();
-      $data = [
-          'businessownerapplication'=> $businessownerapplication
-      ];
-      return view('businessowner.reviewboa',$data);
-  }
-  public function reviewia()
-  {
-      return view('managers.reviewia');
-  }
-
     public function index()
     {
         //
@@ -69,6 +56,7 @@ class ManagerController extends Controller
         $manager->email=$request->input('email');
         $manager->password=bcrypt($request->input('password'));
         $manager->role_request='manager';
+        $manager->verified = 1;
         $manager->save();
         $role = Role::where('name','manager')->first();
         $manager->attachRole($role);
@@ -106,7 +94,6 @@ class ManagerController extends Controller
         return redirect('home');
     }
 
-
     public function destroy($id)
     {
         $user = User::find($id);
@@ -115,5 +102,15 @@ class ManagerController extends Controller
         return redirect('home');
     }
 
+    public function reviewboa()
+    {
+        $boapps = BusinessOwnerApplication::all();
+        return view('managers.reviewboapp',compact('boapps'));
+    }
 
+    public function reviewia()
+    {
+        $invapps = InvestorApplication::all();
+        return view('managers.reviewinvapp',compact('invapps'));
+    }
 }

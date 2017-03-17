@@ -1,21 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <?php
-    $duration = array(
-        '' =>'Select',
-        '1 month'=>'1 month',
-        '2 months'=>'2 months',
-        '3 months'=>'3 months',
-        '4 months'=>'4 months',
-        '5 months'=>'5 months',
-        '6 months'=>'6 months',
-        '7 months'=>'7 months',
-        '8 months'=>'8 months',
-        '9 months'=>'9 months',
-        '10 months'=>'10 months',
-        '11 months'=>'11 months',
-        '12 months'=>'12 months',
-    )?>
     <div clas="container">
             <div class="col-md-6">
                 <div class="row">
@@ -54,7 +38,8 @@
                     <div class="form-group{{ $errors->has('loan_duration') ? ' has-error' : '' }}">
                         {!! Form::label('loan_duration', 'Loan Duration', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                         <div class="col-md-6">
-                            {!! Form::select('loan_duration',$duration,'',['class'=>'form-control', 'id'=>'loan_duration']) !!}
+                            {!! Form::select('loan_duration',array(''=>'Please Select','3 months' =>'3 months','6 months' =>'6 months','12 months' =>'12 months'),'',
+                            ['class'=>'form-control', 'id'=>'loan_duration']) !!}
                             @if ($errors->has('loan_duration'))
                                 <span class="help-block">
                                      <strong>{{ $errors->first('loan_duration') }}</strong>
@@ -65,7 +50,7 @@
                     <div class="form-group{{ $errors->has('loan_purpose') ? ' has-error' : '' }}">
                         {!! Form::label('loan_purpose', 'Loan Purpose', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                         <div class="col-md-6">
-                            {!! Form::select('loan_purpose', array(''=>'Select','xyz' =>'XYZ','abc' =>'ABC'),'',
+                            {!! Form::select('loan_purpose', array(''=>'Please Select','Working Capital' =>'Working Capital','Expansion' =>'Expansion','Inventory'=>'Inventory','Capital Expenditure'=>'Capital Expenditure','General & Others'=>'General & Others'),'',
                             ['class'=>'form-control', 'id'=>'loan_purpose']) !!}
                             @if ($errors->has('loan_purpose'))
                                 <span class="help-block">
@@ -102,6 +87,7 @@
                         </div>
                     </div>
                     <div id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
+                    <input type="hidden" name="bo_id" value="{{ $bo->id }}">
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -112,19 +98,19 @@
                     <form name="loandata" class="form-horizontal">
                         <h4>Loan Information</h4>
                         <div class="form-group">
-                            {!! Form::label('loan_est_principal', 'Loan Amount (MYR) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
+                            {!! Form::label('loan_est_principal', 'Loan Amount (MYR) :', ['class'=>'col-md-4 control-label' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_principal" name="principal" class="form-control" onchange="calculate();">
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_interest', 'Rate of Interest (%) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
+                            {!! Form::label('loan_est_interest', 'Rate of Interest (%) :', ['class'=>'col-md-4 control-label' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_interest" name="interest" class="form-control" onchange="calculate();">
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_years', 'Time (months) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
+                            {!! Form::label('loan_est_years', 'Time (months) :', ['class'=>'col-md-4 control-label' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_years" name="years" class="form-control" onchange="calculate();">
                             </div>
@@ -137,19 +123,19 @@
                         </div>
                         <h4>Payment Information</h4>
                         <div class="form-group">
-                            {!! Form::label('loan_est_payment', 'Monthly Payment (MYR) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
+                            {!! Form::label('loan_est_payment', 'Monthly Payment (MYR) :', ['class'=>'col-md-4 control-label' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_payment" name="payment" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_total', 'Total Payment (MYR) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
+                            {!! Form::label('loan_est_total', 'Total Payment (MYR) :', ['class'=>'col-md-4 control-label' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_total" name="total" class="form-control" readonly>
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('loan_est_totalinterest', 'Total Inetrest Payment (MYR) :', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
+                            {!! Form::label('loan_est_totalinterest', 'Total Interest Payment (MYR) :', ['class'=>'col-md-4 control-label' ]) !!}
                             <div class="col-md-6">
                                 <input type="text" id="loan_est_totalinterst" name="totalinterest" class="form-control" readonly>
                             </div>

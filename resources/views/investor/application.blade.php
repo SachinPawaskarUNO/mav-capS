@@ -248,11 +248,11 @@
             <div class="process">
                 <div class="process-row nav nav-tabs">
                     <div class="process-step">
-                        <button type="button" class="btn btn-info btn-circle" data-toggle="tab" href="#menu1"><i class="fa fa-info fa-3x"></i></button>
+                        <button type="button" class="btn btn-info btn-circle" data-toggle="tab1" href="#menu1"><i class="fa fa-info fa-3x"></i></button>
                         <p><small>Personal<br/>Information</small></p>
                     </div>
                     <div class="process-step">
-                        <button type="button" class="btn btn-default btn-circle" data-toggle="tab" href="#menu2"><i class="fa fa-file-text-o fa-3x"></i></button>
+                        <button type="button" class="btn btn-default btn-circle" data-toggle="tab2" href="#menu2"><i class="fa fa-file-text-o fa-3x"></i></button>
                         <p><small>Investor<br/>Profile</small></p>
                     </div>
                 </div>

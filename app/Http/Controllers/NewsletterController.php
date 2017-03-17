@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Newsletter;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\BusinessOwnerApplication;
+use Illuminate\Support\Facades\Redirect;
 
 class NewsletterController extends Controller
 {
@@ -31,7 +33,11 @@ class NewsletterController extends Controller
         $newsletter= new Newsletter($request->all());
         $newsletter->save();
         return redirect('aboutus')->with('status','Newsletter Signup Successful');
+    }
 
-
+    public function update($id)
+    {
+      BusinessOwnerApplication::where('id',$id)->update(array('bo_app_status' =>'Rejected'));
+      return Redirect::back()->with('status','The application has been rejected successfully');
     }
 }
