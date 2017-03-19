@@ -34,6 +34,6 @@ class BusinessOwnerApplication extends Model
     ];
 
     public function loans() {
-        return $this->hasMany('App\Fund');
+        return $this->hasMany('App\Loan');
     }
 }

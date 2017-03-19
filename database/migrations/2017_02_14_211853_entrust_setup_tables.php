@@ -17,13 +17,20 @@ class EntrustSetupTables extends Migration
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
+            $table->string('created_by')->default('System');
+            $table->string('updated_by')->default('System');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         // Create table for associating roles to users (Many-to-Many)
         Schema::create('role_user', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
+            $table->string('created_by')->default('System');
+            $table->string('updated_by')->default('System');
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
@@ -39,13 +46,20 @@ class EntrustSetupTables extends Migration
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
+            $table->string('created_by')->default('System');
+            $table->string('updated_by')->default('System');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         // Create table for associating permissions to roles (Many-to-Many)
         Schema::create('permission_role', function (Blueprint $table) {
             $table->integer('permission_id')->unsigned();
             $table->integer('role_id')->unsigned();
+            $table->string('created_by')->default('System');
+            $table->string('updated_by')->default('System');
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('permission_id')->references('id')->on('permissions')
                 ->onUpdate('cascade')->onDelete('cascade');
