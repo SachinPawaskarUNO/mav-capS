@@ -28,12 +28,56 @@
                         <th scope="row">{{$boapp->bo_first_name}} {{$boapp->bo_last_name}}</th>
                         <td><a href="{{url('bo_application',$boapp->id)}}" class="btn btn-info btn-sm">View Details</a>
                             <button type="button" class="btn btn-primary btn-sm">Download</button></td>
-                        <td> {!!Form::model($boapp,array('route'=>['bo_application.update',$boapp->id],'method'=>'PATCH'))!!}
-                            {!! Form::submit('Approve', ['class' => 'btn btn-success btn-sm','id' =>'accept'])!!}
-                            {!!Form::close() !!}</td><td>
+                        <td>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#ACCEPT">Accept</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="ACCEPT" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <p> Are you sure you want to approve this application?
+                                            {!!Form::model($boapp,array('route'=>['bo_application.update',$boapp->id],'method'=>'PATCH'))!!}
+                                            {!! Form::submit('Confirm', ['class' => 'btn btn-success btn-md','id' =>'accept'])!!}
+                                            {!!Form::close() !!}</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#REJECT">Reject</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="REJECT" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p> Are you sure you want to reject this application?
                             {!!Form::model($boapp,array('route'=>['newsletter.update',$boapp->id],'method'=>'PATCH'))!!}
-                            {!! Form::submit('Reject', ['class' => 'btn btn-danger btn-sm','id' =>'reject'])!!}
-                            {!!Form::close() !!}</td>
+                            {!! Form::submit('Reject', ['class' => 'btn btn-danger btn-md','id' =>'reject'])!!}
+                            {!!Form::close() !!}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                         @endif
                     @endforeach

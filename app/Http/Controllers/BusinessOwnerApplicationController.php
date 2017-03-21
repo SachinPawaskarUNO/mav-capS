@@ -106,7 +106,7 @@ class BusinessOwnerApplicationController extends Controller
         return view('businessowner.index');
     }
 
-z
+
         public function update($id)
        {
           BusinessOwnerApplication::where('id',$id)->update(array('bo_app_status' =>'approved'));
