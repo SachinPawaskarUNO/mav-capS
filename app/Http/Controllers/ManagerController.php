@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Manager;
 use App\Role;
 use App\BusinessOwnerApplication;
+use App\Loan;
 
 class ManagerController extends Controller
 {
@@ -37,6 +38,12 @@ class ManagerController extends Controller
      *
      * @return Response
      */
+    public function lrc()
+    {
+        $loanrisks = Loan::all();
+        return view('managers.lrc',compact('loanrisks'));
+
+    }
     public function store(Request $request)
     {
         $this->validate($request, [
