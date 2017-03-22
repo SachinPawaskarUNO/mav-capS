@@ -116,4 +116,10 @@ class BusinessOwnerApplicationController extends Controller
         $boapp = BusinessOwnerApplication::findOrFail($id);
         return view('businessowner.show',compact('boapp'));
     }
+
+    public function reject(Request $request){
+        $id = $request->input('bo_app_id');
+        BusinessOwnerApplication::where('id',$id)->update(array('bo_app_status' =>'Rejected'));
+        return Redirect::back()->with('status','The application has been rejected successfully');
+    }
 }

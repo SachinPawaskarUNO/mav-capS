@@ -37,9 +37,6 @@ class HomeController extends Controller
                  return view('businessowner.index',compact('user'));
              else
                  return view ('home', compact('user'));
-}
-
-}
-
-
-}
+            }
+        }
+    }

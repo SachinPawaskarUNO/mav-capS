@@ -31,9 +31,9 @@
                         <td> {!!Form::model($boapp,array('route'=>['bo_application.update',$boapp->id],'method'=>'PATCH'))!!}
                             {!! Form::submit('Approve', ['class' => 'btn btn-success btn-sm','id' =>'accept'])!!}
                             {!!Form::close() !!}</td><td>
-                            {!!Form::model($boapp,array('route'=>['newsletter.update',$boapp->id],'method'=>'PATCH'))!!}
-                            {!! Form::submit('Reject', ['class' => 'btn btn-danger btn-sm','id' =>'reject'])!!}
-                            {!!Form::close() !!}</td>
+                            <form role="form" method="POST" action="{{ url('bo_app_reject') }}">{{ csrf_field() }}
+                                <input type="hidden" name="bo_app_id" value="{{ $boapp->id }}">
+                                <button type="submit" id="reject" class="btn btn-danger btn-sm">Reject</button></form></td>
                     </tr>
                         @endif
                     @endforeach
