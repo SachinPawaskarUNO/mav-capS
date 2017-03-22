@@ -45,6 +45,7 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::resource('add_funds','FundController');
     Route::get('review_bo_app','ManagerController@reviewboa');
     Route::get('review_inv_app','ManagerController@reviewia');
+    Route::get('bo_myloans','LoanController@myloans');
     Route::post('bo_app_reject', 'BusinessOwnerApplicationController@reject');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Fund;
 use Illuminate\Support\Facades\Redirect;
+use App\Loan;
 
 class FundController extends Controller
 {
@@ -53,4 +54,10 @@ class FundController extends Controller
         }
         return redirect('home')->with('status','Your investment has been successfully cancelled');
     }
+    public function update($id)
+    {
+        Loan::where('id',$id)->update(array('loan_status' =>'Approved'));
+        return Redirect::back()->with('status','The application has been approved successfully');
+    }
+
 }
