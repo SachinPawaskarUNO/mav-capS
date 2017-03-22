@@ -54,10 +54,4 @@ class FundController extends Controller
         }
         return redirect('home')->with('status','Your investment has been successfully cancelled');
     }
-    public function update($id)
-    {
-        Loan::where('id',$id)->update(array('loan_status' =>'Approved'));
-        return Redirect::back()->with('status','The application has been approved successfully');
-    }
-
 }

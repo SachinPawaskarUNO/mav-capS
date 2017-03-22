@@ -181,6 +181,8 @@ $(document).ready(function() {
     $('#loan_est_reset').click(function(){
         $('#loandata').reset();
     });
+    $('#myloans_dt1').dataTable();
+    $('#myloans_dt2').dataTable();
 });
 function calculate() {
     // Get the user's input from the form. Assume it is all valid.

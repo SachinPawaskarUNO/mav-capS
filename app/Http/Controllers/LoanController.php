@@ -57,7 +57,20 @@ class LoanController extends Controller
     public function myloans()
     {
         $user = Auth::user();
-        $bos = Loan::all();
-        return view('businessowner.myloans', compact('bos'));
+        $boapps = BusinessOwnerApplication::where('bo_first_name',$user->first_name)->first();
+        $loans = Loan::where('business_owner_application_id', $boapps->id)->get();
+        return view('businessowner.myloans', compact('loans'));
+    }
+
+    public function approveboloan(Request $request){
+        $id = $request->input('bo_loan_id');
+        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Approved'));
+        return Redirect::back()->with('status','The application has been approved successfully');
+    }
+
+    public function rejectboloan(Request $request){
+        $id = $request->input('bo_loan_id');
+        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Rejected'));
+        return Redirect::back()->with('status','The application has been rejected successfully');
     }
 }

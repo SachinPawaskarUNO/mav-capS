@@ -1,9 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
-    <link href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css" rel="stylesheet">
-
     <div class="container" >
         <div class="row">
             <h1 class="text-center">My Loans</h1>
@@ -14,8 +10,8 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <h2 style="color: darkblue"><u>Pending Loans</u></h2>
-                    <table class="table table-hover table-responsive" id="myloans_pending_table">
+                <h2 style="color: darkblue">Pending Loans</h2><br>
+                    <table class="table table-hover table-responsive" id="myloans_dt1">
                         <thead>
                             <tr>
                             <th>Loan Title</th>
@@ -28,21 +24,23 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($bos as $bo)
-                            @if($bo->loan_status == '')
+                        @foreach($loans as $loan)
+                            @if($loan->loan_status == '')
                         <tr>
-                            <td>{{$bo->loan_title}}</td>
-                            <td>{{$bo->loan_amount}}</td>
-                            <td>{{$bo->loan_duration}}</td>
-                            <td>{{$bo->loan_purpose}}</td>
+                            <td>{{$loan->loan_title}}</td>
+                            <td>{{$loan->loan_amount}}</td>
+                            <td>{{$loan->loan_duration}}</td>
+                            <td>{{$loan->loan_purpose}}</td>
                             <td></td>
                             <td>
-                                {!!Form::model($bo,array('route'=>['add_funds.update',$bo->id],'method'=>'PATCH'))!!}
-                                {!!Form::submit('Approve', ['class' => 'btn btn-success btn-sm','id' =>'myloan_accept'])!!}
-                                {!!Form::close() !!}</td><td>
-                                {!!Form::model($bo,array('route'=>['add_funds.update',$bo->id],'method'=>'PATCH'))!!}
-                                {!!Form::submit('Reject', ['class' => 'btn btn-danger btn-sm','id' =>'myloan_reject'])!!}
-                                {!!Form::close() !!}
+                                <form role="form" method="POST" action="{{ url('bo_loan_approve') }}">{{ csrf_field() }}
+                                    <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
+                                    <button type="submit" id="myloan_accept" class="btn btn-success btn-sm">Approve</button>
+                                </form></td><td>
+                                <form role="form" method="POST" action="{{ url('bo_loan_reject') }}">{{ csrf_field() }}
+                                    <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
+                                    <button type="submit" id="myloan_reject" class="btn btn-danger btn-sm">Reject</button>
+                                </form>
                             </td>
                         </tr>
                             @endif
@@ -51,8 +49,8 @@
                     </table>
             </div>
             <div class="col-md-10 col-md-offset-1">
-                <h2 style="color: darkblue"><u>Accepted/Rejected Loans</u></h2>
-                <table class="table table-hover table-responsive" id="myloans_ar_table">
+                <h2 style="color: darkblue">Accepted/Rejected Loans</h2><br>
+                <table class="table table-hover table-responsive" id="myloans_dt2">
                     <thead>
                         <tr>
                         <th>Loan Title</th>
@@ -64,15 +62,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($bos as $bo)
-                        @if($bo->loan_status != '')
+                    @foreach($loans as $loan)
+                        @if($loan->loan_status != '')
                             <tr>
-                                <td>{{$bo->loan_title}}</td>
-                                <td>{{$bo->loan_amount}}</td>
-                                <td>{{$bo->loan_duration}}</td>
-                                <td>{{$bo->loan_purpose}}</td>
+                                <td>{{$loan->loan_title}}</td>
+                                <td>{{$loan->loan_amount}}</td>
+                                <td>{{$loan->loan_duration}}</td>
+                                <td>{{$loan->loan_purpose}}</td>
                                 <td></td>
-                                <td>{{$bo->loan_status == '' ? 'Pending' : $bo->loan_status}}</td>
+                                <td>{{$loan->loan_status == '' ? 'Pending' : $loan->loan_status}}</td>
                             </tr>
                         @endif
                     @endforeach
@@ -80,14 +78,5 @@
                 </table>
             </div>
         </div>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
-        <script>
-            $('#myloans_pending_table').dataTable();
-            $('#myloans_ar_table').dataTable();
-        </script>
     </div>
-
-
 @endsection
