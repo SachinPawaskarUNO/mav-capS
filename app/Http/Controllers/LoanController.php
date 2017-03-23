@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\BusinessOwnerApplication;
+use App\Mail\LoanApproveNotification;
 use App\Mail\LoanNotification;
+use App\Mail\LoanRejectNotification;
 use Illuminate\Http\Request;
 use App\Loan;
 use Auth;
@@ -63,14 +65,28 @@ class LoanController extends Controller
     }
 
     public function approveboloan(Request $request){
+        $user = Auth::user();
         $id = $request->input('bo_loan_id');
         Loan::where('id',$id)->update(array('loan_status' =>'Borrower Approved'));
-        return Redirect::back()->with('status','The application has been approved successfully');
+        $loan = Loan::where('id',$id)->first();
+        Mail::to($user)->send(new LoanApproveNotification($user, $loan));
+        $managers = User::where('role_request','manager')->get()->toArray();
+        if($managers){
+            Mail::to($managers)->send(new LoanApproveNotification($user, $loan));
+        }
+        return Redirect::back()->with('status','Your Loan has been approved successfully');
     }
 
     public function rejectboloan(Request $request){
+        $user = Auth::user();
         $id = $request->input('bo_loan_id');
         Loan::where('id',$id)->update(array('loan_status' =>'Borrower Rejected'));
-        return Redirect::back()->with('status','The application has been rejected successfully');
+        $loan = Loan::where('id',$id)->first();
+        Mail::to($user)->send(new LoanRejectNotification($user, $loan));
+        $managers = User::where('role_request','manager')->get()->toArray();
+        if($managers){
+            Mail::to($managers)->send(new LoanRejectNotification($user, $loan));
+        }
+        return Redirect::back()->with('status','Your Loan has been rejected successfully');
     }
 }
