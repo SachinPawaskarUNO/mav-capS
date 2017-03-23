@@ -33,15 +33,57 @@
                             <td>{{$loan->loan_purpose}}</td>
                             <td></td>
                             <td>
-                                <form role="form" method="POST" action="{{ url('bo_loan_approve') }}">{{ csrf_field() }}
-                                    <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
-                                    <button type="submit" id="myloan_accept" class="btn btn-success btn-sm">Approve</button>
-                                </form></td><td>
-                                <form role="form" method="POST" action="{{ url('bo_loan_reject') }}">{{ csrf_field() }}
-                                    <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
-                                    <button type="submit" id="myloan_reject" class="btn btn-danger btn-sm">Reject</button>
-                                </form>
-                            </td>
+                                <!--Approve Button-->
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#bo_myloans_approve">Approve</button>
+                                <!--Model-->
+                                <div class="modal fade" id="bo_myloans_approve" role="dialog">
+                                    <div class="modal-dialog">
+                                <!--Model Content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Confirmation</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to approve?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form role="form" method="POST" action="{{ url('bo_loan_approve') }}">{{ csrf_field() }}
+                                                    <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
+                                                    <button type="submit" id="myloan_accept" class="btn btn-danger btn-sm">Approve</button>
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="myloan_approve_no">No</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </td>
+                                <td>
+                                <!--Reject Button-->
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#bo_myloans_reject">Reject</button>
+                                <!--Model-->
+                                    <div class="modal fade" id="bo_myloans_reject" role="dialog">
+                                        <div class="modal-dialog">
+                                <!--Model Content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Confirmation</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure you want to reject?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form role="form" method="POST" action="{{ url('bo_loan_reject') }}">{{ csrf_field() }}
+                                                        <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
+                                                        <button type="submit" id="myloan_reject" class="btn btn-danger btn-sm">Reject</button>
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="myloan_reject_no">No</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                         </tr>
                             @endif
                         @endforeach
