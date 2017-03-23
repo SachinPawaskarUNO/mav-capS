@@ -40,17 +40,15 @@ Route::group([ 'middleware' => ['role:admin']], function() {
 });
 Route::group([ 'middleware' => 'auth'], function() {
     Route::resource('bo_application','BusinessOwnerApplicationController');
-    Route::resource('loandetail','LoanController');
     Route::resource('inv_application','InvestorApplicationController');
     Route::resource('loan_application','LoanController');
     Route::resource('add_funds','FundController');
     Route::get('review_bo_app','ManagerController@reviewboa');
     Route::get('review_inv_app','ManagerController@reviewia');
-    Route::get('lrc','ManagerController@lrc');
-
-    Route::post('test', 'BusinessOwnerApplicationController@test');
-
-
+    Route::get('bo_myloans','LoanController@myloans');
+    Route::post('bo_app_reject', 'BusinessOwnerApplicationController@reject');
+    Route::post('bo_loan_approve', 'LoanController@approveboloan');
+    Route::post('bo_loan_reject', 'LoanController@rejectboloan');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
 Route::get('/{any}', function ($any) {

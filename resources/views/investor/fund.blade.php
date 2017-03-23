@@ -59,7 +59,7 @@
                                 {!! Form::open(['action' => ['FundController@destroy', $inv->id], 'method' => 'delete']) !!}
                                 {!! Form::submit('Yes', ['class'=>'btn btn-danger']) !!}
                                 <!--{!! Form::close() !!}-->
-                                    <a href="{{ url('home') }}"><button type="button" class="btn btn-default"  id="cancel_trans_no">No</button></a>
+                                <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel_trans_no">No</button>
                                 </div>
                             </div>
                         </div>

@@ -54,13 +54,23 @@ class LoanController extends Controller
         return Redirect::back()->with('status','The application has been rejected successfully');
     }
 
-    public function show($id)
+    public function myloans()
     {
-        $loanrisk = Loan::findOrFail($id);
-        return view('managers.loandetail',compact('loanrisk'));
+        $user = Auth::user();
+        $boapps = BusinessOwnerApplication::where('bo_first_name',$user->first_name)->first();
+        $loans = Loan::where('business_owner_application_id', $boapps->id)->get();
+        return view('businessowner.myloans', compact('loans'));
     }
 
+    public function approveboloan(Request $request){
+        $id = $request->input('bo_loan_id');
+        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Approved'));
+        return Redirect::back()->with('status','The application has been approved successfully');
+    }
 
-
+    public function rejectboloan(Request $request){
+        $id = $request->input('bo_loan_id');
+        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Rejected'));
+        return Redirect::back()->with('status','The application has been rejected successfully');
+    }
 }
-

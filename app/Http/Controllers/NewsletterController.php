@@ -34,10 +34,4 @@ class NewsletterController extends Controller
         $newsletter->save();
         return redirect('aboutus')->with('status','Newsletter Signup Successful');
     }
-
-    public function update($id)
-    {
-      BusinessOwnerApplication::where('id',$id)->update(array('bo_app_status' =>'Rejected'));
-      return Redirect::back()->with('status','The application has been rejected successfully');
-    }
 }
