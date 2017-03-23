@@ -120,4 +120,5 @@ class ManagerController extends Controller
         $invapps = InvestorApplication::all();
         return view('managers.reviewinvapp',compact('invapps'));
     }
+
 }

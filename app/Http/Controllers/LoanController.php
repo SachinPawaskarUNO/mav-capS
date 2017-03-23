@@ -53,4 +53,14 @@ class LoanController extends Controller
         InvestorApplication::where('id',$id)->update(array('inv_app_status' =>'Rejected'));
         return Redirect::back()->with('status','The application has been rejected successfully');
     }
+
+    public function show($id)
+    {
+        $loanrisk = Loan::findOrFail($id);
+        return view('managers.loandetail',compact('loanrisk'));
+    }
+
+
+
 }
+
