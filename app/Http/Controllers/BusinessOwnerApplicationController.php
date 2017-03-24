@@ -54,49 +54,49 @@ class BusinessOwnerApplicationController extends Controller
             $file = new File();
             $file->user_id=$user->id;
             $file->original_filename = $request->file('bo_upload_IC')->getClientOriginalName();
-            $file->file_path = Storage::putFile('bo_applications/', $request->file('bo_upload_IC') );
+            $file->file_path = Storage::putFile('bo_applications', $request->file('bo_upload_IC') );
             $file->file_type='bo_upload_IC';
             $file->save();
         } if($request->hasFile('bo_business_license')) {
             $file = new File();
             $file->user_id = $user->id;
             $file->original_filename = $request->file('bo_business_license')->getClientOriginalName();
-            $file->file_path = Storage::putFile('bo_applications/', $request->file('bo_business_license'));
+            $file->file_path = Storage::putFile('bo_applications', $request->file('bo_business_license'));
             $file->file_type = 'bo_business_license';
             $file->save();
         } if($request->hasFile('bo_entity_type')) {
             $file = new File();
             $file->user_id = $user->id;
             $file->original_filename = $request->file('bo_entity_type')->getClientOriginalName();
-            $file->file_path = Storage::putFile('bo_applications/', $request->file('bo_entity_type'));
+            $file->file_path = Storage::putFile('bo_applications', $request->file('bo_entity_type'));
             $file->file_type = 'bo_entity_type';
             $file->save();
         } if($request->hasFile('bo_CTOS')) {
             $file = new File();
             $file->user_id = $user->id;
             $file->original_filename = $request->file('bo_CTOS')->getClientOriginalName();
-            $file->file_path = Storage::putFile('bo_applications/', $request->file('bo_CTOS'));
+            $file->file_path = Storage::putFile('bo_applications', $request->file('bo_CTOS'));
             $file->file_type = 'bo_CTOS';
             $file->save();
         } if($request->hasFile('bo_audited_statements')) {
             $file = new File();
             $file->user_id = $user->id;
             $file->original_filename = $request->file('bo_audited_statements')->getClientOriginalName();
-            $file->file_path = Storage::putFile('bo_applications/', $request->file('bo_audited_statements'));
+            $file->file_path = Storage::putFile('bo_applications', $request->file('bo_audited_statements'));
             $file->file_type = 'bo_audited_statements';
             $file->save();
         } if($request->hasFile('bo_operating_statements')) {
             $file = new File();
             $file->user_id = $user->id;
             $file->original_filename = $request->file('bo_operating_statements')->getClientOriginalName();
-            $file->file_path = Storage::putFile('bo_applications/', $request->file('bo_operating_statements'));
+            $file->file_path = Storage::putFile('bo_applications', $request->file('bo_operating_statements'));
             $file->file_type = 'bo_operating_statements';
             $file->save();
         } if($request->hasFile('bo_tax_returns')) {
             $file = new File();
             $file->user_id = $user->id;
             $file->original_filename = $request->file('bo_tax_returns')->getClientOriginalName();
-            $file->file_path = Storage::putFile('bo_applications/', $request->file('bo_tax_returns'));
+            $file->file_path = Storage::putFile('bo_applications', $request->file('bo_tax_returns'));
             $file->file_type = 'bo_tax_returns';
             $file->save();
         }

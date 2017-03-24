@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use App\InvestorApplication;
 use App\User;
+use App\File;
+use Illuminate\Support\Facades\Storage;
 
 class LoanController extends Controller
 {

@@ -13,10 +13,11 @@ class CreateTrusteeTable extends Migration
      */
     public function up()
     {
-        Schema::create('loans', function (Blueprint $table) {
+        Schema::create('trustee', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('invested_amount');
-            $table->string('investment_id');
+            $table->integer('investment_id')->unsigned();
+            $table->string('invested_status');
             $table->integer('loan_id')->unsigned();
             $table->string('updated_by');
             $table->string('created_by');
