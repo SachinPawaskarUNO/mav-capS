@@ -68,12 +68,12 @@ class LoanController extends Controller
         return view('businessowner.loandetail',compact('loanrisk'));
     }
     public function approveboloanmanager(Request $request){
-        $id = $request->input('business_owner_application_id');
-        Loan::where('id',$id)->update(array('loan_status' =>'Manager Approved'));
-        return Redirect::back()->with('status','The application has been approved successfully');
+        $id = $request->input('bo_loan_manager_approve_id');
+       Loan::where('id',$id)->update(array('loan_status' =>'Manager Approved'));
+        return Redirect::back()->with('status','The application has been accepted successfully');
     }
     public function rejectboloanmanager(Request $request){
-        $id = $request->input('business_owner_application_id');
+        $id = $request->input('loan_reject_manager');
         Loan::where('id',$id)->update(array('loan_status' =>'Manager Rejected'));
         return Redirect::back()->with('status','The application has been rejected successfully');
     }
