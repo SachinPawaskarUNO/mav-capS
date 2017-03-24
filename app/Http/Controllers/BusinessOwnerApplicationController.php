@@ -23,7 +23,9 @@ class BusinessOwnerApplicationController extends Controller
     }
     public function store(Request $request)
     {
+        $user = Auth::user();
         $businessownerapplication = new BusinessOwnerApplication();
+        $businessownerapplication->user_id = $user->id;
         $businessownerapplication->bo_first_name=ucfirst($request->input('bo_first_name'));
         $businessownerapplication->bo_last_name=ucfirst($request->input('bo_last_name'));
         $businessownerapplication->bo_identification_card_number=$request->input('bo_identification_card_number');
@@ -49,7 +51,6 @@ class BusinessOwnerApplicationController extends Controller
         $businessownerapplication->bo_bank_name=$request->input('bo_bank_name');
         $businessownerapplication->bo_bank_account=$request->input('bo_bank_account');
         $businessownerapplication->save();
-        $user = Auth::user();
         if($request->hasFile('bo_upload_IC')) {
             $file = new File();
             $file->user_id=$user->id;
