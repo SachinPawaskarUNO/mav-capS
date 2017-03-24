@@ -20,7 +20,7 @@ class CreateFundsTable extends Migration
         });
 
         Schema::table('funds', function (Blueprint $table) {
-            $table->foreign('fund_total_id')->references('id')->on('fund_total')->onDelete('cascade');
+            $table->foreign('fund_total_id')->references('id')->on('fund_totals')->onDelete('cascade');
         });
 
     }

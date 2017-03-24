@@ -11,7 +11,7 @@ class CreateFundTotalTable extends Migration
         Schema::create('fund_totals', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inv_app_id')->unsigned();
-            $table->decimal('funds_total')->nullable();
+            $table->biginteger('funds_total')->nullable();
             $table->timestamps();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
