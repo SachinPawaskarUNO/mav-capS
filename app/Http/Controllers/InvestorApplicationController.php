@@ -22,9 +22,10 @@ class InvestorApplicationController extends Controller
     }
     public function store(Request $request)
     {
+        $user =Auth::user();
         $investorapplication = new InvestorApplication();
         $fund_total = new FundTotal();
-        $user = Auth::user();
+        $investorapplication->user_id = $user->id;
         $investorapplication->inv_first_name=ucfirst($request->input('inv_first_name'));
         $investorapplication->inv_last_name=ucfirst($request->input('inv_last_name'));
         $investorapplication->user_id=$user->id;
@@ -52,7 +53,6 @@ class InvestorApplicationController extends Controller
         $inv = InvestorApplication::where('inv_first_name',$user->first_name)->first();
         $fund_total->inv_app_id = $investorapplication->id;
         $fund_total->save();
-        $user =Auth::user();
         if($request->hasFile('inv_income_slip')) {
             $file = new File();
             $file->user_id = $user->id;
