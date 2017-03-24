@@ -57,7 +57,7 @@
 
             <!--Update Button-->
             <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_update">Update</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_update">Update</button>
 
             <!-- Modal -->
             <div class="modal fade" id="manager_update" role="dialog">

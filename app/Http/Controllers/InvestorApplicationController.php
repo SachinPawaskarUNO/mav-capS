@@ -57,21 +57,21 @@ class InvestorApplicationController extends Controller
             $file = new File();
             $file->user_id = $user->id;
             $file->original_filename = $request->file('inv_income_slip')->getClientOriginalName();
-            $file->file_path = Storage::putFile('inv_applications/', $request->file('inv_income_slip'));
+            $file->file_path = Storage::putFile('inv_applications', $request->file('inv_income_slip'));
             $file->file_type = 'inv_income_slip';
             $file->save();
         } if($request->hasFile('inv_bank_statements')) {
         $file = new File();
         $file->user_id = $user->id;
         $file->original_filename = $request->file('inv_bank_statements')->getClientOriginalName();
-        $file->file_path = Storage::putFile('inv_applications/', $request->file('inv_bank_statements'));
+        $file->file_path = Storage::putFile('inv_applications', $request->file('inv_bank_statements'));
         $file->file_type = 'inv_bank_statements';
         $file->save();
         } if($request->hasFile('inv_financial_statements')) {
         $file = new File();
         $file->user_id = $user->id;
         $file->original_filename = $request->file('inv_financial_statements')->getClientOriginalName();
-        $file->file_path = Storage::putFile('inv_applications/', $request->file('inv_financial_statements'));
+        $file->file_path = Storage::putFile('inv_applications', $request->file('inv_financial_statements'));
         $file->file_type = 'inv_financial_statements';
         $file->save();
         }

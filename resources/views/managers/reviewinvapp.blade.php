@@ -27,7 +27,27 @@
                             <tr>
                                 <th scope="row">{{$invapp->inv_first_name}} {{$invapp->inv_last_name}}</th>
                                 <td><a href="{{url('inv_application',$invapp->id)}}" class="btn btn-info btn-sm">View Details</a>
-                                    <button type="button" class="btn btn-primary btn-sm">Download</button></td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#inv_download">Download</button>
+                                    <div class="modal fade" id="inv_download" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Download Documents</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Please click on the below links to download a specific document.</p>
+                                                    <a href="{{url('loan_application','inv_income_slip')}}">Income Slip</a><br>
+                                                    <a href="{{url('loan_application','inv_bank_statements')}}">Bank Statements</a><br>
+                                                    <a href="{{url('loan_application','inv_financial_statements')}}">Audited Financial Statements</a>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-success" data-dismiss="modal" id="inv_download_ok_confirm">OK</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td> {!!Form::model($invapp,array('route'=>['inv_application.update',$invapp->id],'method'=>'PATCH'))!!}
                                     {!! Form::submit('Approve', ['class' => 'btn btn-success btn-sm','id' =>'accept'])!!}
                                     {!!Form::close() !!}</td><td>

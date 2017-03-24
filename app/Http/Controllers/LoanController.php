@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use App\InvestorApplication;
 use App\User;
+use App\File;
+use Illuminate\Support\Facades\Storage;
 
 class LoanController extends Controller
 {
@@ -88,5 +90,10 @@ class LoanController extends Controller
             Mail::to($managers)->send(new LoanRejectNotification($user, $loan));
         }
         return Redirect::back()->with('status','Your Loan has been rejected successfully');
+    }
+
+    public function show($filetype){
+        $file = File::where('file_type', $filetype)->first();
+            return response()->download(Storage::disk()->getDriver()->getAdapter()->applyPathPrefix($file->file_path));
     }
 }
