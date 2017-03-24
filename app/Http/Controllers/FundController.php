@@ -42,6 +42,7 @@ class FundController extends Controller
        }
         return Redirect::back()->with('uid', $uid)->with('fund_amount', $fund->fund_amount);
     }
+
     public function destroy($id)
     {
         $fund = Fund::where('investor_application_id', $id)->first();
@@ -53,5 +54,11 @@ class FundController extends Controller
             Mail::to($managers)->send(new FundsCancelNotification($user, $fund));
         }
         return redirect('home')->with('status','Your investment has been successfully cancelled');
+    }
+
+    //Download function
+    public function show($filetype){
+        $file = File::where('file_type', $filetype)->first();
+        return response()->download(Storage::disk()->getDriver()->getAdapter()->applyPathPrefix($file->file_path));
     }
 }

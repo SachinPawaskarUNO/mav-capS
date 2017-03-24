@@ -37,9 +37,9 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>Please click on the below links to download a specific document.</p>
-                                                    <a href="{{url('loan_application','inv_income_slip')}}">Income Slip</a><br>
-                                                    <a href="{{url('loan_application','inv_bank_statements')}}">Bank Statements</a><br>
-                                                    <a href="{{url('loan_application','inv_financial_statements')}}">Audited Financial Statements</a>
+                                                    <a href="{{url('add_funds','inv_income_slip')}}">Income Slip</a><br>
+                                                    <a href="{{url('add_funds','inv_bank_statements')}}">Bank Statements</a><br>
+                                                    <a href="{{url('add_funds','inv_financial_statements')}}">Audited Financial Statements</a>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-success" data-dismiss="modal" id="inv_download_ok_confirm">OK</button>

@@ -91,9 +91,4 @@ class LoanController extends Controller
         }
         return Redirect::back()->with('status','Your Loan has been rejected successfully');
     }
-
-    public function show($filetype){
-        $file = File::where('file_type', $filetype)->first();
-            return response()->download(Storage::disk()->getDriver()->getAdapter()->applyPathPrefix($file->file_path));
-    }
 }
