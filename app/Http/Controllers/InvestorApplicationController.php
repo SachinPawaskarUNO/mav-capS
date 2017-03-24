@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FundTotal;
 use Auth;
 use App\File;
 use Illuminate\Support\Facades\Storage;
@@ -22,8 +23,11 @@ class InvestorApplicationController extends Controller
     public function store(Request $request)
     {
         $investorapplication = new InvestorApplication();
+        $fund_total = new FundTotal();
+        $user = Auth::user();
         $investorapplication->inv_first_name=ucfirst($request->input('inv_first_name'));
         $investorapplication->inv_last_name=ucfirst($request->input('inv_last_name'));
+        $investorapplication->user_id=$user->id;
         $investorapplication->inv_identification_card_number=$request->input('inv_identification_card_number');
         $investorapplication->inv_date_of_birth=$request->input('inv_date_of_birth');
         $investorapplication->inv_gender=$request->input('inv_gender');
@@ -45,6 +49,9 @@ class InvestorApplicationController extends Controller
         $investorapplication->inv_sme_business=$request->input('inv_sme_business');
         $investorapplication->inv_p2p_lending=$request->input('inv_p2p_lending');
         $investorapplication->save();
+        $inv = InvestorApplication::where('inv_first_name',$user->first_name)->first();
+        $fund_total->inv_app_id = $investorapplication->id;
+        $fund_total->save();
         $user =Auth::user();
         if($request->hasFile('inv_income_slip')) {
             $file = new File();
@@ -71,6 +78,7 @@ class InvestorApplicationController extends Controller
         Mail::to($user)->send(new ApplicationNotification($user));
         $request->session()->flash('status','Your application has been successfully submitted');
         return view('investor.index');
+
     }
 
     public function update($id)
