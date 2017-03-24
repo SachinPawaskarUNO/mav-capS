@@ -73,7 +73,7 @@ class LoanController extends Controller
     }
     public function approveboloanmanager(Request $request){
         $id = $request->input('bo_loan_manager_approve_id');
-       Loan::where('id',$id)->update(array('loan_status' =>'Manager Approved'));
+       Loan::where('id',$id)->update(array('loan_status' =>'Manager Approved','loan_interest_rate' =>$request->input('loan_interest_rate')));
         return Redirect::back()->with('status','The application has been accepted successfully');
     }
     public function rejectboloanmanager(Request $request){
@@ -109,7 +109,4 @@ class LoanController extends Controller
         }
         return Redirect::back()->with('status','Your Loan has been rejected successfully');
     }
-
-
-
 }
