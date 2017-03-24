@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Fund;
 use Illuminate\Support\Facades\Redirect;
-use App\Loan;
+use App\File;
+use Illuminate\Support\Facades\Storage;
 
 class FundController extends Controller
 {

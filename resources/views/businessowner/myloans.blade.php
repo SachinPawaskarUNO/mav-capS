@@ -34,7 +34,7 @@
                             <td></td>
                             <td>
                                 <!--Approve Button-->
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#bo_myloans_approve">Approve</button>
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="bo_myloans_approval" data-target="#bo_myloans_approve">Approve</button>
                                 <!--Model-->
                                 <div class="modal fade" id="bo_myloans_approve" role="dialog">
                                     <div class="modal-dialog">
@@ -60,7 +60,7 @@
                                 </td>
                                 <td>
                                 <!--Reject Button-->
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#bo_myloans_reject">Reject</button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" id="bo_myloans_rejection" data-target="#bo_myloans_reject">Reject</button>
                                 <!--Model-->
                                     <div class="modal fade" id="bo_myloans_reject" role="dialog">
                                         <div class="modal-dialog">
@@ -90,6 +90,7 @@
                         </tbody>
                     </table>
             </div>
+
             <div class="col-md-10 col-md-offset-1">
                 <h2 style="color: darkblue">Accepted/Rejected Loans</h2><br>
                 <table class="table table-hover table-responsive" id="myloans_dt2">
