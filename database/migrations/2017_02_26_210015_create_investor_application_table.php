@@ -20,6 +20,7 @@ class CreateInvestorApplicationTable extends Migration
             $table->increments('id');
             $table->string('inv_first_name');
             $table->string('inv_last_name');
+            $table->integer('user_id')->unsigned();
             $table->string('inv_identification_card_number');
             $table->date('inv_date_of_birth');
             $table->string('inv_gender');
@@ -42,6 +43,9 @@ class CreateInvestorApplicationTable extends Migration
             $table->string('inv_p2p_lending');
             $table->string('inv_app_status')->nullable();
             $table->timestamps();
+        });
+        Schema::table('investor_applications', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -13,6 +13,6 @@ class Fund extends Model
         'fund_status',
     ];
     public function user() {
-        return $this->belongsTo('App\InvestorApplication');
+        return $this->belongsTo('App\FundTotal');
     }
 }

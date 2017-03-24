@@ -17,6 +17,8 @@ class CreateBusinessOwnerApplicationsTable extends Migration
             $table->increments('id');
             $table->string('bo_first_name');
             $table->string('bo_last_name');
+            $table->integer('user_id')->unsigned();
+            $table->string('bo_business_name');
             $table->string('bo_identification_card_number');
             $table->date('bo_date_of_birth');
             $table->string('bo_gender');
@@ -43,6 +45,9 @@ class CreateBusinessOwnerApplicationsTable extends Migration
             $table->boolean('bo_agree_fees')->default(false);
             $table->string('bo_app_status')->nullable();
             $table->timestamps();
+        });
+        Schema::table('business_owner_applications', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
