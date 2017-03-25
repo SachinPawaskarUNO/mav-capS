@@ -72,22 +72,26 @@ class LoanController extends Controller
         return view('businessowner.loandetail',compact('loanrisk'));
     }
     public function approveboloanmanager(Request $request){
+        $this->validate($request, [
+            'loan_interest_rate' => 'required',
+        ]);
         $id = $request->input('bo_loan_manager_approve_id');
-       Loan::where('id',$id)->update(array('loan_status' =>'Manager Approved','loan_interest_rate' =>$request->input('loan_interest_rate')));
+        Loan::where('id',$id)->update(array(
+            'loan_status' =>'Manager Approved',
+            'loan_interest_rate' =>$request->input('loan_interest_rate'),
+            'updated_by' => Auth::user()->first_name));
         return Redirect::back()->with('status','The application has been accepted successfully');
     }
     public function rejectboloanmanager(Request $request){
         $id = $request->input('loan_reject_manager');
-        Loan::where('id',$id)->update(array('loan_status' =>'Manager Rejected'));
+        Loan::where('id',$id)->update(array('loan_status' =>'Manager Rejected', 'updated_by' => Auth::user()->first_name));
         return Redirect::back()->with('status','The application has been rejected successfully');
     }
-
-
 
     public function approveboloan(Request $request){
         $user = Auth::user();
         $id = $request->input('bo_loan_id');
-        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Approved'));
+        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Approved', 'updated_by' => $user->first_name));
         $loan = Loan::where('id',$id)->first();
         Mail::to($user)->send(new LoanApproveNotification($user, $loan));
         $managers = User::where('role_request','manager')->get()->toArray();
@@ -100,7 +104,7 @@ class LoanController extends Controller
     public function rejectboloan(Request $request){
         $user = Auth::user();
         $id = $request->input('bo_loan_id');
-        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Rejected'));
+        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Rejected', 'updated_by' => $user->first_name));
         $loan = Loan::where('id',$id)->first();
         Mail::to($user)->send(new LoanRejectNotification($user, $loan));
         $managers = User::where('role_request','manager')->get()->toArray();

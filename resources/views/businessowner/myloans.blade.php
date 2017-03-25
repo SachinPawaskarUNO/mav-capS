@@ -112,7 +112,7 @@
                                 <td>{{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>{{$loan->loan_interest_rate}} %</td>
+                                <td>{{$loan->loan_interest_rate == '' ? '00.00' : $loan->loan_interest_rate}} %</td>
                                 <td>{{$loan->loan_status == '' ? 'Pending' : $loan->loan_status}}</td>
                             </tr>
                         @endif

@@ -53,6 +53,8 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::post('bo_loan_approve_manager', 'LoanController@approveboloanmanager');
     Route::post('bo_loan_reject', 'LoanController@rejectboloan');
     Route::post('bo_loan_reject_manager', 'LoanController@rejectboloanmanager');
+    Route::get('downloadbo/{id}/{filetype}', 'ManagerController@downloadbo');
+    Route::get('downloadinv/{id}/{filetype}', 'ManagerController@downloadinv');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
 Route::get('/{any}', function ($any) {
