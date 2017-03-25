@@ -48,12 +48,51 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td> {!!Form::model($invapp,array('route'=>['inv_application.update',$invapp->id],'method'=>'PATCH'))!!}
-                                    {!! Form::submit('Approve', ['class' => 'btn btn-success btn-sm','id' =>'accept'])!!}
-                                    {!!Form::close() !!}</td><td>
+                                <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#inv_approvebutton">Approve</button>
+                                    <div class="modal fade" id="inv_approvebutton" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Confirmation</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure you want to accept this application?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                    {!!Form::model($invapp,array('route'=>['inv_application.update',$invapp->id],'method'=>'PATCH'))!!}
+                                    {!! Form::submit('Yes', ['class' => 'btn btn-success btn-sm','id' =>'accept'])!!}
+                                                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" id="review_invapp_no">No</button>
+
+                                                    {!!Form::close() !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#inv_rejectbutton">Reject</button>
+                                    <div class="modal fade" id="inv_rejectbutton" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Confirmation</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Are you sure you want to reject this application?</p>
+                                                </div>
+                                                <div class="modal-footer">
                                     {!!Form::model($invapp,array('route'=>['loan_application.update',$invapp->id],'method'=>'PATCH'))!!}
-                                    {!! Form::submit('Reject', ['class' => 'btn btn-danger btn-sm','id' =>'reject'])!!}
-                                    {!!Form::close() !!}</td>
+                                    {!! Form::submit('Yes', ['class' => 'btn btn-success btn-sm','id' =>'reject'])!!}
+                                                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" id="review_invapp_no1">No</button>
+
+                                    {!!Form::close() !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div></td>
                             </tr>
                         @endif
                     @endforeach
