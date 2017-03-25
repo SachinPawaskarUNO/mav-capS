@@ -18,20 +18,20 @@
                             <th>Loan Amount</th>
                             <th>Loan Duration</th>
                             <th>Loan Purpose</th>
-                            <th>Interest Rate</th>
+                            <th>Interest Rate %</th>
                             <th>Actions</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($loans as $loan)
-                            @if($loan->loan_status == '')
+                            @if($loan->loan_status == 'Manager Approved')
                         <tr>
                             <td>{{$loan->loan_title}}</td>
                             <td>{{$loan->loan_amount}}</td>
                             <td>{{$loan->loan_duration}}</td>
                             <td>{{$loan->loan_purpose}}</td>
-                            <td></td>
+                            <td>{{$loan->loan_interest_rate}} %</td>
                             <td>
                                 <!--Approve Button-->
                                 <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="bo_myloans_approval" data-target="#bo_myloans_approve">Approve</button>
@@ -100,19 +100,19 @@
                         <th>Loan Amount</th>
                         <th>Loan Duration</th>
                         <th>Loan Purpose</th>
-                        <th>Interest Rate</th>
+                        <th>Interest Rate %</th>
                         <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->loan_status != '')
+                        @if($loan->loan_status == 'Borrower Approved' || $loan->loan_status == 'Borrower Rejected' || $loan->loan_status == 'Manager Rejected')
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>{{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td></td>
+                                <td>{{$loan->loan_interest_rate}} %</td>
                                 <td>{{$loan->loan_status == '' ? 'Pending' : $loan->loan_status}}</td>
                             </tr>
                         @endif

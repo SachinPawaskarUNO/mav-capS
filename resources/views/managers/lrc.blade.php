@@ -22,7 +22,7 @@
                         <th>Loan Purpose</th>
                         <th>Loan Details</th>
                         <th>Downlaod Details</th>
-                        <th>Interest Rate</th>
+                        <th >Interest Rate %</th>
 
                         <th>Action</th>
                         <th></th>
@@ -41,7 +41,7 @@
                                 <td>   <button type="button" class="btn btn-success btn-sm" >Download</button></td>
                                 <form role="form" method="POST" action="{{ url('bo_loan_approve_manager') }}">{{ csrf_field() }}
                                 <td><div class="col-md-6">
-                                        {!! Form::text('loan_interest_rate',null,['class'=>'form-control', 'id'=>'loan_interest_rate']) !!}
+                                        {!! Form::text('loan_interest_rate',null,['class'=>'form-control', 'id'=>'loan_interest_rate'])!!}
                                         @if ($errors->has('loan_interest_rate'))
                                             <span class="help-block">
                                     <strong>{{ $errors->first('loan_interest_rate') }}</strong>
@@ -123,7 +123,7 @@
                         <th>Loan Duration</th>
                         <th>Loan Purpose</th>
                         <th>Loan Details</th>
-                        <th></th>
+                        <th>Download Details</th>
                         <th>Interest Rate %</th>
                         <th>Status</th>
                     </tr>

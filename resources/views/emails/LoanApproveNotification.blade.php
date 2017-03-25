@@ -1,13 +1,16 @@
 @component('mail::message')
 # Hello,
 
-Thank you for accepting the loan from CapSphere.
+Loan has been Accepted.<br><br>
+
+Accepted Loan Details are: <br>
 
 Loan Applicant: {{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }} <br>
 Loan Title: {{ $loan->loan_title }} <br>
 Loan Amount: {{ $loan->loan_amount }} <br>
 Loan Duration: {{ $loan->loan_duration }} <br>
 Loan Purpose: {{ $loan->loan_purpose }} <br>
+Loan Interest: {{$loan->loan_interest_rate}} % <br>
 
 Please contact CapSphere for further details.
 
