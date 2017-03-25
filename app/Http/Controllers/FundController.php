@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\BusinessOwnerApplication;
 use App\InvestorApplication;
 use App\Mail\FundsNotification;
 use App\Mail\FundsCancelNotification;
@@ -10,8 +11,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Fund;
 use Illuminate\Support\Facades\Redirect;
-use App\File;
-use Illuminate\Support\Facades\Storage;
 
 class FundController extends Controller
 {
@@ -57,11 +56,5 @@ class FundController extends Controller
        $fund = Fund::where('investor_application_id', $id)->first();
        Fund::find($fund->id)->delete();
        return redirect('home')->with('status','Your investment has been successfully cancelled');
-    }
-
-    //Download function
-    public function show($filetype){
-        $file = File::where('file_type', $filetype)->first();
-        return response()->download(Storage::disk()->getDriver()->getAdapter()->applyPathPrefix($file->file_path));
     }
 }

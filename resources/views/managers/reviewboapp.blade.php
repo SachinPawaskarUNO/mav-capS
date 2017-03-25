@@ -37,13 +37,13 @@
                                         </div>
                                         <div class="modal-body">
                                             <p>Please click on the below links to download a specific document.</p>
-                                            <a href="{{url('add_funds','bo_upload_IC')}}">Self Identification</a><br>
-                                            <a href="{{url('add_funds','bo_business_license')}}">Business License</a><br>
-                                            <a href="{{url('add_funds','bo_entity_type')}}">Business Entity Type</a><br>
-                                            <a href="{{url('add_funds','bo_CTOS')}}">CTOS Documents</a><br>
-                                            <a href="{{url('add_funds','bo_audited_statements')}}">Audited Financial Statements</a><br>
-                                            <a href="{{url('add_funds','bo_operating_statements')}}">Operating Bank Statements</a><br>
-                                            <a href="{{url('add_funds','bo_tax_returns')}}">Tax Return Forms</a>
+                                            <a href="{{url('downloadbo',['id' => $boapp->id, 'filetype' => 'bo_upload_IC'])}}">Self Identification</a><br>
+                                            <a href="{{url('downloadbo',['id' => $boapp->id, 'filetype' => 'bo_business_license'])}}">Business License</a><br>
+                                            <a href="{{url('downloadbo',['id' => $boapp->id, 'filetype' => 'bo_entity_type'])}}">Business Entity Type</a><br>
+                                            <a href="{{url('downloadbo',['id' => $boapp->id, 'filetype' => 'bo_CTOS'])}}">CTOS Documents</a><br>
+                                            <a href="{{url('downloadbo',['id' => $boapp->id, 'filetype' => 'bo_audited_statements'])}}">Audited Financial Statements</a><br>
+                                            <a href="{{url('downloadbo',['id' => $boapp->id, 'filetype' => 'bo_operating_statements'])}}">Operating Bank Statements</a><br>
+                                            <a href="{{url('downloadbo',['id' => $boapp->id, 'filetype' => 'bo_tax_returns'])}}">Tax Return Forms</a>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-success" data-dismiss="modal" id="bo_download_ok_confirm">OK</button>

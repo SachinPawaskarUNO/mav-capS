@@ -453,8 +453,13 @@
                                     <div class="panel-heading"><h3><b>Business Background</b></h3></div>
                                     <div class="panel-body">
                                         <div class="form-group">
+                                            {!! Form::label('bo_business_name', 'Business Name', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
+                                            <div class="col-md-6">
+                                                {!! Form::text('bo_business_name',null,['class'=>'form-control', 'id'=>'bo_business_name']) !!}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             {!! Form::label('bo_industry', 'Industry', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
-
                                             <div class="col-md-6">
                                                 {!! Form::select('bo_industry', array(''=>'Please Select a industry','manufacturing' =>'Manufacturing','automotive' =>'Automotive',
                                                 'medical'=>'Medical','retail'=>'Retail','others'=>'Others'),'',

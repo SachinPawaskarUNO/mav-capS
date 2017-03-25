@@ -18,7 +18,7 @@ class CreateBusinessOwnerApplicationsTable extends Migration
             $table->string('bo_first_name');
             $table->string('bo_last_name');
             $table->integer('user_id')->unsigned();
-            $table->string('bo_business_name')->nullable();
+            $table->string('bo_business_name');
             $table->string('bo_identification_card_number');
             $table->date('bo_date_of_birth');
             $table->string('bo_gender');
