@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use App\Manager;
 use App\Role;
 use App\BusinessOwnerApplication;
+use App\Loan;
+use App\File;
+use Illuminate\Support\Facades\Storage;
 
 class ManagerController extends Controller
 {
@@ -37,6 +40,12 @@ class ManagerController extends Controller
      *
      * @return Response
      */
+    public function lrc()
+    {
+        $loans = Loan::all();
+        return view('managers.lrc',compact('loans'));
+
+    }
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -113,4 +122,19 @@ class ManagerController extends Controller
         $invapps = InvestorApplication::all();
         return view('managers.reviewinvapp',compact('invapps'));
     }
+
+    //Download function for business owner documents
+    public function downloadbo($id, $filetype){
+        $boapp = BusinessOwnerApplication::where('id',$id)->first();
+        $file = File::where('file_type', $filetype)->where('user_id',$boapp->user_id)->first();
+        return response()->download(Storage::disk()->getDriver()->getAdapter()->applyPathPrefix($file->file_path));
+    }
+
+    //Download function for investor documents
+    public function downloadinv($id, $filetype){
+        $invapp = InvestorApplication::where('id',$id)->first();
+        $file = File::where('file_type', $filetype)->where('user_id',$invapp->user_id)->first();
+        return response()->download(Storage::disk()->getDriver()->getAdapter()->applyPathPrefix($file->file_path));
+    }
+
 }

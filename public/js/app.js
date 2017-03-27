@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    $("#txtarea").hide();
+    $("#bo_court_judgement").change(function () {
+        if ($(this).val() == 'yes') {
+            $("#txtarea").show();
+        } else {
+            $("#txtarea").hide();
+        }
+    });
+
     $("#bo_date_of_birth").datepicker({
         dateFormat: "yy-mm-dd",
         maxDate:'0'
@@ -181,6 +190,10 @@ $(document).ready(function() {
     $('#loan_est_reset').click(function(){
         $('#loandata').reset();
     });
+    $('#myloans_dt1').dataTable();
+    $('#myloans_dt2').dataTable();
+    $('#lrc1').dataTable();
+    $('#lrc2').dataTable();
 });
 function calculate() {
     // Get the user's input from the form. Assume it is all valid.
@@ -218,3 +231,6 @@ function calculate() {
 function round(x) {
     return Math.round(x*100)/100;
 }
+
+//code to hide the text area for CourtJudgement
+

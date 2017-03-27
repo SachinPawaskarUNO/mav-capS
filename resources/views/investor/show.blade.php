@@ -101,6 +101,6 @@
         </tr>
         </tbody>
     </table>
-    <a href="{{url('review_inv_app')}}" class="btn btn-info">Back</a>
+    <a href="{{ url()->previous() }}" class="btn btn-info">Back</a>
 </div>
 @stop

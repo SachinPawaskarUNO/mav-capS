@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\BusinessOwnerApplication;
 use App\InvestorApplication;
 use App\Mail\FundsNotification;
 use App\Mail\FundsCancelNotification;
@@ -41,6 +42,7 @@ class FundController extends Controller
        }
         return Redirect::back()->with('uid', $uid)->with('fund_amount', $fund->fund_amount);
     }
+
     public function destroy($id)
     {
         $fund = Fund::where('investor_application_id', $id)->first();

@@ -9,6 +9,7 @@ class InvestorApplication extends Model
     protected $fillable=[
         'inv_first_name',
         'inv_last_name',
+        'user_id',
         'inv_identification_card_number',
         'inv_date_of_birth',
         'inv_gender',
@@ -31,7 +32,10 @@ class InvestorApplication extends Model
         'inv_p2p_lending',
     ];
 
-    public function funds() {
-        return $this->hasMany('App\Fund');
+    public function fund() {
+        return $this->hasMany('App\Fund_total');
+    }
+    public function customer() {
+        return $this->belongsTo('App\User');
     }
 }

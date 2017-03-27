@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Loan;
+use App\FundTotal;
 use Auth;
 use App\File;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\ApplicationNotification;
 use Illuminate\Support\Facades\Mail;
@@ -21,9 +24,13 @@ class InvestorApplicationController extends Controller
     }
     public function store(Request $request)
     {
+        $user =Auth::user();
         $investorapplication = new InvestorApplication();
+        $fund_total = new FundTotal();
+        $investorapplication->user_id = $user->id;
         $investorapplication->inv_first_name=ucfirst($request->input('inv_first_name'));
         $investorapplication->inv_last_name=ucfirst($request->input('inv_last_name'));
+        $investorapplication->user_id=$user->id;
         $investorapplication->inv_identification_card_number=$request->input('inv_identification_card_number');
         $investorapplication->inv_date_of_birth=$request->input('inv_date_of_birth');
         $investorapplication->inv_gender=$request->input('inv_gender');
@@ -45,32 +52,35 @@ class InvestorApplicationController extends Controller
         $investorapplication->inv_sme_business=$request->input('inv_sme_business');
         $investorapplication->inv_p2p_lending=$request->input('inv_p2p_lending');
         $investorapplication->save();
-        $user =Auth::user();
+        $inv = InvestorApplication::where('inv_first_name',$user->first_name)->first();
+        $fund_total->inv_app_id = $investorapplication->id;
+        $fund_total->save();
         if($request->hasFile('inv_income_slip')) {
             $file = new File();
             $file->user_id = $user->id;
             $file->original_filename = $request->file('inv_income_slip')->getClientOriginalName();
-            $file->file_path = Storage::putFile('inv_applications/', $request->file('inv_income_slip'));
+            $file->file_path = Storage::putFile('inv_applications', $request->file('inv_income_slip'));
             $file->file_type = 'inv_income_slip';
             $file->save();
         } if($request->hasFile('inv_bank_statements')) {
         $file = new File();
         $file->user_id = $user->id;
         $file->original_filename = $request->file('inv_bank_statements')->getClientOriginalName();
-        $file->file_path = Storage::putFile('inv_applications/', $request->file('inv_bank_statements'));
+        $file->file_path = Storage::putFile('inv_applications', $request->file('inv_bank_statements'));
         $file->file_type = 'inv_bank_statements';
         $file->save();
         } if($request->hasFile('inv_financial_statements')) {
         $file = new File();
         $file->user_id = $user->id;
         $file->original_filename = $request->file('inv_financial_statements')->getClientOriginalName();
-        $file->file_path = Storage::putFile('inv_applications/', $request->file('inv_financial_statements'));
+        $file->file_path = Storage::putFile('inv_applications', $request->file('inv_financial_statements'));
         $file->file_type = 'inv_financial_statements';
         $file->save();
         }
         Mail::to($user)->send(new ApplicationNotification($user));
         $request->session()->flash('status','Your application has been successfully submitted');
         return view('investor.index');
+
     }
 
     public function update($id)
@@ -83,5 +93,42 @@ class InvestorApplicationController extends Controller
     {
         $invapp = InvestorApplication::findOrFail($id);
         return view('investor.show',compact('invapp'));
+    }
+
+    public function browseloans(){
+        $loans = Loan::all();
+        $trustee = DB::table('trustee')->get();
+        return view('investor.browseloan', compact('loans', 'trustee'));
+    }
+
+    public function investnow(Request $request)
+    {
+        $id = $request->input('bo_loan_id');
+        $loan = Loan::where('id',$id)->first();
+        return view('investor.investnow',compact('loan'));
+    }
+
+    public function addinvestment(Request $request)
+    {
+        $id = $request->input('invested_loan_id');
+        $user =Auth::user();
+        $inv = InvestorApplication::where('user_id',$user->id)->first();
+        DB::table('investments')->insert([
+            'invested_amount' => $request->input('add_investment_amount'),
+            'created_by' => ucfirst($user->first_name),
+            'updated_by' => ucfirst($user->first_name),
+            'investor_application_id' => $inv->id,
+        ]);
+        $investment = DB::table('investments')->where('investor_application_id',$inv->id)->first();
+        DB::table('trustee')->insert([
+            'invested_amount' => $request->input('add_investment_amount'),
+            'created_by' => ucfirst($user->first_name),
+            'updated_by' => ucfirst($user->first_name),
+            'investment_id' => $investment->id,
+            'invested_status' => 'Invested',
+            'loan_id' => $id,
+        ]);
+        $loan = Loan::where('id',$id)->first();
+        Loan::where('id',$id)->update(array('loan_funded_amount' => $loan->loan_funded_amount + $request->input('add_investment_amount')));
     }
 }

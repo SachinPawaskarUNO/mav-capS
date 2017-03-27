@@ -14,6 +14,9 @@
             <div class="panel-body" align="center">
                 <a href="{{url('review_inv_app')}}" class="btn btn-primary">Review Investor Applications</a>
             </div>
+            <div class="panel-body" align="center">
+                <a href="{{url('lrc')}}" class="btn btn-primary">Loan Risk Classification</a>
+            </div>
         </div>
     </div>
 @endsection
