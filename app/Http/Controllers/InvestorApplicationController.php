@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Mail;
 use App\InvestorApplication;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-
-
+use App\Role;
+use App\User;
 
 class InvestorApplicationController extends Controller
 {
@@ -86,6 +86,10 @@ class InvestorApplicationController extends Controller
     public function update($id)
     {
         InvestorApplication::where('id',$id)->update(array('inv_app_status' =>'Approved'));
+        $investor = InvestorApplication::where('id',$id)->first();
+        $user = User::where('id',$investor->user_id)->first();
+        $role = Role::where('name','investor')->first();
+        $user->attachRole($role);
         return Redirect::back()->with('status','The application has been approved successfully');
     }
 
