@@ -27,7 +27,7 @@ See the [Wiki](https://github.com/SachinPawaskarUNO/mav-capS/wiki) for full docu
 
 ## Supervising Faculty
 - [Dr. Sachin Pawaskar](https://github.com/SachinPawaskarUNO)
-- Joseph Forsythe
+- Mr. Joseph Forsythe
 
 ## Bugs and Feedback
 
