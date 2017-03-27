@@ -33,7 +33,7 @@
                                 <td>{{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td><a href="{{url('bo_application',$loan->business_owner_application_id)}}" class="btn btn-info btn-sm">View Details</a></td>
+                                <td><a href="{{url('bo_application',$loan->business_owner_application_id)}}" class="btn btn-info btn-sm" id="view_details">View Details</a></td>
                                 <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#bo_download">Download</button>
                                     <div class="modal fade" id="bo_download" role="dialog">
                                         <div class="modal-dialog">

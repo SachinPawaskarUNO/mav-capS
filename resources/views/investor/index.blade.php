@@ -21,6 +21,11 @@
 
         </div>
 
+        <div class="panel-body" align="center">
+            <a href="{{url('/browse_loans')}}" class="btn btn-primary">Browse Loans</a>
+
+        </div>
+
     </div>
 
 </div>

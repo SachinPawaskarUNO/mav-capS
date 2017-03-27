@@ -39,6 +39,7 @@ class CreateBusinessOwnerApplicationsTable extends Migration
             $table->string('bo_registration_number');
             $table->bigInteger('bo_registration_year');
             $table->string('bo_court_judgement');
+            $table->string('bo_court_judgement_yes')->nullable();
             $table->string('bo_bank_name');
             $table->string('bo_bank_account');
             $table->boolean('bo_agree_terms')->default(false);

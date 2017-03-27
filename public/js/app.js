@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    $("#txtarea").hide();
+    $("#bo_court_judgement").change(function () {
+        if ($(this).val() == 'yes') {
+            $("#txtarea").show();
+        } else {
+            $("#txtarea").hide();
+        }
+    });
+
     $("#bo_date_of_birth").datepicker({
         dateFormat: "yy-mm-dd",
         maxDate:'0'
@@ -222,3 +231,6 @@ function calculate() {
 function round(x) {
     return Math.round(x*100)/100;
 }
+
+//code to hide the text area for CourtJudgement
+

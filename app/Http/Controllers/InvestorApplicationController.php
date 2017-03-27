@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Loan;
 use App\FundTotal;
 use Auth;
 use App\File;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\ApplicationNotification;
 use Illuminate\Support\Facades\Mail;
@@ -91,5 +93,42 @@ class InvestorApplicationController extends Controller
     {
         $invapp = InvestorApplication::findOrFail($id);
         return view('investor.show',compact('invapp'));
+    }
+
+    public function browseloans(){
+        $loans = Loan::all();
+        $trustee = DB::table('trustee')->get();
+        return view('investor.browseloan', compact('loans', 'trustee'));
+    }
+
+    public function investnow(Request $request)
+    {
+        $id = $request->input('bo_loan_id');
+        $loan = Loan::where('id',$id)->first();
+        return view('investor.investnow',compact('loan'));
+    }
+
+    public function addinvestment(Request $request)
+    {
+        $id = $request->input('invested_loan_id');
+        $user =Auth::user();
+        $inv = InvestorApplication::where('user_id',$user->id)->first();
+        DB::table('investments')->insert([
+            'invested_amount' => $request->input('add_investment_amount'),
+            'created_by' => ucfirst($user->first_name),
+            'updated_by' => ucfirst($user->first_name),
+            'investor_application_id' => $inv->id,
+        ]);
+        $investment = DB::table('investments')->where('investor_application_id',$inv->id)->first();
+        DB::table('trustee')->insert([
+            'invested_amount' => $request->input('add_investment_amount'),
+            'created_by' => ucfirst($user->first_name),
+            'updated_by' => ucfirst($user->first_name),
+            'investment_id' => $investment->id,
+            'invested_status' => 'Invested',
+            'loan_id' => $id,
+        ]);
+        $loan = Loan::where('id',$id)->first();
+        Loan::where('id',$id)->update(array('loan_funded_amount' => $loan->loan_funded_amount + $request->input('add_investment_amount')));
     }
 }

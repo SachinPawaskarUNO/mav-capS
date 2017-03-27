@@ -99,6 +99,10 @@
         <td>{{$boapp->bo_court_judgement}}</td>
       </tr>
       <tr>
+          <td>Business Owner Court Judgement</td>
+          <td>{{$boapp->bo_court_judgement_yes}}</td>
+      </tr>
+      <tr>
         <td>Business Owner Bank Name</td>
         <td>{{$boapp->bo_bank_name}}</td>
       </tr>
