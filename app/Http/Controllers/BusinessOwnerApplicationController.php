@@ -49,6 +49,7 @@ class BusinessOwnerApplicationController extends Controller
         $businessownerapplication->bo_registration_number=$request->input('bo_registration_number');
         $businessownerapplication->bo_registration_year=$request->input('bo_registration_year');
         $businessownerapplication->bo_court_judgement=$request->input('bo_court_judgement');
+        $businessownerapplication->bo_court_judgement_yes=$request->input('bo_court_judgement_yes');
         $businessownerapplication->bo_bank_name=$request->input('bo_bank_name');
         $businessownerapplication->bo_bank_account=$request->input('bo_bank_account');
         $businessownerapplication->save();

@@ -29,6 +29,7 @@ class BusinessOwnerApplication extends Model
         'bo_registration_number',
         'bo_registration_year',
         'bo_court_judgement',
+        'bo_court_judgement_yes',
         'bo_bank_name',
         'bo_bank_account',
     ];
