@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\BusinessOwnerApplication;
 use App\Mail\ApplicationNotification;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use App\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Input;
-use App\User;
 use Illuminate\Support\Facades\Redirect;
+use App\Role;
 
 class BusinessOwnerApplicationController extends Controller
 {
@@ -111,6 +111,10 @@ class BusinessOwnerApplicationController extends Controller
     public function update($id)
     {
         BusinessOwnerApplication::where('id',$id)->update(array('bo_app_status' =>'Approved'));
+        $borrower = BusinessOwnerApplication::where('id',$id)->first();
+        $user = User::where('id',$borrower->user_id)->first();
+        $role = Role::where('name','businessowner')->first();
+        $user->attachRole($role);
         return Redirect::back()->with('status','The application has been approved successfully');
     }
 

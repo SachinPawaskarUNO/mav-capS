@@ -69,7 +69,6 @@ class ManagerController extends Controller
         $manager->save();
         $role = Role::where('name','manager')->first();
         $manager->attachRole($role);
-        $users = User::all();
         return redirect('home');
     }
 

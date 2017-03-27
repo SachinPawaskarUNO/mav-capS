@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\BusinessOwnerApplication;
+use App\FundTotal;
 use App\InvestorApplication;
 use App\Mail\FundsNotification;
 use App\Mail\FundsCancelNotification;
@@ -18,7 +19,17 @@ class FundController extends Controller
     {
         $user = Auth::user();
         $inv = InvestorApplication::where('inv_first_name',$user->first_name)->first();
-        return view('investor.fund', compact('inv'));
+        $fund_total = FundTotal::where('inv_app_id',$inv->id)->first();
+        $funds = Fund::where('fund_total_id',$fund_total->id)->get();
+        foreach ($funds as $fund){
+            if($fund->fund_status == ''){
+                $uid = $fund->fund_uid;
+                session(['uid' => $uid, 'fund_amount' => $fund->fund_amount]);
+                return view('investor.fund', compact('inv'));
+            } else {
+                return view('investor.fund', compact('inv'));
+            }
+        }
     }
 
     public function store(Request $request)
@@ -29,9 +40,11 @@ class FundController extends Controller
         $uid =mt_rand(1000000000,9999999999);
         $fund = new Fund();
         $user = Auth::user();
+        $invapp = InvestorApplication::where('user_id',$user->id)->first();
+        $fund_total = FundTotal::where('inv_app_id',$invapp->id)->first();
         $fund->fund_amount = $request->input('fund_amount');
         $fund->fund_uid = $uid;
-        $fund->investor_application_id = $request->input('inv_id');
+        $fund->fund_total_id = $fund_total->id;
         $fund->created_by = $user->first_name;
         $fund->updated_by = $user->first_name;
         $fund->save();

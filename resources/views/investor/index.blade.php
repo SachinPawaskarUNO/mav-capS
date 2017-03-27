@@ -12,22 +12,20 @@
                 {{ session('status') }}
             </div>
         @endif
-        <div class="panel-body" align="center">
-            <a href="{{url('/inv_application/create')}}" class="btn btn-primary">Apply!!</a>
-
-        </div>
+        @if (Entrust::hasRole('investor'))
         <div class="panel-body" align="center">
             <a href="{{url('/add_funds/create')}}" class="btn btn-primary">Add Funds</a>
-
         </div>
-
         <div class="panel-body" align="center">
             <a href="{{url('/browse_loans')}}" class="btn btn-primary">Browse Loans</a>
-
+        </div>
+        @else
+        <div class="panel-body" align="center">
+            <a href="{{url('/inv_application/create')}}" class="btn btn-primary">Apply!!</a>
         </div>
 
+        @endif
     </div>
-
 </div>
 
 
