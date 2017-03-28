@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Investment;
 use App\Loan;
 use App\FundTotal;
+use App\Trustee;
 use Auth;
 use App\File;
 use Illuminate\Support\Facades\DB;
@@ -101,8 +103,8 @@ class InvestorApplicationController extends Controller
 
     public function browseloans(){
         $loans = Loan::all();
-        $trustee = DB::table('trustee')->get();
-        return view('investor.browseloan', compact('loans', 'trustee'));
+        $trustees = Trustee::all();
+        return view('investor.browseloan', compact('loans', 'trustees'));
     }
 
     public function investnow(Request $request)
@@ -114,25 +116,32 @@ class InvestorApplicationController extends Controller
 
     public function addinvestment(Request $request)
     {
-        $id = $request->input('invested_loan_id');
+        $this->validate($request, [
+            'add_investment_amount' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
+        ]);
         $user =Auth::user();
+        $id = $request->input('invested_loan_id');
         $inv = InvestorApplication::where('user_id',$user->id)->first();
-        DB::table('investments')->insert([
-            'invested_amount' => $request->input('add_investment_amount'),
-            'created_by' => ucfirst($user->first_name),
-            'updated_by' => ucfirst($user->first_name),
-            'investor_application_id' => $inv->id,
-        ]);
-        $investment = DB::table('investments')->where('investor_application_id',$inv->id)->first();
-        DB::table('trustee')->insert([
-            'invested_amount' => $request->input('add_investment_amount'),
-            'created_by' => ucfirst($user->first_name),
-            'updated_by' => ucfirst($user->first_name),
-            'investment_id' => $investment->id,
-            'invested_status' => 'Invested',
-            'loan_id' => $id,
-        ]);
+        $investment = new Investment();
+        $investment->invested_amount = $request->input('add_investment_amount');
+        $investment->investor_application_id = $inv->id;
+        $investment->created_by  = ucfirst($user->first_name);
+        $investment->updated_by  = ucfirst($user->first_name);
+        $investment->save();
+        $investments = Investment::where('investor_application_id',$inv->id)->first();
+        $trustee = new Trustee();
+        $trustee->invested_amount = $request->input('add_investment_amount');
+        $trustee->investment_id = $investments->id;
+        $trustee->invested_status = 'Invested';
+        $trustee->loan_id = $id;
+        $trustee->created_by = ucfirst($user->first_name);
+        $trustee->updated_by = ucfirst($user->first_name);
+        $trustee->save();
         $loan = Loan::where('id',$id)->first();
         Loan::where('id',$id)->update(array('loan_funded_amount' => $loan->loan_funded_amount + $request->input('add_investment_amount')));
+        $loans = Loan::all();
+        $trustees = Trustee::all();
+        $request->session()->flash('status', 'Your investment has been submitted successfully');
+        return view('investor.browseloan', compact('loans', 'trustees'));
     }
 }
