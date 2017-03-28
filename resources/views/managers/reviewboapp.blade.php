@@ -26,8 +26,8 @@
                         @if($boapp->bo_app_status == '')
                     <tr>
                         <th scope="row">{{$boapp->bo_first_name}} {{$boapp->bo_last_name}}</th>
-                        <td><a href="{{url('bo_application',$boapp->id)}}" class="btn btn-info btn-sm">View Details</a>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#bo_download">Download</button>
+                        <td><a href="{{url('bo_application',$boapp->id)}}" class="btn btn-info btn-sm" id="review_bopending_viewdetails">View Details</a>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#bo_download" id="review_bopending_download">Download</button>
                             <div class="modal fade" id="bo_download" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                            </td>
-                        <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#bo_approvebutton">Approve</button>
+                        <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#bo_approvebutton" id="boappbutton_approve">Approve</button>
                             <div class="modal fade" id="bo_approvebutton" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
 
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#bo_rejectbutton">Reject</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#bo_rejectbutton" id="reviewboapp_reject">Reject</button>
                             <div class="modal fade" id="bo_rejectbutton" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -116,8 +116,8 @@
                         @if($boapp->bo_app_status != '')
                             <tr>
                                 <th scope="row">{{$boapp->bo_first_name}} {{$boapp->bo_last_name}}</th>
-                                <td><a href="{{url('bo_application',$boapp->id)}}" class="btn btn-info btn-sm">View Details</a>
-                                    <button type="button" class="btn btn-primary btn-sm">Download</button></td>
+                                <td><a href="{{url('bo_application',$boapp->id)}}" class="btn btn-info btn-sm" id="boapp_acceptreject_viewdetails">View Details</a>
+                                    <button type="button" class="btn btn-primary btn-sm" id="boapp_acceptreject_download">Download</button></td>
                                 <td>{{$boapp->bo_app_status == '' ? 'Pending' : $boapp->bo_app_status}}</td>
                             </tr>
                         @endif

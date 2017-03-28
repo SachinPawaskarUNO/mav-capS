@@ -26,8 +26,8 @@
                         @if($invapp->inv_app_status == '')
                             <tr>
                                 <th scope="row">{{$invapp->inv_first_name}} {{$invapp->inv_last_name}}</th>
-                                <td><a href="{{url('inv_application',$invapp->id)}}" class="btn btn-info btn-sm">View Details</a>
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#inv_download">Download</button>
+                                <td><a href="{{url('inv_application',$invapp->id)}}" class="btn btn-info btn-sm" id="invapp_pending_viewdetails">View Details</a>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#inv_download" id="invapp_pending_download">Download</button>
                                     <div class="modal fade" id="inv_download" role="dialog">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#inv_approvebutton">Approve</button>
+                                <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#inv_approvebutton" id="invapp_approve">Approve</button>
                                     <div class="modal fade" id="inv_approvebutton" role="dialog">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -72,7 +72,7 @@
 
 
 
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#inv_rejectbutton">Reject</button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#inv_rejectbutton" id="invapp_reject">Reject</button>
                                     <div class="modal fade" id="inv_rejectbutton" role="dialog">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -115,8 +115,8 @@
                         @if($invapp->inv_app_status != '')
                             <tr>
                                 <th scope="row">{{$invapp->inv_first_name}} {{$invapp->inv_last_name}}</th>
-                                <td><a href="{{url('inv_application',$invapp->id)}}" class="btn btn-info btn-sm">View Details</a>
-                                    <button type="button" class="btn btn-primary btn-sm">Download</button></td>
+                                <td><a href="{{url('inv_application',$invapp->id)}}" class="btn btn-info btn-sm" id="invapp_acceptreject_viewdetails">View Details</a>
+                                    <button type="button" class="btn btn-primary btn-sm" id="invapp_acceptreject_downloads">Download</button></td>
                                 <td>{{$invapp->inv_app_status == '' ? 'Pending' : $invapp->inv_app_status}}</td>
                             </tr>
                         @endif

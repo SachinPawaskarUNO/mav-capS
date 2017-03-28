@@ -33,7 +33,7 @@
                     <li class="@if (Request::is('register'))active @endif" id="register"><a href="{{ url('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="first_name">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="auth_first_name">
                             {{ Auth::user()->first_name }} <span class="caret"></span>
                         </a>
 

@@ -101,6 +101,6 @@
         </tr>
         </tbody>
     </table>
-    <a href="{{ url()->previous() }}" class="btn btn-info">Back</a>
+    <a href="{{ url()->previous() }}" class="btn btn-info" id="inv_show_back">Back</a>
 </div>
 @stop

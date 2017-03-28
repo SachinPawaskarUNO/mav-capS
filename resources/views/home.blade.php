@@ -9,13 +9,13 @@
                 </div>
             @endif
             <div class="panel-body" align="center">
-                <a href="{{url('review_bo_app')}}" class="btn btn-primary">Review Business Owner Applications</a>
+                <a href="{{url('review_bo_app')}}" class="btn btn-primary" id="manager_revboapp_button">Review Business Owner Applications</a>
             </div>
             <div class="panel-body" align="center">
-                <a href="{{url('review_inv_app')}}" class="btn btn-primary">Review Investor Applications</a>
+                <a href="{{url('review_inv_app')}}" class="btn btn-primary" id="manager_revinvapp_button">Review Investor Applications</a>
             </div>
             <div class="panel-body" align="center">
-                <a href="{{url('lrc')}}" class="btn btn-primary">Loan Risk Classification</a>
+                <a href="{{url('lrc')}}" class="btn btn-primary" id="manager_lrc_button">Loan Risk Classification</a>
             </div>
         </div>
     </div>

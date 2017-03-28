@@ -57,7 +57,7 @@
 
             <!--Update Button-->
             <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_update">Update</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_update" id="manager_update_model">Update</button>
 
             <!-- Modal -->
             <div class="modal fade" id="manager_update" role="dialog">
@@ -83,7 +83,7 @@
 
            <!--Cancel Button-->
            <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_update_cancel">Cancel</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_update_cancel" id="manager_updatecancel_cancel">Cancel</button>
         <!-- Modal -->
         <div class="modal fade" id="manager_update_cancel" role="dialog">
             <div class="modal-dialog">
