@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTrusteeTable extends Migration
+class CreateTrusteesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTrusteeTable extends Migration
      */
     public function up()
     {
-        Schema::create('trustee', function (Blueprint $table) {
+        Schema::create('trustees', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('invested_amount');
             $table->integer('investment_id')->unsigned();
@@ -24,10 +24,10 @@ class CreateTrusteeTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('trustee', function (Blueprint $table) {
+        Schema::table('trustees', function (Blueprint $table) {
             $table->foreign('investment_id')->references('id')->on('investments')->onDelete('cascade');
         });
-        Schema::table('trustee', function (Blueprint $table) {
+        Schema::table('trustees', function (Blueprint $table) {
             $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');
         });
     }
@@ -35,7 +35,7 @@ class CreateTrusteeTable extends Migration
     
     public function down()
     {
-        Schema::dropIfExists('trustee');
+        Schema::dropIfExists('trustees');
     }
 }
 
