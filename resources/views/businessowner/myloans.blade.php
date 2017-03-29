@@ -107,7 +107,7 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->loan_status == 'Borrower Approved' && $loan->loan_80_funded_status >= 80)
+                        @if($loan->loan_status == 'Borrower Approved' && ($loan->loan_80_funded_status >= 80 || $loan->loan_80_funded_status != null))
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>{{$loan->loan_amount}}</td>
@@ -166,7 +166,7 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr>|| $loan->loan_80_funded_status == null)
                         @elseif($loan->loan_status == 'Borrower Approved' && ($loan->loan_80_funded_status < 80 || $loan->loan_80_funded_status == null))
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
