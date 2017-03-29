@@ -50,13 +50,14 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::get('bo_myloans','LoanController@myloans');
     Route::post('bo_app_reject', 'BusinessOwnerApplicationController@reject');
     Route::post('bo_loan_approve', 'LoanController@approveboloan');
+    Route::post('bo_loan_accept', 'LoanController@acceptboloan');
     Route::post('bo_loan_approve_manager', 'LoanController@approveboloanmanager');
     Route::post('bo_loan_reject', 'LoanController@rejectboloan');
     Route::post('bo_loan_reject_manager', 'LoanController@rejectboloanmanager');
     Route::get('downloadbo/{id}/{filetype}', 'ManagerController@downloadbo');
     Route::get('downloadinv/{id}/{filetype}', 'ManagerController@downloadinv');
     Route::get('browse_loans', 'InvestorApplicationController@browseloans');
-    Route::post('invest_now', 'InvestorApplicationController@investnow');
+    Route::get('invest_now/{id}', 'InvestorApplicationController@investnow');
     Route::post('add_investment', 'InvestorApplicationController@addinvestment');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');

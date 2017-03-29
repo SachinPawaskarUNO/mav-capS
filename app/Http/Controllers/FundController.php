@@ -56,15 +56,14 @@ class FundController extends Controller
 
     public function destroy($id)
     {
-        $fund = Fund::where('investor_application_id', $id)->first();
-       // Fund::find($fund->id)->delete();
+        $fundTotal = FundTotal::where('inv_app_id', $id)->first();
+        $fund = Fund::where('fund_total_id', $fundTotal->id)->first();
         $user = Auth::user();
         Mail::to($user)->send(new FundsCancelNotification($user, $fund));
         $managers = User::where('role_request', 'manager')->get()->toArray();
         if ($managers) {
           Mail::to($managers)->send(new FundsCancelNotification($user, $fund));
         }
-       $fund = Fund::where('investor_application_id', $id)->first();
        Fund::find($fund->id)->delete();
        return redirect('home')->with('status','Your investment has been successfully cancelled');
     }

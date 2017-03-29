@@ -107,9 +107,9 @@ class InvestorApplicationController extends Controller
         return view('investor.browseloan', compact('loans', 'trustees'));
     }
 
-    public function investnow(Request $request)
+    public function investnow($id)
     {
-        $id = $request->input('bo_loan_id');
+        //$id = $request->input('bo_loan_id');
         $loan = Loan::where('id',$id)->first();
         return view('investor.investnow',compact('loan'));
     }
@@ -117,7 +117,7 @@ class InvestorApplicationController extends Controller
     public function addinvestment(Request $request)
     {
         $this->validate($request, [
-            'add_investment_amount' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
+            'add_investment_amount' => 'required|numeric',
         ]);
         $user =Auth::user();
         $id = $request->input('invested_loan_id');
@@ -139,6 +139,10 @@ class InvestorApplicationController extends Controller
         $trustee->save();
         $loan = Loan::where('id',$id)->first();
         Loan::where('id',$id)->update(array('loan_funded_amount' => $loan->loan_funded_amount + $request->input('add_investment_amount')));
+        $updatedloan = Loan::where('id',$id)->first();
+        $funded = $updatedloan->loan_funded_amount/$updatedloan->loan_amount;
+        $fundedpercentage = round((float)$funded * 100 );
+        Loan::where('id',$id)->update(array('loan_80_funded_status' => $fundedpercentage));
         $loans = Loan::all();
         $trustees = Trustee::all();
         $request->session()->flash('status', 'Your investment has been submitted successfully');

@@ -194,6 +194,7 @@ $(document).ready(function() {
     });
     $('#myloans_dt1').dataTable();
     $('#myloans_dt2').dataTable();
+    $('#myloans_dt3').dataTable();
     $('#lrc1').dataTable();
     $('#lrc2').dataTable();
     $('#browseloans1').dataTable();

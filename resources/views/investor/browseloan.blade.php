@@ -32,12 +32,7 @@
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
                                 <td>MYR {{$loan->loan_funded_amount == '' ? '0' : $loan->loan_funded_amount}}</td>
-                                <td>
-                                    <form role="form" method="POST" action="{{ url('invest_now') }}">{{ csrf_field() }}
-                                        <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
-                                        <button type="submit" id="browseloans_invest" class="btn btn-success btn-sm">Invest Now</button>
-                                    </form>
-                                </td>
+                                <td><a href="{{url('invest_now',['id' => $loan->id])}}"><button id="browseloans_invest" class="btn btn-success btn-sm">Invest Now</button></a></td>
                             </tr>
                         @endif
                     @endforeach

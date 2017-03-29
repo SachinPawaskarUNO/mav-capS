@@ -98,6 +98,19 @@ class LoanController extends Controller
         return Redirect::back()->with('status','Your Loan has been approved successfully');
     }
 
+    public function acceptboloan(Request $request){
+        $user = Auth::user();
+        $id = $request->input('bo_loan_id');
+        Loan::where('id',$id)->update(array('loan_80_funded_status' => null));
+        $loan = Loan::where('id',$id)->first();
+        Mail::to($user)->send(new LoanApproveNotification($user, $loan));
+        $managers = User::where('role_request','manager')->get()->toArray();
+        if($managers){
+            Mail::to($managers)->send(new LoanApproveNotification($user, $loan));
+        }
+        return Redirect::back()->with('status','Your request has been processed successfully');
+    }
+
     public function rejectboloan(Request $request){
         $user = Auth::user();
         $id = $request->input('bo_loan_id');

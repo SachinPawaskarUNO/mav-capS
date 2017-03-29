@@ -1,9 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
     {!! Form::open(['url' => 'add_investment', 'class' => 'form-horizontal', 'id' => 'inv_add_investment', 'method' => 'POST']) !!}
     {{ csrf_field() }}
-    <!-- Add funds -->
     <div class="container" >
         <div class="row">
             <h2 class="text-center">Invest Now</h2>
@@ -14,8 +12,8 @@
                         {!! Form::text('add_investment_amount', null,['class'=>'form-control', 'id'=>'add_investment_amount']) !!}
                         @if ($errors->has('add_investment_amount'))
                             <span class="help-block">
-                                    <strong>{{ $errors->first('fund_amount') }}</strong>
-                                </span>
+                                <strong>{{ $errors->first('add_investment_amount') }}</strong>
+                            </span>
                         @endif
                     </div>
                     <br><br><br>
@@ -23,7 +21,6 @@
                         <button type="button" class="btn btn-success form-control" id="inv_invest_now_submit" style="width:70px;" data-toggle="modal" data-target="#invest_now">Submit</button>
                         <div class="modal fade" id="invest_now" role="dialog">
                             <div class="modal-dialog">
-
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -36,12 +33,11 @@
                                     <div class="modal-footer">
                                         {!! Form::submit('Yes', ['class' => 'btn btn-success', 'id'=>'inv_invest_now_submit_yes']) !!}
                                         <button type="button" class="btn btn-default" data-dismiss="modal" id="update_manager_no_confirm">No</button>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ url()->previous() }}" class="btn btn-danger">Cancel</a>
+                        <a href="{{ url('browse_loans') }}" class="btn btn-danger">Cancel</a>
                         <div class="col-md-6" id="mandatory"> <span style="color:red">*</span>Indicates mandatory field</div>
                     </div>
                 </div>
