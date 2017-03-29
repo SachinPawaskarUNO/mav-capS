@@ -64,34 +64,34 @@ class TestUsersRolesTableSeeder extends Seeder
         $manager5 = User::where('first_name','Joshua')->first();
         $manager5->attachRole($managerrole);
 
-        $borrowerrole = Role::where('name','businessowner')->first();
-        $borrower1 = User::where('first_name','Naresh')->first();
-        $borrower1->attachRole($borrowerrole);
-        $borrower2 = User::where('first_name','Andrew')->first();
-        $borrower2->attachRole($borrowerrole);
-        $borrower3 = User::where('first_name','David')->first();
-        $borrower3->attachRole($borrowerrole);
-        $borrower4 = User::where('first_name','Logan')->first();
-        $borrower4->attachRole($borrowerrole);
-        $borrower5 = User::where('first_name','Sofia')->first();
-        $borrower5->attachRole($borrowerrole);
-        $borrower6 = User::where('first_name','Ryan')->first();
-        $borrower6->attachRole($borrowerrole);
-
-        $investorrole = Role::where('name','investor')->first();
-        $investor1 = User::where('first_name','Ravi')->first();
-        $investor1->attachRole($investorrole);
-        $investor2 = User::where('first_name','Lucas')->first();
-        $investor2->attachRole($borrowerrole);
-        $investor3 = User::where('first_name','Zoe')->first();
-        $investor3->attachRole($borrowerrole);
-        $investor4 = User::where('first_name','Layla')->first();
-        $investor4->attachRole($borrowerrole);
-        $investor5 = User::where('first_name','Nevaeh')->first();
-        $investor5->attachRole($borrowerrole);
-        $investor6 = User::where('first_name','Carter')->first();
-        $investor6->attachRole($borrowerrole);
-        $investor7 = User::where('first_name','Owen')->first();
-        $investor7->attachRole($borrowerrole);
+//        $borrowerrole = Role::where('name','businessowner')->first();
+//        $borrower1 = User::where('first_name','Naresh')->first();
+//        $borrower1->attachRole($borrowerrole);
+//        $borrower2 = User::where('first_name','Andrew')->first();
+//        $borrower2->attachRole($borrowerrole);
+//        $borrower3 = User::where('first_name','David')->first();
+//        $borrower3->attachRole($borrowerrole);
+//        $borrower4 = User::where('first_name','Logan')->first();
+//        $borrower4->attachRole($borrowerrole);
+//        $borrower5 = User::where('first_name','Sofia')->first();
+//        $borrower5->attachRole($borrowerrole);
+//        $borrower6 = User::where('first_name','Ryan')->first();
+//        $borrower6->attachRole($borrowerrole);
+//
+//        $investorrole = Role::where('name','investor')->first();
+//        $investor1 = User::where('first_name','Ravi')->first();
+//        $investor1->attachRole($investorrole);
+//        $investor2 = User::where('first_name','Lucas')->first();
+//        $investor2->attachRole($borrowerrole);
+//        $investor3 = User::where('first_name','Zoe')->first();
+//        $investor3->attachRole($borrowerrole);
+//        $investor4 = User::where('first_name','Layla')->first();
+//        $investor4->attachRole($borrowerrole);
+//        $investor5 = User::where('first_name','Nevaeh')->first();
+//        $investor5->attachRole($borrowerrole);
+//        $investor6 = User::where('first_name','Carter')->first();
+//        $investor6->attachRole($borrowerrole);
+//        $investor7 = User::where('first_name','Owen')->first();
+//        $investor7->attachRole($borrowerrole);
     }
 }
