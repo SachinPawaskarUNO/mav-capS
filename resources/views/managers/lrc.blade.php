@@ -142,7 +142,7 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->loan_status == 'Manager Approved' || $loan->loan_status == 'Manager Rejected')
+                        @if($loan->loan_status == 'Manager Approved' || $loan->loan_status == 'Manager Rejected' || $loan->loan_status == 'Borrower Approved' || $loan->loan_status == 'Borrower Rejected')
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>{{$loan->loan_amount}}</td>
