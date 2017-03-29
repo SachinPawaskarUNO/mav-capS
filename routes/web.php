@@ -50,6 +50,7 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::get('bo_myloans','LoanController@myloans');
     Route::post('bo_app_reject', 'BusinessOwnerApplicationController@reject');
     Route::post('bo_loan_approve', 'LoanController@approveboloan');
+    Route::post('bo_loan_accept', 'LoanController@acceptboloan');
     Route::post('bo_loan_approve_manager', 'LoanController@approveboloanmanager');
     Route::post('bo_loan_reject', 'LoanController@rejectboloan');
     Route::post('bo_loan_reject_manager', 'LoanController@rejectboloanmanager');
