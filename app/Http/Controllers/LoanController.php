@@ -30,7 +30,7 @@ class LoanController extends Controller
     {
         $this->validate($request, [
             'loan_amount' => 'numeric|required|min:1',
-            'loan_title' => 'required|Alpha',
+            'loan_title' => 'required|regex:/^[a-zA-Z ]+$/',
             'loan_purpose' => 'required',
             'loan_duration' => 'required',
         ]);
