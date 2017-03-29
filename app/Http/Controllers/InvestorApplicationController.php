@@ -107,9 +107,9 @@ class InvestorApplicationController extends Controller
         return view('investor.browseloan', compact('loans', 'trustees'));
     }
 
-    public function investnow(Request $request)
+    public function investnow($id)
     {
-        $id = $request->input('bo_loan_id');
+        //$id = $request->input('bo_loan_id');
         $loan = Loan::where('id',$id)->first();
         return view('investor.investnow',compact('loan'));
     }
@@ -117,7 +117,7 @@ class InvestorApplicationController extends Controller
     public function addinvestment(Request $request)
     {
         $this->validate($request, [
-            'add_investment_amount' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
+            'add_investment_amount' => 'required|numeric',
         ]);
         $user =Auth::user();
         $id = $request->input('invested_loan_id');

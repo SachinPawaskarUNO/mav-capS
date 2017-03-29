@@ -56,7 +56,7 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::get('downloadbo/{id}/{filetype}', 'ManagerController@downloadbo');
     Route::get('downloadinv/{id}/{filetype}', 'ManagerController@downloadinv');
     Route::get('browse_loans', 'InvestorApplicationController@browseloans');
-    Route::post('invest_now', 'InvestorApplicationController@investnow');
+    Route::get('invest_now/{id}', 'InvestorApplicationController@investnow');
     Route::post('add_investment', 'InvestorApplicationController@addinvestment');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
