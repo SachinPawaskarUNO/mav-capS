@@ -23,11 +23,11 @@
                 <td>{{ $manager->last_name }}</td>
                 <td>{{ $manager->email }}</td>
             <!--<td><a href="{{url('managers',$manager->id)}}" class="btn btn-primary">Read</a></td>!-->
-                <td><a href="{{route('managers.edit',$manager->id)}}" class="btn btn-warning">Update</a></td>
+                <td><a href="{{route('managers.edit',$manager->id)}}" class="btn btn-warning" id="manager_update_button">Update</a></td>
                <td>
 
                         <!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Delete</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="manager_delete_button">Delete</button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">
@@ -44,8 +44,8 @@
                                     </div>
                                     <div class="modal-footer">
                                         {!! Form::open(['method' => 'DELETE', 'route'=>['managers.destroy', $manager->id]]) !!}
-                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger', 'id'=>'manager_delete_confirm']) !!}
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" id="manager_delete_no">No</button>
                                     </div>
                                 </div>
                             </div>

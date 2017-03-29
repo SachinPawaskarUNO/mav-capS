@@ -67,7 +67,7 @@
                @endif
            </div>
            <div class="form-group">
-               {!! Form::submit('Submit', ['class' => 'btn btn-primary form-control', 'style'=>'width:70px;']) !!}
+               {!! Form::submit('Submit', ['class' => 'btn btn-primary form-control', 'style'=>'width:70px', 'id'=>'nl_submit;']) !!}
            </div>
            <div id="mandatory text-right"> <span style="color:red">*</span>Indicates mandatory field.</div>
            </div>

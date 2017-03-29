@@ -10,14 +10,14 @@
             @endif
             @if (Entrust::hasRole('businessowner'))
             <div class="panel-body" align="center">
-                <a href="{{url('/loan_application/create')}}" class="btn btn-primary">Apply Loan</a>
+                <a href="{{url('/loan_application/create')}}" class="btn btn-primary" id="bo_applyloans_button">Apply Loan</a>
             </div>
             <div class="panel-body" align="center">
-                <a href="{{url('bo_myloans')}}" class="btn btn-primary">My Loans</a>
+                <a href="{{url('bo_myloans')}}" class="btn btn-primary" id="bo_myloans_button">My Loans</a>
             </div>
             @else
             <div class="panel-body" align="center">
-                <a href="{{url('/bo_application/create')}}" class="btn btn-primary">Apply!!</a>
+                <a href="{{url('/bo_application/create')}}" class="btn btn-primary" id="bo_apply_button">Apply!!</a>
             </div>
             @endif
         </div>

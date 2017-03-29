@@ -58,7 +58,7 @@
 
             <!--Create Button-->
             <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_create">Create</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_create" id="manager_create_button">Create</button>
 
             <!-- Modal -->
             <div class="modal fade" id="manager_create" role="dialog">
@@ -83,7 +83,7 @@
 
             <!--Cancel Button--!>
             <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_create_cancel">Cancel</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manager_create_cancel" id="manager_createcancel_cancel">Cancel</button>
 
             <!-- Modal -->
             <div class="modal fade" id="manager_create_cancel" role="dialog">

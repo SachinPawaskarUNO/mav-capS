@@ -14,6 +14,7 @@ class FundsCancelNotification extends Mailable
     use Queueable, SerializesModels;
     public $user;
     public $fund;
+
     /**
      * Create a new message instance.
      *

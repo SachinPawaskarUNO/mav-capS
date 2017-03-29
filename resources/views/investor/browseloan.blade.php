@@ -11,7 +11,7 @@
                     </div>
                 @endif
                 <h2 style="color: darkblue">Available Loans</h2><br>
-                <table class="table table-hover table-responsive" id="myloans_dt1">
+                <table class="table table-hover table-responsive" id="browseloans1">
                     <thead>
                     <tr>
                         <th>Loan Title</th>
@@ -28,10 +28,10 @@
                         @if($loan->loan_status == 'Borrower Approved')
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
-                                <td>{{$loan->loan_amount}}</td>
+                                <td>MYR {{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>{{$loan->loan_funded_amount == '' ? '0' : $loan->loan_funded_amount}}</td>
+                                <td>MYR {{$loan->loan_funded_amount == '' ? '0' : $loan->loan_funded_amount}}</td>
                                 <td>
                                     <form role="form" method="POST" action="{{ url('invest_now') }}">{{ csrf_field() }}
                                         <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-10 col-md-offset-1">
                 <h2 style="color: darkblue">My Invested Loans</h2><br>
-                <table class="table table-hover table-responsive" id="myloans_dt2">
+                <table class="table table-hover table-responsive" id="browseloans2">
                     <thead>
                     <tr>
                         <th>Loan Title</th>
@@ -59,15 +59,15 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @foreach($trustee as $t)
-                       @if($loan->id == $t->loan_id)
+                        @foreach($trustees as $trustee)
+                       @if($loan->id == $trustee->loan_id)
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
-                                <td>{{$loan->loan_amount}}</td>
+                                <td>MYR {{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>{{$loan->loan_funded_amount == '' ? '0' : $loan->loan_funded_amount}}</td>
-                                <td>{{$t->invested_amount}}</td>
+                                <td>MYR {{$loan->loan_funded_amount == '' ? '0' : $loan->loan_funded_amount}}</td>
+                                <td>MYR {{$trustee->invested_amount}}</td>
                             </tr>
                         @endif
                     @endforeach

@@ -88,11 +88,13 @@ $(document).ready(function() {
                 bo_business_country: {required: true, alpha: true,},
                 bo_business_phonenumber: {required: true, number: true,},
                 bo_industry: {required: true,},
+                bo_business_name:{required:true, alpha:true,},
                 //bo_type: {required: true,},
                 bo_legal_entity: {required: true,},
                 bo_registration_number: {required: true,}, //alpha_num: true,//
                 bo_registration_year: {required: true, number: true,},
                 bo_court_judgement: {required: true,},
+                bo_court_judgement_yes:{required: true,},
                 bo_business_license: {required: true,},
                 bo_entity_type: {required: true,},
                 bo_CTOS: {required: true,},
@@ -194,6 +196,8 @@ $(document).ready(function() {
     $('#myloans_dt2').dataTable();
     $('#lrc1').dataTable();
     $('#lrc2').dataTable();
+    $('#browseloans1').dataTable();
+    $('#browseloans2').dataTable();
 });
 function calculate() {
     // Get the user's input from the form. Assume it is all valid.

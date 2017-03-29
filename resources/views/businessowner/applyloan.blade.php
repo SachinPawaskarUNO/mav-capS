@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#loan_submit">Submit</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#loan_submit" id="loan_submit_button">Submit</button>
                             <!-- Modal -->
                             <div class="modal fade" id="loan_submit" role="dialog">
                                 <div class="modal-dialog">
@@ -117,7 +117,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <input type="button" value="Compute" class="btn btn-primary" onclick="calculate();">
+                                <input type="button" value="Compute" class="btn btn-primary" id="loan_est_compute" onclick="calculate();">
                                 <button type="reset" id="loan_est_reset" class="btn btn-warning">Reset</button>
                             </div>
                             <br>
