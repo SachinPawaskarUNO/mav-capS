@@ -96,9 +96,13 @@ class RolesUsersTableSeeder extends Seeder {
     public function run() {
         DB::table('role_user')->delete();
 
-        $role = Role::where('name','admin')->first();
+        $adminrole = Role::where('name','admin')->first();
         $admin = User::where('first_name','Administrator')->first();
-        $admin->attachRole($role);
+        $admin->attachRole($adminrole);
+
+        $managerrole = Role::where('name','manager')->first();
+        $manager = User::where('first_name','Manager')->first();
+        $manager->attachRole($managerrole);
     }
 }
 

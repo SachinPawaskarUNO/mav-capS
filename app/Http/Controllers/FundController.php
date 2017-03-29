@@ -20,16 +20,14 @@ class FundController extends Controller
         $user = Auth::user();
         $inv = InvestorApplication::where('inv_first_name',$user->first_name)->first();
         $fund_total = FundTotal::where('inv_app_id',$inv->id)->first();
-        $funds = Fund::where('fund_total_id',$fund_total->id)->get();
-        foreach ($funds as $fund){
-            if($fund->fund_status == ''){
+        $fund = Fund::where('fund_total_id',$fund_total->id)->where('fund_status', null)->first();
+            if($fund){
                 $uid = $fund->fund_uid;
                 session(['uid' => $uid, 'fund_amount' => $fund->fund_amount]);
                 return view('investor.fund', compact('inv'));
             } else {
                 return view('investor.fund', compact('inv'));
             }
-        }
     }
 
     public function store(Request $request)
