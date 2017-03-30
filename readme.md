@@ -9,6 +9,9 @@ time needed for disbursement.
 ## Run Application
 [CapSphere Services](http://capsphere.herokuapp.com/)
 
+## Browser Support
+Supported browsers for CapSphere Services include the latest versions of Firefox, Chrome, Safari and Opera.
+
 ## Full Documentation
 
 See the [Wiki](https://github.com/SachinPawaskarUNO/mav-capS/wiki) for full documentation, user manuals, technical manuals, examples, operational details and other information.
