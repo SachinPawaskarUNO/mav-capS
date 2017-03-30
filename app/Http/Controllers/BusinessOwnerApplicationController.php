@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BusinessOwnerApplication;
 use App\Mail\ApplicationNotification;
+use App\Mail\ReviewAppNotification;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -15,8 +16,6 @@ use App\Role;
 
 class BusinessOwnerApplicationController extends Controller
 {
-
-
     public function create()
     {
         return view('businessowner.application');
@@ -115,6 +114,12 @@ class BusinessOwnerApplicationController extends Controller
         $user = User::where('id',$borrower->user_id)->first();
         $role = Role::where('name','businessowner')->first();
         $user->attachRole($role);
+        $message = "Business Owner Application has been approved for " .$user->first_name. " ".$user->last_name. ".";
+        Mail::to($user)->send(new ReviewAppNotification($message));
+        $managers = User::where('role_request', 'manager')->get()->toArray();
+        if ($managers) {
+            Mail::to($managers)->send(new ReviewAppNotification($message));
+        }
         return Redirect::back()->with('status','The application has been approved successfully');
     }
 
@@ -127,6 +132,14 @@ class BusinessOwnerApplicationController extends Controller
     public function reject(Request $request){
         $id = $request->input('bo_app_id');
         BusinessOwnerApplication::where('id',$id)->update(array('bo_app_status' =>'Rejected'));
+        $borrower = BusinessOwnerApplication::where('id',$id)->first();
+        $user = User::where('id',$borrower->user_id)->first();
+        $message = "Business Owner Application has been rejected for " .$user->first_name. " ".$user->last_name. ".";
+        Mail::to($user)->send(new ReviewAppNotification($message));
+        $managers = User::where('role_request', 'manager')->get()->toArray();
+        if ($managers) {
+            Mail::to($managers)->send(new ReviewAppNotification($message));
+        }
         return Redirect::back()->with('status','The application has been rejected successfully');
     }
 }

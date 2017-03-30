@@ -107,13 +107,13 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->loan_status == 'Borrower Approved' && ($loan->loan_80_funded_status >= 80 || $loan->loan_80_funded_status != null))
+                        @if($loan->loan_status == 'Borrower Approved' && $loan->loan_funded_percent >= 80)
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>{{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>{{$loan->loan_80_funded_status}} %</td>
+                                <td>{{$loan->loan_funded_percent}} %</td>
                                 <td>
                                     <!--Approve Button-->
                                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="bo_activeloans_approval" data-target="#bo_activeloans_approve">Approve</button>
@@ -166,14 +166,14 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>|| $loan->loan_80_funded_status == null)
-                        @elseif($loan->loan_status == 'Borrower Approved' && ($loan->loan_80_funded_status < 80 || $loan->loan_80_funded_status == null))
+                            </tr>
+                        @elseif($loan->loan_status == 'Borrower Approved' && $loan->loan_funded_percent < 80)
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>{{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>{{$loan->loan_80_funded_status == '' ? '0' : $loan->loan_80_funded_status}} %</td>
+                                <td>{{$loan->loan_funded_percent == '' ? '0' : $loan->loan_funded_percent}} %</td>
                                 <td><button type="button" class="btn btn-success btn-sm" disabled>Approve</button>
                                 </td>
                                 <td><button type="button" class="btn btn-danger btn-sm" disabled>Reject</button>
@@ -200,7 +200,7 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->loan_status == 'Borrower Approved' || $loan->loan_status == 'Borrower Rejected' || $loan->loan_status == 'Manager Rejected')
+                        @if($loan->loan_status == 'Borrower Accepted' || $loan->loan_status == 'Borrower Rejected' || $loan->loan_status == 'Manager Rejected')
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>{{$loan->loan_amount}}</td>

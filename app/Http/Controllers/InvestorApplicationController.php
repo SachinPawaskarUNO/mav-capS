@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use App\Investment;
 use App\Loan;
 use App\FundTotal;
+use App\Mail\InvestmentNotification;
 use App\Trustee;
 use Auth;
 use App\File;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\ApplicationNotification;
+use App\Mail\ReviewAppNotification;
 use Illuminate\Support\Facades\Mail;
 use App\InvestorApplication;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Role;
 use App\User;
+use App\BusinessOwnerApplication;
 
 class InvestorApplicationController extends Controller
 {
@@ -92,6 +94,12 @@ class InvestorApplicationController extends Controller
         $user = User::where('id',$investor->user_id)->first();
         $role = Role::where('name','investor')->first();
         $user->attachRole($role);
+        $message = "Investor Application has been approved for " .$user->first_name. " ".$user->last_name. ".";
+        Mail::to($user)->send(new ReviewAppNotification($message));
+        $managers = User::where('role_request', 'manager')->get()->toArray();
+        if ($managers) {
+            Mail::to($managers)->send(new ReviewAppNotification($message));
+        }
         return Redirect::back()->with('status','The application has been approved successfully');
     }
 
@@ -121,16 +129,17 @@ class InvestorApplicationController extends Controller
         ]);
         $user =Auth::user();
         $id = $request->input('invested_loan_id');
+        $amount = $request->input('add_investment_amount');
         $inv = InvestorApplication::where('user_id',$user->id)->first();
         $investment = new Investment();
-        $investment->invested_amount = $request->input('add_investment_amount');
+        $investment->invested_amount = $amount;
         $investment->investor_application_id = $inv->id;
         $investment->created_by  = ucfirst($user->first_name);
         $investment->updated_by  = ucfirst($user->first_name);
         $investment->save();
         $investments = Investment::where('investor_application_id',$inv->id)->first();
         $trustee = new Trustee();
-        $trustee->invested_amount = $request->input('add_investment_amount');
+        $trustee->invested_amount = $amount;
         $trustee->investment_id = $investments->id;
         $trustee->invested_status = 'Invested';
         $trustee->loan_id = $id;
@@ -138,11 +147,18 @@ class InvestorApplicationController extends Controller
         $trustee->updated_by = ucfirst($user->first_name);
         $trustee->save();
         $loan = Loan::where('id',$id)->first();
+        $boapp = BusinessOwnerApplication::where('id',$loan->business_owner_application_id)->first();
+        $boapp = User::where('id', $boapp->user_id)->first();
+        Mail::to($user)->send(new InvestmentNotification($user, $boapp, $loan, $amount));
+        $managers = User::where('role_request','manager')->get()->toArray();
+        if($managers){
+            Mail::to($managers)->send(new InvestmentNotification($user, $boapp, $loan, $amount));
+        }
         Loan::where('id',$id)->update(array('loan_funded_amount' => $loan->loan_funded_amount + $request->input('add_investment_amount')));
         $updatedloan = Loan::where('id',$id)->first();
         $funded = $updatedloan->loan_funded_amount/$updatedloan->loan_amount;
         $fundedpercentage = round((float)$funded * 100 );
-        Loan::where('id',$id)->update(array('loan_80_funded_status' => $fundedpercentage));
+        Loan::where('id',$id)->update(array('loan_funded_percent' => $fundedpercentage));
         $loans = Loan::all();
         $trustees = Trustee::all();
         $request->session()->flash('status', 'Your investment has been submitted successfully');

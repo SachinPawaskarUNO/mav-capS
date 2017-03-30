@@ -4,7 +4,7 @@
 Funds has been successfully submitted. Here are the details:
 
 UID for the transaction: {{ $fund->fund_uid }} <br>
-Amount Invested: MYR{{ $fund->fund_amount }} <br>
+Amount Invested: MYR {{ $fund->fund_amount }} <br>
 Investment will be confirmed once they are received.
 
 @component('mail::button', ['url' => URL::to('/login'), 'id' => 'btn_fund_notify'])
