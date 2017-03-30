@@ -6,7 +6,7 @@ CapSphere Services is a Malaysian-based peer-to-peer (P2P) platform, connecting 
 time needed for disbursement. 
 
 ## Run Application
-<img src='https://github.com/SachinPawaskarUNO/mav-capS/blob/MyWorkInProgress/public/images/documentation/capsphere%20homepage%20link.png'>
+<a href='http://capsphere.herokuapp.com/'><img src='https://github.com/SachinPawaskarUNO/mav-capS/blob/MyWorkInProgress/public/images/documentation/capsphere%20homepage%20link.png'></a>
 
 ## Browser Support
 Supported browsers for CapSphere Services include the latest versions of Firefox, Chrome, Safari and Opera.
