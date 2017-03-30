@@ -1,7 +1,6 @@
 <img src='https://github.com/SachinPawaskarUNO/mav-capS/blob/MyWorkInProgress/public/images/documentation/logo.png'>
 
 # *Microfinancing made simple*
-
 CapSphere Services is a Malaysian-based peer-to-peer (P2P) platform, connecting small and medium-sized enterprises
 (SMEs) to private investors. The company enables SMEs to raise capital efficiently at lower rates while offering lenders a higher return on investment. CapSphere’s platform will utilize a simple and effective financing process to improve customer experience and reduce the 
 time needed for disbursement. 
@@ -13,7 +12,6 @@ time needed for disbursement.
 Supported browsers for CapSphere Services include the latest versions of Firefox, Chrome, Safari and Opera.
 
 ## Full Documentation
-
 See the [Wiki](https://github.com/SachinPawaskarUNO/mav-capS/wiki) for full documentation, user manuals, technical manuals, examples, operational details and other information.
 
 ## Key Personnel
@@ -33,10 +31,13 @@ See the [Wiki](https://github.com/SachinPawaskarUNO/mav-capS/wiki) for full docu
 - Mr. Joseph Forsythe
 
 ## Bugs and Feedback
-
 For bugs, questions and discussions please use the [GitHub Issues](https://github.com/SachinPawaskarUNO/mav-capS/issues).
 
-## License
+## Communication
+- Email: capsphere.services@gmail.com
+- GitHub: [GitHub Issues](https://github.com/SachinPawaskarUNO/mav-capS/issues)
 
+
+## License
 Copyright 2017 Sepuluh Solutions.
 
