@@ -23,7 +23,7 @@ class CreateLoansTable extends Migration
             $table->string('updated_by');
             $table->decimal('loan_interest_rate')->nullable();
             $table->string('loan_status')->nullable();
-            $table->string('loan_80_funded_status')->nullable();
+            $table->string('loan_funded_percent')->nullable();
             $table->bigInteger('loan_funded_amount')->nullable();
             $table->integer('business_owner_application_id')->unsigned();
             $table->timestamps();
