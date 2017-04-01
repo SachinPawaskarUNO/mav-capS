@@ -60,6 +60,6 @@ Laravel is a web application framework with expressive, elegant syntax. Laravel 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
 
 ## License
-Copyright 2017 Sepuluh Solutions
+Copyright 2017 Sepuluh Solutions<br>
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
