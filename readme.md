@@ -6,7 +6,7 @@ CapSphere Services is a Malaysian-based peer-to-peer (P2P) platform, connecting 
 time needed for disbursement. 
 
 ## Run Application
-### [Click here to view application](http://capsphere.herokuapp.com/)<br>
+### [Click here to view application](http://capsphere.herokuapp.com/)<br><br>
 <img src='https://github.com/SachinPawaskarUNO/mav-capS/blob/MyWorkInProgress/public/images/documentation/output_b6g4hA.gif'>
 
 ## Browser Support
@@ -48,8 +48,6 @@ For bugs, questions and discussions please use the [GitHub Issues](https://githu
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-
-## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. Laravel focuses on a more creative experience and attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
 
