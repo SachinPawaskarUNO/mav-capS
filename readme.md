@@ -6,7 +6,7 @@ CapSphere Services is a Malaysian-based peer-to-peer (P2P) platform, connecting 
 time needed for disbursement. 
 
 ## Run Application
-### [Click here to view application](http://capsphere.herokuapp.com/)
+### [Click here to view application](http://capsphere.herokuapp.com/)<br>
 <img src='https://github.com/SachinPawaskarUNO/mav-capS/blob/MyWorkInProgress/public/images/documentation/output_b6g4hA.gif'>
 
 ## Browser Support
@@ -63,7 +63,7 @@ Laravel is a web application framework with expressive, elegant syntax. Laravel 
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
 
-
+<p align="center"><img src="https://github.com/SachinPawaskarUNO/mav-capS/blob/MyWorkInProgress/public/images/documentation/composer.gif"></p>
 
 ## License
 Copyright 2017 Sepuluh Solutions<br>
