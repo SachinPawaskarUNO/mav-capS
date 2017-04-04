@@ -6,7 +6,8 @@ CapSphere Services is a Malaysian-based peer-to-peer (P2P) platform, connecting 
 time needed for disbursement. 
 
 ## Run Application
-<a href='http://capsphere.herokuapp.com/'><img src='https://github.com/SachinPawaskarUNO/mav-capS/blob/MyWorkInProgress/public/images/documentation/capsphere%20homepage%20link.png'></a>
+### [Click here to view application](http://capsphere.herokuapp.com/)
+<img src='https://github.com/SachinPawaskarUNO/mav-capS/blob/MyWorkInProgress/public/images/documentation/output_b6g4hA.gif'>
 
 ## Browser Support
 <img src='https://github.com/SachinPawaskarUNO/mav-capS/blob/MyWorkInProgress/public/images/documentation/browser%20support.PNG'>
