@@ -14,15 +14,12 @@ class Loan extends Model
         return $this->belongsTo('App\BusinessApplication');
     }
     public function disbursement() {
-        return $this->hasmany('App\Disbursements');
+        return $this->hasmany('App\Disbursement');
     }
     public function amortize() {
         return $this->hasmany('App\LoanAmortization');
     }
     public function trustee() {
         return $this->hasmany('App\Trustee');
-    }
-    public function disburses() {
-        return $this->hasmany('App\Disbursement');
     }
 }

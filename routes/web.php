@@ -59,6 +59,7 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::get('browse_loans', 'InvestorApplicationController@browseloans');
     Route::get('invest_now/{id}', 'InvestorApplicationController@investnow');
     Route::post('add_investment', 'InvestorApplicationController@addinvestment');
+    Route::get('bo_loanpayment', 'BusinessOwnerApplicationController@loanpayment');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
 Route::get('/{any}', function ($any) {

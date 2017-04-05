@@ -15,7 +15,7 @@ class CreateLoanAmortizationTable extends Migration
     {
         Schema::create('loan_amortization', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('loan_id');
+            $table->integer('loan_id')->unsigned();
             $table->bigInteger('monthly_payment');
             $table->bigInteger('total_amount_paid');
             $table->bigInteger('amount_remaining');

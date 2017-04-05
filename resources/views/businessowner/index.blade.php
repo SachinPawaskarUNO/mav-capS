@@ -13,7 +13,10 @@
                 <a href="{{url('/loan_application/create')}}" class="btn btn-primary" id="bo_applyloans_button">Apply Loan</a>
             </div>
             <div class="panel-body" align="center">
-                <a href="{{url('bo_myloans')}}" class="btn btn-primary" id="bo_myloans_button">My Loans</a>
+                    <a href="{{url('bo_myloans')}}" class="btn btn-primary" id="bo_myloans_button">My Loans</a>
+                </div>
+            <div class="panel-body" align="center">
+                <a href="{{url('bo_loanpayment')}}" class="btn btn-primary" id="bo_loanpayment_button">Loan Payment</a>
             </div>
             @else
             <div class="panel-body" align="center">

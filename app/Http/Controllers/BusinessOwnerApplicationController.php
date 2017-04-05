@@ -142,4 +142,8 @@ class BusinessOwnerApplicationController extends Controller
         }
         return Redirect::back()->with('status','The application has been rejected successfully');
     }
+
+    public function loanpayment() {
+        return view('businessowner.loanpayment');
+    }
 }

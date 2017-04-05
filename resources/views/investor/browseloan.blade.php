@@ -20,7 +20,6 @@
                         <th>Loan Purpose</th>
                         <th>Total Amount Funded</th>
                         <th>Actions</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>

@@ -17,7 +17,7 @@ class CreateDisbursementsTable extends Migration
             $table->increments('id');
             $table->string('disbursement_uid');
             $table->bigInteger('disbursement_amount');
-            $table->integer('loan_id');
+            $table->integer('loan_id')->unsigned();
             $table->string('created_by');
             $table->string('updated_by');
             $table->timestamps();
