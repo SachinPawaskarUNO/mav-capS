@@ -16,8 +16,8 @@ class CreateWithdrawFundsTable extends Migration
         Schema::create('withdraw_funds', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('withdraw_amount');
-            $table->bigInteger('withdraw_uid')->nullable;
-            $table->integer('inv_app_id')->unsigned;
+            $table->bigInteger('withdraw_uid')->nullable();
+            $table->integer('inv_app_id')->unsigned();
             $table->string('created_by');
             $table->string('updated_by');
             $table->timestamps();

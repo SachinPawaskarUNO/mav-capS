@@ -17,6 +17,12 @@
             <div class="panel-body" align="center">
                 <a href="{{url('lrc')}}" class="btn btn-primary" id="manager_lrc_button">Loan Risk Classification</a>
             </div>
+            <div class="panel-body" align="center">
+                <a href="{{url('loan_disbursement')}}" class="btn btn-primary" id="manager_disbursement_button">Disbursement</a>
+            </div>
+            <div class="panel-body" align="center">
+                <a href="{{url('loan_repayment')}}" class="btn btn-primary" id="manager_repayment_button">Repayment</a>
+            </div>
         </div>
     </div>
 @endsection

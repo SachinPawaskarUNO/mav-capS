@@ -47,6 +47,9 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::get('review_bo_app','ManagerController@reviewboa');
     Route::get('review_inv_app','ManagerController@reviewia');
     Route::get('lrc','ManagerController@lrc');
+    Route::get('loan_disbursement','ManagerController@loandisbursement');
+    Route::post('manager_disburse','LoanController@disburseloan');
+    Route::get('loan_repayment','ManagerController@loanrepayment');
     Route::get('bo_myloans','LoanController@myloans');
     Route::post('bo_app_reject', 'BusinessOwnerApplicationController@reject');
     Route::post('bo_loan_approve', 'LoanController@approveboloan');

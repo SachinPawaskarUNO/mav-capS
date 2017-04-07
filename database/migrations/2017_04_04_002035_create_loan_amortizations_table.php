@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLoanAmortizationTable extends Migration
+class CreateLoanAmortizationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,21 @@ class CreateLoanAmortizationTable extends Migration
      */
     public function up()
     {
-        Schema::create('loan_amortization', function (Blueprint $table) {
+        Schema::create('loan_amortizations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('loan_id')->unsigned();
             $table->bigInteger('monthly_payment');
             $table->bigInteger('total_amount_paid');
             $table->bigInteger('amount_remaining');
             $table->bigInteger('interest_amount');
-            $table->date('due_date');
-            $table->string('paid_status');
+            $table->date('due_date')->nullable();
+            $table->string('paid_status')->nullable();
             $table->integer('month');
             $table->string('created_by');
             $table->string('updated_by');
             $table->timestamps();
         });
-        Schema::table('loan_amortization', function (Blueprint $table) {
+        Schema::table('loan_amortizations', function (Blueprint $table) {
             $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');
         });
 
@@ -40,6 +40,6 @@ class CreateLoanAmortizationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loan_amortization');
+        Schema::dropIfExists('loan_amortizations');
     }
 }

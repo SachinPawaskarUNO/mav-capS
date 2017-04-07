@@ -46,6 +46,18 @@ class ManagerController extends Controller
         return view('managers.lrc',compact('loans'));
 
     }
+    public function loandisbursement()
+    {
+        $loans = Loan::all();
+        return view('managers.loandisbursement',compact('loans'));
+
+    }
+    public function loanrepayment()
+    {
+        $loans = Loan::all();
+        return view('managers.repayment',compact('loans'));
+
+    }
     public function store(Request $request)
     {
         $this->validate($request, [
