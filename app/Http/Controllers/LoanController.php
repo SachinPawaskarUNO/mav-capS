@@ -6,6 +6,7 @@ use App\BusinessOwnerApplication;
 use App\Disbursement;
 use App\LoanAmortization;
 use App\Mail\LoanApproveNotification;
+use App\Mail\LoanDisbursement;
 use App\Mail\LoanNotification;
 use App\Mail\LoanRejectNotification;
 use App\Mail\ReviewAppNotification;
@@ -180,6 +181,18 @@ class LoanController extends Controller
 
         }
         $disbursement->save();
-        return Redirect::back();
+        Loan::where('id',$id)->update(array('loan_amount' =>$loan->loan_funded_amount));
+        $boapp = BusinessOwnerApplication::where('id',$loan->business_owner_application_id)->first();
+        $bank_name=$boapp->bo_bank_name;
+        $bank_number=$boapp->bo_bank_account;
+        //print_r($bank_name);
+       // print_r($bank_number);
+        $user = User::where('id', $boapp->user_id)->first();
+        Mail::to($user)->send(new LoanDisbursement($user, $boapp,$loan, $disbursement));
+        $managers = User::where('role_request','manager')->get()->toArray();
+        if($managers){
+            Mail::to($managers)->send(new LoanDisbursement($user, $boapp, $loan, $disbursement));
+        }
+        return view('managers.diburseddetail',compact('boapp','disbursement'));
     }
 }

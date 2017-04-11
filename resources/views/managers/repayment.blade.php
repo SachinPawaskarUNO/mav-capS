@@ -41,7 +41,7 @@
             </div>
         </div>
         <div align="right">
-            <a href="{{ url()->previous() }}" class="btn btn-info" id="disburse_back">Back</a>
+            <a href="{{ url()->previous() }}" class="btn btn-info" id="repayment_back">Back</a>
         </div>
     </div>
 @endsection
