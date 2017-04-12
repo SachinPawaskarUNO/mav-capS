@@ -50,6 +50,7 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::get('loan_disbursement','ManagerController@loandisbursement');
     Route::post('manager_disburse','LoanController@disburseloan');
     Route::get('loan_repayment','ManagerController@loanrepayment');
+    Route::get('verify_funds','ManagerController@verifyfunds');
     Route::get('bo_myloans','LoanController@myloans');
     Route::post('bo_app_reject', 'BusinessOwnerApplicationController@reject');
     Route::post('bo_loan_approve', 'LoanController@approveboloan');
@@ -63,6 +64,11 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::get('invest_now/{id}', 'InvestorApplicationController@investnow');
     Route::post('add_investment', 'InvestorApplicationController@addinvestment');
     Route::get('bo_loanpayment', 'BusinessOwnerApplicationController@loanpayment');
+    Route::get('bo_paynow/{id}', 'BusinessOwnerApplicationController@paynow');
+    Route::post('bo_payment', 'BusinessOwnerApplicationController@payment');
+    Route::post('bo_full_payment', 'BusinessOwnerApplicationController@fullpayment');
+    Route::post('add_funds_approve_manager','FundController@approvefunds');
+    Route::post('add_funds_reject_manager','FundController@rejectfunds');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
 Route::get('/{any}', function ($any) {

@@ -23,14 +23,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Test</td>
-                            <td>MYR 5000</td>
-                            <td>12 months</td>
-                            <td>MYR 500</td>
-                            <td>MYR 4500</td>
-                            <td><button type="button" id="loanpayment_paynow" class="btn btn-success btn-sm">Pay Now</button></td>
-                        </tr>
+                    @foreach($loans as $loan)
+                        @if($loan->id == $amortization->loan_id && $amortization->paid_status == null)
+                            <tr>
+                                <td>{{$loan->loan_title}}</td>
+                                <td>MYR {{$loan->loan_funded_amount}}</td>
+                                <td>{{$loan->loan_duration}}</td>
+                                <td>MYR {{$amortization->monthly_payment}}</td>
+                                <td>MYR {{$amortization->amount_remaining}}</td>
+                                <td><a href="{{url('bo_paynow',$amortization->id)}}" id="loanpayment_paynow" class="btn btn-success btn-sm">Pay Now</a></td>
+                            </tr>
+                        @endif
+                    @endforeach
                     </tbody>
                 </table>
                 <a href="{{ url()->previous() }}" class="btn btn-info" id="bo_loanpayment_back">Back</a>

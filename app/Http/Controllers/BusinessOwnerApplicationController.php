@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\BusinessOwnerApplication;
+use App\Loan;
+use App\LoanAmortization;
+use App\LoanPayment;
 use App\Mail\ApplicationNotification;
+use App\Mail\LoanPaymentNotification;
 use App\Mail\ReviewAppNotification;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use App\File;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
@@ -144,6 +149,64 @@ class BusinessOwnerApplicationController extends Controller
     }
 
     public function loanpayment() {
-        return view('businessowner.loanpayment');
+        $user = Auth::user();
+        $borrower = BusinessOwnerApplication::where('user_id',$user->id)->first();
+        $loans = Loan::where('business_owner_application_id',$borrower->id)->get();
+        foreach ($loans as $loan) {
+            $amortization = LoanAmortization::where('loan_id',$loan->id)->first();
+        }
+        return view('businessowner.loanpayment', compact('loans','amortization'));
+    }
+
+    public function paynow($id) {
+        $amortization = LoanAmortization::where('id',$id)->first();
+        return view('businessowner.paynow', compact('amortization'));
+    }
+
+    public function payment(Request $request) {
+        $this->validate($request, [
+            'extra_monthly_amount' => 'numeric|nullable',
+        ]);
+        $user = Auth::user();
+        $id = $request->input('paid_amortization_id');
+        $amount = $request->input('extra_monthly_amount');
+        $uid =mt_rand(1000000000,9999999999);
+        LoanAmortization::where('id',$id)->update(array('paid_status' =>'Borrower Paid'));
+        $amortization = LoanAmortization::where('id',$id)->first();
+        $loan = Loan::where('id',$amortization->loan_id)->first();
+        $loanpayment = new LoanPayment();
+        if($amount) {
+            $loanpayment->loan_amount_paid = $amount;
+        } else {
+            $loanpayment->loan_amount_paid = $amortization->monthly_payment;
+        }
+        $loanpayment->loan_id = $loan->id;
+        $loanpayment->loan_paid_uid = $uid;
+        $loanpayment->created_by = ucfirst($user->first_name);
+        $loanpayment->updated_by = ucfirst($user->first_name);
+        $loanpayment->save();
+        $loanpayment = LoanPayment::where('loan_id',$loan->id)->first();
+        $message = "Loan Payment has been submitted by " .$user->first_name. " ".$user->_last_name. " for the amount of MYR" .$loanpayment->loan_amount_paid. ".";
+        Mail::to($user)->send(new LoanPaymentNotification($message, $loan));
+        $managers = User::where('role_request', 'manager')->get()->toArray();
+        if ($managers) {
+            Mail::to($managers)->send(new LoanPaymentNotification($message, $loan));
+        }
+        return Redirect::back()->with('uid', $uid)->with('status', 'Your payment has been processed successfully');
+    }
+
+    public function fullpayment(Request $request) {
+        $user = Auth::user();
+        $id = $request->input('full_amortization_id');
+        $amortization = LoanAmortization::where('id',$id)->first();
+        $loan = Loan::where('id',$amortization->loan_id)->first();
+        $message = "Full Loan Payment has been requested by " .$user->first_name. " ".$user->_last_name. ".";
+        Mail::to($user)->send(new LoanPaymentNotification($message, $loan));
+        $managers = User::where('role_request', 'manager')->get()->toArray();
+        if ($managers) {
+            Mail::to($managers)->send(new LoanPaymentNotification($message, $loan));
+        }
+        $request->session()->flash('status','Your request has been processed successfully for full loan payment');
+        return view('businessowner.index');
     }
 }
