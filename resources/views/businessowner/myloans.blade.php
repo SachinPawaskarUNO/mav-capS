@@ -50,8 +50,8 @@
                                             <div class="modal-footer">
                                                 <form role="form" method="POST" action="{{ url('bo_loan_approve') }}">{{ csrf_field() }}
                                                     <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
-                                                    <button type="submit" id="myloan_accept" class="btn btn-danger btn-sm">Approve</button>
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="myloan_approve_no">No</button>
+                                                    <button type="submit" id="myloan_accept" class="btn btn-success btn-sm">Approve</button>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" id="myloan_approve_no">No</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -76,8 +76,8 @@
                                                 <div class="modal-footer">
                                                     <form role="form" method="POST" action="{{ url('bo_loan_reject') }}">{{ csrf_field() }}
                                                         <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
-                                                        <button type="submit" id="myloan_reject" class="btn btn-danger btn-sm">Reject</button>
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="myloan_reject_no">No</button>
+                                                        <button type="submit" id="myloan_reject" class="btn btn-success btn-sm">Reject</button>
+                                                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" id="myloan_reject_no">No</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -132,8 +132,8 @@
                                                 <div class="modal-footer">
                                                     <form role="form" method="POST" action="{{ url('bo_loan_accept') }}">{{ csrf_field() }}
                                                         <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
-                                                        <button type="submit" id="activeloan_accept" class="btn btn-danger btn-sm">Approve</button>
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="aciveloan_approve_no">No</button>
+                                                        <button type="submit" id="activeloan_accept" class="btn btn-success btn-sm">Approve</button>
+                                                        <button type="button" class="btn btn-danger btn-group-sm" data-dismiss="modal" id="aciveloan_approve_no">No</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -158,8 +158,8 @@
                                                 <div class="modal-footer">
                                                     <form role="form" method="POST" action="{{ url('bo_loan_reject') }}">{{ csrf_field() }}
                                                         <input type="hidden" name="bo_loan_id" value="{{ $loan->id }}">
-                                                        <button type="submit" id="myloan_reject" class="btn btn-danger btn-sm">Reject</button>
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="myloan_reject_no">No</button>
+                                                        <button type="submit" id="myloan_reject" class="btn btn-success btn-sm">Reject</button>
+                                                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" id="myloan_reject_no">No</button>
                                                     </form>
                                                 </div>
                                             </div>

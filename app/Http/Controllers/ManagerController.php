@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Fund;
+use App\FundTotal;
 use App\InvestorApplication;
 use App\User;
 use Illuminate\Support\Facades\Validator;
@@ -44,6 +46,18 @@ class ManagerController extends Controller
     {
         $loans = Loan::all();
         return view('managers.lrc',compact('loans'));
+
+    }
+    public function loandisbursement()
+    {
+        $loans = Loan::all();
+        return view('managers.loandisbursement',compact('loans'));
+
+    }
+    public function loanrepayment()
+    {
+        $loans = Loan::all();
+        return view('managers.repayment',compact('loans'));
 
     }
     public function store(Request $request)
@@ -134,6 +148,13 @@ class ManagerController extends Controller
         $invapp = InvestorApplication::where('id',$id)->first();
         $file = File::where('file_type', $filetype)->where('user_id',$invapp->user_id)->first();
         return response()->download(Storage::disk()->getDriver()->getAdapter()->applyPathPrefix($file->file_path));
+    }
+
+    public function verifyfunds(){
+        $funds = Fund::all();
+        $fundtotals = FundTotal::all();
+        $investors = InvestorApplication::all();
+        return view('managers.verifyfunds', compact('funds','fundtotals','investors'));
     }
 
 }

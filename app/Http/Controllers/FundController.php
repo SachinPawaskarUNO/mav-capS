@@ -6,6 +6,7 @@ use App\FundTotal;
 use App\InvestorApplication;
 use App\Mail\FundsNotification;
 use App\Mail\FundsCancelNotification;
+use App\Mail\FundsReviewNotification;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Mail;
@@ -66,5 +67,51 @@ class FundController extends Controller
         }
        Fund::find($fund->id)->delete();
        return redirect('home')->with('status','Your investment has been successfully cancelled');
+    }
+
+    public function approvefunds(Request $request)
+    {
+        $this->validate($request, [
+            'fund_verified_amount' => 'numeric|nullable',
+        ]);
+       $user = Auth::user();
+       $id = $request->input('add_funds_id');
+       $amount = $request->input('fund_verified_amount');
+       $fund = Fund::where('id',$id)->first();
+       if($amount) {
+           Fund::where('id',$id)->update(array('fund_status' =>'Manager Approved','fund_verified_amount' =>$amount, 'updated_by' => $user->first_name));
+       } else {
+           Fund::where('id',$id)->update(array('fund_status' =>'Manager Approved','fund_verified_amount' =>$fund->fund_amount, 'updated_by' => $user->first_name));
+       }
+       $fund = Fund::where('id',$id)->first();
+       $fundtotal = FundTotal::where('id',$fund->fund_total_id)->first();
+       FundTotal::where('id',$fundtotal->id)->update(array('funds_total' => $fundtotal->funds_total + $fund->fund_verified_amount, 'updated_by' => $user->first_name));
+       $inv = InvestorApplication::where('id',$fundtotal->inv_app_id)->first();
+       $message = "Added funds have been approved for " .$inv->inv_first_name. " ".$inv->inv_last_name. ".";
+       $user = User::where('id',$inv->user_id)->first();
+       Mail::to($user)->send(new FundsReviewNotification($message, $fund));
+        $managers = User::where('role_request', 'manager')->get()->toArray();
+        if ($managers) {
+            Mail::to($managers)->send(new FundsReviewNotification($message, $fund));
+        }
+       return Redirect::back()->with('status','Fund has been approved successfully');
+    }
+
+    public function rejectfunds(Request $request)
+    {
+        $user = Auth::user();
+        $id = $request->input('add_funds_reject_manager');
+        Fund::where('id',$id)->update(array('fund_status' =>'Manager Rejected', 'updated_by' => $user->first_name));
+        $fund = Fund::where('id',$id)->first();
+        $fundtotal = FundTotal::where('id',$fund->fund_total_id)->first();
+        $inv = InvestorApplication::where('id',$fundtotal->inv_app_id)->first();
+        $message = "Added funds have been rejected for " .$inv->inv_first_name. " ".$inv->inv_last_name. ".";
+        $user = User::where('id',$inv->user_id)->first();
+        Mail::to($user)->send(new FundsReviewNotification($message, $fund));
+        $managers = User::where('role_request', 'manager')->get()->toArray();
+        if ($managers) {
+            Mail::to($managers)->send(new FundsReviewNotification($message, $fund));
+        }
+        return Redirect::back()->with('status','Fund has been rejected successfully');
     }
 }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\BusinessOwnerApplication;
+use App\Disbursement;
+use App\LoanAmortization;
 use App\Mail\LoanApproveNotification;
+use App\Mail\LoanDisbursement;
 use App\Mail\LoanNotification;
 use App\Mail\LoanRejectNotification;
 use App\Mail\ReviewAppNotification;
@@ -139,5 +142,57 @@ class LoanController extends Controller
             Mail::to($managers)->send(new LoanRejectNotification($user, $loan));
         }
         return Redirect::back()->with('status','Your Loan has been rejected successfully');
+    }
+    public function disburseloan(Request $request){
+        $user = Auth::user();
+        $id = $request->input('manager_disburse_id');
+        Loan::where('id',$id)->update(array('loan_status' =>'Loan Disbursed'));
+        $loan = Loan::where('id',$id)->first();
+        $loan_principal= $loan->loan_funded_amount;
+        $uid =mt_rand(1000000000,9999999999);
+        $disbursement = new Disbursement();
+        $disbursement-> disbursement_uid = $uid;
+        $disbursement-> disbursement_amount =  round( $loan_principal,2);
+        $disbursement->loan_id= $loan->id;
+        $disbursement->created_by = $user->first_name;
+        $disbursement->updated_by = $user->first_name;
+        $loan_interest= ($loan->loan_interest_rate)/100;
+        $loan_months= $loan->loan_duration;
+        $monthly_rate=$loan_interest/12;
+        $powerpart= pow((1+$monthly_rate),$loan_months);
+        $monthly_payment= $loan_principal*(($monthly_rate * $powerpart)/($powerpart -1));
+        for ($current_month = 1; $current_month <= $loan_months; $current_month++)
+        {
+
+
+           $interestformonth = $loan_principal * $monthly_rate;
+           $principalformonth = $monthly_payment - $interestformonth;
+           $loan_principal = $loan_principal - $principalformonth;
+           $loanamortization = new LoanAmortization();
+           $loanamortization-> loan_id = $loan->id;
+           $loanamortization-> monthly_payment = round($monthly_payment,2);
+           $loanamortization-> total_amount_paid = 0;
+           $loanamortization-> amount_remaining = round($loan_principal,2);
+           $loanamortization-> interest_amount = round($interestformonth,2);
+           $loanamortization-> month= $current_month;
+           $loanamortization-> created_by = $user->first_name;;
+           $loanamortization-> updated_by = $user->first_name;
+           $loanamortization->save();
+
+        }
+        $disbursement->save();
+        Loan::where('id',$id)->update(array('loan_amount' =>$loan->loan_funded_amount));
+        $boapp = BusinessOwnerApplication::where('id',$loan->business_owner_application_id)->first();
+        $bank_name=$boapp->bo_bank_name;
+        $bank_number=$boapp->bo_bank_account;
+        //print_r($bank_name);
+       // print_r($bank_number);
+        $user = User::where('id', $boapp->user_id)->first();
+        Mail::to($user)->send(new LoanDisbursement($user, $boapp,$loan, $disbursement));
+        $managers = User::where('role_request','manager')->get()->toArray();
+        if($managers){
+            Mail::to($managers)->send(new LoanDisbursement($user, $boapp, $loan, $disbursement));
+        }
+        return view('managers.diburseddetail',compact('boapp','disbursement'));
     }
 }

@@ -11,6 +11,7 @@ class CreateFundsTable extends Migration
         Schema::create('funds', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('fund_amount');
+            $table->bigInteger('fund_verified_amount')->nullable();
             $table->string('fund_uid');
             $table->string('fund_status')->nullable();
             $table->integer('fund_total_id')->unsigned();

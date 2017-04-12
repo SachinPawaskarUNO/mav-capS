@@ -197,8 +197,12 @@ $(document).ready(function() {
     $('#myloans_dt3').dataTable();
     $('#lrc1').dataTable();
     $('#lrc2').dataTable();
+    $('#repayment_table').dataTable();
+    $('#disburse_pending_table').dataTable();
+    $('#disbursed_table').dataTable();
     $('#browseloans1').dataTable();
     $('#browseloans2').dataTable();
+    $('#loanpayment_dt1').dataTable();
 });
 function calculate() {
     // Get the user's input from the form. Assume it is all valid.
