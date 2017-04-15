@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Fund;
 use App\FundTotal;
 use App\InvestorApplication;
+use App\LoanPayment;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -65,6 +66,8 @@ class ManagerController extends Controller
         $loans = Loan::all();
         return view('managers.showdetails',compact('loans'));
     }
+
+    public function store(Request $request)
         public function store(Request $request)
     {
         $this->validate($request, [
@@ -160,6 +163,20 @@ class ManagerController extends Controller
         $fundtotals = FundTotal::all();
         $investors = InvestorApplication::all();
         return view('managers.verifyfunds', compact('funds','fundtotals','investors'));
+    }
+    public function VerifyFundsLoanPaymentapprove()
+    {
+//        $loanpayments = LoanPayment::all();
+//        $businessowners = BusinessOwnerApplication::all();
+//        return view('managers.VerifyFundsLoanPayment',compact('loanpayments','businessowners'));
+
+    }
+    public function VerifyFundsLoanPaymentreject()
+    {
+//        $loanpayments = LoanPayment::all();
+//        $businessowners = BusinessOwnerApplication::all();
+//        return view('managers.VerifyFundsLoanPayment',compact('loanpayments','businessowners'));
+
     }
 
 }
