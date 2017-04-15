@@ -30,7 +30,7 @@
                                 <td>{{$loan->loan_interest_rate}}%</td>
                                 <td>
                                     <!--View Details Button-->
-                                    <button type="button" class="btn btn-success btn-sm"  id="repayment_details_button" >View Details</button>
+                                    <a href="{{url('loan_repayment_details')}}" class="btn btn-info btn-sm" id="repayment_view_details">View Details</a>
                                 </td>
                                 <td>{{$loan->updated_at}}</td>
                             </tr>

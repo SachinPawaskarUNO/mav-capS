@@ -60,7 +60,12 @@ class ManagerController extends Controller
         return view('managers.repayment',compact('loans'));
 
     }
-    public function store(Request $request)
+    public function loanrepaymentdetails()
+    {
+        $loans = Loan::all();
+        return view('managers.showdetails',compact('loans'));
+    }
+        public function store(Request $request)
     {
         $this->validate($request, [
             'first_name' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
