@@ -10,6 +10,7 @@ use App\Mail\LoanDisbursement;
 use App\Mail\LoanNotification;
 use App\Mail\LoanRejectNotification;
 use App\Mail\ReviewAppNotification;
+use App\Repayment;
 use Illuminate\Http\Request;
 use App\Loan;
 use Auth;
@@ -149,6 +150,11 @@ class LoanController extends Controller
         Loan::where('id',$id)->update(array('loan_status' =>'Loan Disbursed'));
         $loan = Loan::where('id',$id)->first();
         $loan_principal= $loan->loan_funded_amount;
+        $repayment = new Repayment();
+        $repayment->loan_id = $loan->id;
+        $repayment->created_by = $user->first_name;
+        $repayment->updated_by = $user->first_name;
+        $repayment->save();
         $uid =mt_rand(1000000000,9999999999);
         $disbursement = new Disbursement();
         $disbursement-> disbursement_uid = $uid;
@@ -163,8 +169,6 @@ class LoanController extends Controller
         $monthly_payment= $loan_principal*(($monthly_rate * $powerpart)/($powerpart -1));
         for ($current_month = 1; $current_month <= $loan_months; $current_month++)
         {
-
-
            $interestformonth = $loan_principal * $monthly_rate;
            $principalformonth = $monthly_payment - $interestformonth;
            $loan_principal = $loan_principal - $principalformonth;
@@ -178,15 +182,12 @@ class LoanController extends Controller
            $loanamortization-> created_by = $user->first_name;;
            $loanamortization-> updated_by = $user->first_name;
            $loanamortization->save();
-
         }
         $disbursement->save();
         Loan::where('id',$id)->update(array('loan_amount' =>$loan->loan_funded_amount));
+        $amortization = LoanAmortization::where('loan_id',$id)->first();
+        LoanAmortization::where('id',$amortization->id)->update(array('paid_status' => 'Due'));
         $boapp = BusinessOwnerApplication::where('id',$loan->business_owner_application_id)->first();
-        $bank_name=$boapp->bo_bank_name;
-        $bank_number=$boapp->bo_bank_account;
-        //print_r($bank_name);
-       // print_r($bank_number);
         $user = User::where('id', $boapp->user_id)->first();
         Mail::to($user)->send(new LoanDisbursement($user, $boapp,$loan, $disbursement));
         $managers = User::where('role_request','manager')->get()->toArray();

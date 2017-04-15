@@ -200,10 +200,10 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->loan_status == 'Borrower Accepted' || $loan->loan_status == 'Borrower Rejected' || $loan->loan_status == 'Manager Rejected')
+                        @if($loan->loan_status == 'Borrower Accepted' || $loan->loan_status == 'Borrower Rejected' || $loan->loan_status == 'Manager Rejected' || $loan->loan_status == 'Loan Disbursed')
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
-                                <td>{{$loan->loan_amount}}</td>
+                                <td>{{$loan->loan_funded_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
                                 <td>{{$loan->loan_interest_rate == '' ? '00.00' : $loan->loan_interest_rate}} %</td>

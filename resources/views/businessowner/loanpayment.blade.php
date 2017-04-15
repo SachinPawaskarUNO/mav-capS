@@ -24,16 +24,18 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->id == $amortization->loan_id && $amortization->paid_status == null)
-                            <tr>
-                                <td>{{$loan->loan_title}}</td>
-                                <td>MYR {{$loan->loan_funded_amount}}</td>
-                                <td>{{$loan->loan_duration}}</td>
-                                <td>MYR {{$amortization->monthly_payment}}</td>
-                                <td>MYR {{$amortization->amount_remaining}}</td>
-                                <td><a href="{{url('bo_paynow',$amortization->id)}}" id="loanpayment_paynow" class="btn btn-success btn-sm">Pay Now</a></td>
-                            </tr>
-                        @endif
+                        @foreach($amortizations as $amortization)
+                            @if($loan->id == $amortization->loan_id)
+                                <tr>
+                                    <td>{{$loan->loan_title}}</td>
+                                    <td>MYR {{$loan->loan_funded_amount}}</td>
+                                    <td>{{$loan->loan_duration}}</td>
+                                    <td>MYR {{$amortization->monthly_payment}}</td>
+                                    <td>MYR {{$amortization->amount_remaining}}</td>
+                                    <td><a href="{{url('bo_paynow',$amortization->id)}}" id="loanpayment_paynow" class="btn btn-success btn-sm">Pay Now</a></td>
+                                </tr>
+                            @endif
+                        @endforeach
                     @endforeach
                     </tbody>
                 </table>

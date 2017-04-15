@@ -19,11 +19,12 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {{$amortizations}}
                     @foreach($loans as $loan)
                         @if($loan->loan_status == 'Loan Disbursed')
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
-                                <td>{{$loan->loan_amount}}</td>
+                                <td>MYR {{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td> Sample</td>
                                 <td> Sample</td>

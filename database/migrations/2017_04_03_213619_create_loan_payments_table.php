@@ -18,6 +18,7 @@ class CreateLoanPaymentsTable extends Migration
             $table->bigInteger('loan_amount_paid');
             $table->string('loan_paid_uid');
             $table->bigInteger('loan_amount_verified')->nullable();
+            $table->string('loan_payment_status')->nullable();
             $table->integer('loan_id')->unsigned();
             $table->string('created_by');
             $table->string('updated_by');

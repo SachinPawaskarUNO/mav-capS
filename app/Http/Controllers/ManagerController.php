@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Fund;
 use App\FundTotal;
 use App\InvestorApplication;
+use App\LoanAmortization;
 use App\LoanPayment;
 use App\User;
 use Illuminate\Support\Facades\Validator;
@@ -58,7 +59,8 @@ class ManagerController extends Controller
     public function loanrepayment()
     {
         $loans = Loan::all();
-        return view('managers.repayment',compact('loans'));
+        $amortizations = LoanAmortization::all();
+        return view('managers.repayment',compact('loans','amortizations'));
 
     }
     public function loanrepaymentdetails()
@@ -68,7 +70,6 @@ class ManagerController extends Controller
     }
 
     public function store(Request $request)
-        public function store(Request $request)
     {
         $this->validate($request, [
             'first_name' => 'required|regex:/^[a-zA-Z ]+$/|max:255',
@@ -164,19 +165,11 @@ class ManagerController extends Controller
         $investors = InvestorApplication::all();
         return view('managers.verifyfunds', compact('funds','fundtotals','investors'));
     }
-    public function VerifyFundsLoanPaymentapprove()
-    {
-//        $loanpayments = LoanPayment::all();
-//        $businessowners = BusinessOwnerApplication::all();
-//        return view('managers.VerifyFundsLoanPayment',compact('loanpayments','businessowners'));
 
+    public function verifyloanpayment(){
+        $loans = Loan::all();
+        $loanpayments = LoanPayment::all();
+        $businessowners = BusinessOwnerApplication::all();
+        return view('managers.verifyloanpayment', compact('loans','loanpayments','businessowners'));
     }
-    public function VerifyFundsLoanPaymentreject()
-    {
-//        $loanpayments = LoanPayment::all();
-//        $businessowners = BusinessOwnerApplication::all();
-//        return view('managers.VerifyFundsLoanPayment',compact('loanpayments','businessowners'));
-
-    }
-
 }

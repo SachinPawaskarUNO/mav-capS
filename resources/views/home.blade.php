@@ -18,9 +18,6 @@
                 <a href="{{url('lrc')}}" class="btn btn-primary" id="manager_lrc_button">Loan Risk Classification</a>
             </div>
             <div class="panel-body" align="center">
-                <a href="{{url('VerifyFundsLoanPayment')}}" class="btn btn-primary" id="manager_VerifyFundsLoanPayment_button">Verify Funds for Loan Payment</a>
-            </div>
-            <div class="panel-body" align="center">
                 <a href="{{url('loan_disbursement')}}" class="btn btn-primary" id="manager_disbursement_button">Disbursement</a>
             </div>
             <div class="panel-body" align="center">
@@ -28,6 +25,9 @@
             </div>
             <div class="panel-body" align="center">
                 <a href="{{url('verify_funds')}}" class="btn btn-primary" id="manager_verify_funds_button">Verify Funds for Add Funds</a>
+            </div>
+            <div class="panel-body" align="center">
+                <a href="{{url('verify_loanpayment')}}" class="btn btn-primary" id="manager_verify_loanpayment_button">Verify Funds for Loan Payment</a>
             </div>
         </div>
     </div>

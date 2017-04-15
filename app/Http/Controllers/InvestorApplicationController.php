@@ -137,7 +137,7 @@ class InvestorApplicationController extends Controller
         $investment->created_by  = ucfirst($user->first_name);
         $investment->updated_by  = ucfirst($user->first_name);
         $investment->save();
-        $investments = Investment::where('investor_application_id',$inv->id)->first();
+        $investments = Investment::where('investor_application_id',$inv->id)->where('invested_amount',$amount)->first();
         $trustee = new Trustee();
         $trustee->invested_amount = $amount;
         $trustee->investment_id = $investments->id;

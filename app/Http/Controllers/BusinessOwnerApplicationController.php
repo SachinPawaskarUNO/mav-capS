@@ -152,10 +152,8 @@ class BusinessOwnerApplicationController extends Controller
         $user = Auth::user();
         $borrower = BusinessOwnerApplication::where('user_id',$user->id)->first();
         $loans = Loan::where('business_owner_application_id',$borrower->id)->get();
-        foreach ($loans as $loan) {
-            $amortization = LoanAmortization::where('loan_id',$loan->id)->first();
-        }
-        return view('businessowner.loanpayment', compact('loans','amortization'));
+        $amortizations = LoanAmortization::where('paid_status','Due')->get();
+        return view('businessowner.loanpayment', compact('loans','amortizations'));
     }
 
     public function paynow($id) {

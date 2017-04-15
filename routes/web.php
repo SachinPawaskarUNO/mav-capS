@@ -47,8 +47,6 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::get('review_bo_app','ManagerController@reviewboa');
     Route::get('review_inv_app','ManagerController@reviewia');
     Route::get('lrc','ManagerController@lrc');
-    Route::get('VerifyFundsLoanPaymentapprove','ManagerController@VerifyFundsLoanPaymentapprove');
-    Route::get('VerifyFundsLoanPaymentreject','ManagerController@VerifyFundsLoanPaymentreject');
     Route::get('loan_disbursement','ManagerController@loandisbursement');
     Route::post('manager_disburse','LoanController@disburseloan');
     Route::get('loan_repayment','ManagerController@loanrepayment');
@@ -72,6 +70,9 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::post('bo_full_payment', 'BusinessOwnerApplicationController@fullpayment');
     Route::post('add_funds_approve_manager','FundController@approvefunds');
     Route::post('add_funds_reject_manager','FundController@rejectfunds');
+    Route::get('verify_loanpayment','ManagerController@verifyloanpayment');
+    Route::post('loanpayment_approve_manager','FundController@approveloanpayment');
+    Route::post('loanpayment_reject_manager','FundController@rejectloanpayment');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
 Route::get('/{any}', function ($any) {
