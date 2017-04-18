@@ -164,10 +164,11 @@ class LoanController extends Controller
         $disbursement->updated_by = $user->first_name;
         $loan_interest= ($loan->loan_interest_rate)/100;
         $loan_months= $loan->loan_duration;
+        $str = preg_replace("/[^0-9]/","",$loan_months);
         $monthly_rate=$loan_interest/12;
-        $powerpart= pow((1+$monthly_rate),$loan_months);
+        $powerpart= pow((1+$monthly_rate),$str);
         $monthly_payment= $loan_principal*(($monthly_rate * $powerpart)/($powerpart -1));
-        for ($current_month = 1; $current_month <= $loan_months; $current_month++)
+        for ($current_month = 1; $current_month <= $str; $current_month++)
         {
            $interestformonth = $loan_principal * $monthly_rate;
            $principalformonth = $monthly_payment - $interestformonth;
