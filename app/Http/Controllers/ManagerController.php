@@ -6,6 +6,7 @@ use App\FundTotal;
 use App\InvestorApplication;
 use App\LoanAmortization;
 use App\LoanPayment;
+use App\Repayment;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -55,18 +56,6 @@ class ManagerController extends Controller
         $loans = Loan::all();
         return view('managers.loandisbursement',compact('loans'));
 
-    }
-    public function loanrepayment()
-    {
-        $loans = Loan::all();
-        $amortizations = LoanAmortization::all();
-        return view('managers.repayment',compact('loans','amortizations'));
-
-    }
-    public function loanrepaymentdetails()
-    {
-        $loans = Loan::all();
-        return view('managers.showdetails',compact('loans'));
     }
 
     public function store(Request $request)
@@ -172,4 +161,18 @@ class ManagerController extends Controller
         $businessowners = BusinessOwnerApplication::all();
         return view('managers.verifyloanpayment', compact('loans','loanpayments','businessowners'));
     }
+
+    public function loanrepayment()
+    {
+        $loans = Loan::all();
+        $amortizations = LoanAmortization::all();
+        $repayments = Repayment::all();
+        return view('managers.repayment',compact('loans','amortizations','repayments'));
+
+    }
+    public function loanrepaymentdetails($id)
+    {
+       print_r($id);
+    }
+
 }

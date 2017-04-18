@@ -159,6 +159,8 @@ class InvestorApplicationController extends Controller
         $funded = $updatedloan->loan_funded_amount/$updatedloan->loan_amount;
         $fundedpercentage = round((float)$funded * 100 );
         Loan::where('id',$id)->update(array('loan_funded_percent' => $fundedpercentage));
+        $fundtotal = FundTotal::where('inv_app_id',$inv->id)->first();
+        FundTotal::where('id',$fundtotal->id)->update(array('funds_total' => $fundtotal->funds_total - $amount, 'updated_by' => $user->first_name));
         $loans = Loan::all();
         $trustees = Trustee::all();
         $request->session()->flash('status', 'Your investment has been submitted successfully');

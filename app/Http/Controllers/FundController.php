@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\BusinessOwnerApplication;
 use App\FundTotal;
+use App\Investment;
 use App\InvestorApplication;
 use App\Loan;
 use App\LoanAmortization;
@@ -176,5 +177,31 @@ class FundController extends Controller
         $amortization = LoanAmortization::where('loan_id',$loanpayment->loan_id)->where('paid_status', 'Borrower Paid')->first();
         LoanAmortization::where('id',$amortization->id)->update(array('paid_status' => 'Due'));
         return Redirect::back()->with('status','Loan Payment has been rejected successfully');
+    }
+
+    public function withdrawfunds() {
+        $user = Auth::user();
+        $invapp = InvestorApplication::where('user_id',$user->id)->first();
+        $investments = Investment::where('investor_application_id',$invapp->id)->get();
+        $sum = 0;
+        foreach($investments as $num => $values) {
+            $sum += $values[ 'invested_amount' ];
+        }
+        $fundtotal = FundTotal::where('inv_app_id',$invapp->id)->first();
+        return view('investor.withdrawfunds', compact('invapp','sum','fundtotal'));
+    }
+
+    public function withdrawnow(Request $request) {
+        $available = $request->input('available_fund');
+        $id = $request->input('withdraw_inv_id');
+        $this->validate($request, [
+            'withdraw_amount' => "required|numeric|between:0,$available",
+        ]);
+        $user = Auth::user();
+        $amount = $request->input('withdraw_amount');
+        $uid =mt_rand(1000000000,9999999999);
+        $fundtotal = FundTotal::where('inv_app_id',$id)->first();
+        FundTotal::where('inv_app_id',$id)->update(array('funds_total'=>$fundtotal->funds_total - $amount, 'updated_by'=>$user->first_name));
+        return Redirect::back()->with('uid', $uid)->with('status', 'Your request has been processed successfully');
     }
 }

@@ -15,13 +15,13 @@
         </tr>
         <tbody>
         @foreach($loans as $loan)
-        <tr>
-            <td>{{$loan->loan_title}}</td>
-            <td>{{$loan->loan_title}}</td>
-            <td>{{$loan->loan_title}}</td>
-            <td>{{$loan->loan_title}}</td>
-        </tr>
-            @endforeach
+            <tr>
+                <td>{{$loan->loan_title}}</td>
+                <td>{{$loan->loan_title}}</td>
+                <td>{{$loan->loan_title}}</td>
+                <td>{{$loan->loan_title}}</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
     <div class="container">
