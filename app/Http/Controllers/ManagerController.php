@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Fund;
 use App\FundTotal;
+use App\Investment;
 use App\InvestorApplication;
 use App\LoanAmortization;
 use App\LoanPayment;
@@ -170,9 +171,12 @@ class ManagerController extends Controller
         return view('managers.repayment',compact('loans','amortizations','repayments'));
 
     }
+
     public function loanrepaymentdetails($id)
     {
+        $loan = Loan::where('id',$id)->first();
+        $investments = Investment::where('loan_id',$id)->get();
+        $repayments = Repayment::where('loan_id',$id)->first();
        print_r($id);
     }
-
 }
