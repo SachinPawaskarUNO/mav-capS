@@ -74,7 +74,8 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::post('loanpayment_approve_manager','FundController@approveloanpayment');
     Route::post('loanpayment_reject_manager','FundController@rejectloanpayment');
     Route::get('withdraw_funds','FundController@withdrawfunds');
-    Route::post('inv_withdrawfunds','FundCOntroller@withdrawnow');
+    Route::post('inv_withdrawfunds','FundController@withdrawnow');
+    Route::post('repayment','ManagerController@repaymentapprove');
 });
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify');
 Route::get('/{any}', function ($any) {

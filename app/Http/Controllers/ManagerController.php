@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 use App\Fund;
 use App\FundTotal;
+use App\Investment;
 use App\InvestorApplication;
 use App\LoanAmortization;
 use App\LoanPayment;
 use App\Repayment;
+use App\Trustee;
 use App\User;
 use Illuminate\Support\Facades\Validator;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Manager;
 use App\Role;
@@ -172,7 +174,37 @@ class ManagerController extends Controller
     }
     public function loanrepaymentdetails($id)
     {
-       print_r($id);
+       $loan = Loan::where('id',$id)->first();
+       $repayment = Repayment::where('loan_id',$loan->id)->first();
+       $investors = InvestorApplication::all();
+       $investments = Investment::where('loan_id',$id)->get();
+       return view('managers.repaymentdetails',compact('loan','investors','repayment','investments'));
     }
 
+    public function repaymentapprove(Request $request)
+    {
+        $user = Auth::user();
+        $repaidamount = $request->input('repaid_amount');
+        $id = $request->input('repayment_id');
+        $repayment = Repayment::where('id',$id)->first();
+        $loan = Loan::where('id',$repayment->loan_id)->first();
+        $investments = Investment::where('loan_id',$loan->id)->get();
+        $investors = InvestorApplication::all();
+        foreach($investments as $investment){
+            foreach($investors as $investor){
+                if($investment->loan_id == $loan->id && $investment->investor_application_id == $investor->id){
+                    $loanamount = $loan->loan_amount;
+                    $repaidamount = $repayment->repayment_amount - $repayment->total_amnt_paid;
+                    $investedamount = $investment->invested_amount;
+                    $invested = $investedamount/$loanamount;
+                    $investedpercentage = round((float)$invested * 100 );
+                    $amount = ($investedpercentage/100) * $repaidamount;
+                    $fundtotal = FundTotal::where('inv_app_id',$investor->id)->first();
+                    FundTotal::where('id',$fundtotal->id)->update(array('funds_total' => $fundtotal->funds_total + $amount,'updated_by' => $user->first_name));
+                }
+            }
+        }
+        Repayment::where('id',$id)->update(array('total_amnt_paid'=>$repayment->total_amnt_paid + $repaidamount,'updated_by' => $user->first_name));
+        return redirect('home')->with('status','Your have been successfully approved the repayment');
+    }
 }

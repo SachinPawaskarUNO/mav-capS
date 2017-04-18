@@ -275,14 +275,13 @@
                                         <div class="form-group">
                                             {!! Form::label('bo_first_name', 'Business Owner First Name', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                                             <div class="col-md-6">
-                                            {!! Form::text('bo_first_name', null,['class'=>'form-control', 'id'=>'bo_first_name']) !!}
+                                             <input type="text" id="bo_first_name" name="bo_first_name" class="form-control" value="{{ Auth::user()->first_name }}" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_last_name', 'Business Owner Last Name', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
-
                                             <div class="col-md-6">
-                                                {!! Form::text('bo_last_name',null,['class'=>'form-control', 'id'=>'bo_last_name']) !!}
+                                                <input type="text" id="bo_last_name" name="bo_last_name" class="form-control" value="{{ Auth::user()->last_name }}" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">

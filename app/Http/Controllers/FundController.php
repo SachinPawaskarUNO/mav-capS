@@ -136,7 +136,7 @@ class FundController extends Controller
             $remainingamount = $loan->loan_amount - $amount;
             $month =$amortization->month;
             $loan_interest= ($loan->loan_interest_rate)/100;
-            $loan_months= $loan->loan_duration - ($month -1);
+            $loan_months = preg_replace("/[^0-9]/","",$loan->loan_duration- ($month -1));
             $monthly_rate=$loan_interest/12;
             $powerpart= pow((1+$monthly_rate),$loan_months);
             $monthly_payment= $remainingamount*(($monthly_rate * $powerpart)/($powerpart -1));
@@ -148,10 +148,10 @@ class FundController extends Controller
                 $loan_principal = $remainingamount - $principalformonth;
                 $loanamortization = new LoanAmortization();
                 $loanamortization-> loan_id = $loan->id;
-                $loanamortization-> monthly_payment = round($monthly_payment,2);
+                $loanamortization-> monthly_payment = round($monthly_payment);
                 $loanamortization-> total_amount_paid = 0;
-                $loanamortization-> amount_remaining = round($loan_principal,2);
-                $loanamortization-> interest_amount = round($interestformonth,2);
+                $loanamortization-> amount_remaining = round($loan_principal);
+                $loanamortization-> interest_amount = round($interestformonth);
                 $loanamortization-> month= $current_month;
                 $loanamortization-> created_by = $user->first_name;;
                 $loanamortization-> updated_by = $user->first_name;
@@ -161,7 +161,7 @@ class FundController extends Controller
             LoanPayment::where('id',$id)->update(array('loan_payment_status' =>'Manager Approved','loan_amount_verified' =>$loanpayment->loan_amount_paid, 'updated_by' => $user->first_name));
         }
         $loanpayment = LoanPayment::where('id',$id)->first();
-        $repayment = Repayment::where('loan_id',$loanpayment->id)->first();
+        $repayment = Repayment::where('loan_id',$loanpayment->loan_id)->first();
         Repayment::where('id',$repayment->id)->update(array('repayment_amount'=> $repayment->repayment_amount + $loanpayment->loan_amount_verified, 'updated_by' => $user->first_name));
         $amortization = LoanAmortization::where('loan_id',$loanpayment->loan_id)->where('paid_status', null)->first();
         if($amortization){LoanAmortization::where('id',$amortization->id)->update(array('paid_status' => 'Due'));}

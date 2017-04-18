@@ -131,13 +131,20 @@ class InvestorApplicationController extends Controller
         $id = $request->input('invested_loan_id');
         $amount = $request->input('add_investment_amount');
         $inv = InvestorApplication::where('user_id',$user->id)->first();
-        $investment = new Investment();
-        $investment->invested_amount = $amount;
-        $investment->investor_application_id = $inv->id;
-        $investment->created_by  = ucfirst($user->first_name);
-        $investment->updated_by  = ucfirst($user->first_name);
-        $investment->save();
-        $investments = Investment::where('investor_application_id',$inv->id)->where('invested_amount',$amount)->first();
+        $investment = Investment::where('investor_application_id',$inv->id)->where('loan_id',$id)->first();
+        if($investment){
+            Investment::where('investor_application_id',$inv->id)->where('loan_id',$id)
+                ->update(array('invested_amount'=> $investment->invested_amount + $amount, 'updated_by'=>$user->first_name));
+        } else {
+            $investment = new Investment();
+            $investment->invested_amount = $amount;
+            $investment->investor_application_id = $inv->id;
+            $investment->loan_id = $id;
+            $investment->created_by  = ucfirst($user->first_name);
+            $investment->updated_by  = ucfirst($user->first_name);
+            $investment->save();
+        }
+        $investments = Investment::where('investor_application_id',$inv->id)->first();
         $trustee = new Trustee();
         $trustee->invested_amount = $amount;
         $trustee->investment_id = $investments->id;

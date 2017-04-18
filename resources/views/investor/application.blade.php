@@ -272,13 +272,13 @@
                                         <div class="form-group">
                                             {!! Form::label('inv_first_name', 'First Name', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::text('inv_first_name',null,['class'=>'form-control', 'id'=>'inv_first_name',]) !!}
+                                                <input type="text" id="inv_first_name" name="inv_first_name" class="form-control" value="{{ Auth::user()->first_name }}" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('inv_last_name', 'Last Name', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
                                             <div class="col-md-6">
-                                                {!! Form::text('inv_last_name',null,['class'=>'form-control', 'id'=>'inv_last_name', ]) !!}
+                                                <input type="text" id="inv_last_name" name="inv_last_name" class="form-control" value="{{ Auth::user()->last_name }}" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">
