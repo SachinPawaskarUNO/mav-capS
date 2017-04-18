@@ -20,21 +20,30 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->loan_status == 'Loan Disbursed')
-                            <tr>
-                                <td>{{$loan->loan_title}}</td>
-                                <td>{{$loan->loan_amount}}</td>
-                                <td>{{$loan->loan_duration}}</td>
-                                <td> Sample</td>
-                                <td> Sample</td>
-                                <td>{{$loan->loan_interest_rate}}%</td>
-                                <td>
-                                    <!--View Details Button-->
-                                    <button type="button" class="btn btn-success btn-sm"  id="repayment_details_button" >View Details</button>
-                                </td>
-                                <td>{{$loan->updated_at}}</td>
-                            </tr>
-                        @endif
+                        @foreach($amortizations as $amortization)
+                            @php
+                                $total = 0;
+                                foreach($amortizations as $num=>$values){
+                                $total += $values[ 'monthly_payment' ];
+                                }
+                            @endphp
+                            @if($loan->loan_status == 'Loan Disbursed' && ($loan->id == $amortization->loan_id && $amortization->paid_status == 'Due'))
+                                @foreach($repayments as $repayment)
+                                    @if($loan->id == $repayment->loan_id)
+                                        <tr>
+                                            <td>{{$loan->loan_title}}</td>
+                                            <td>MYR {{$loan->loan_amount}}</td>
+                                            <td>{{$loan->loan_duration}}</td>
+                                            <td>MYR {{$repayment->repayment_amount}}</td>
+                                            <td>MYR {{$total - $repayment->repayment_amount}}</td>
+                                            <td>{{$loan->loan_interest_rate}}%</td>
+                                            <td><a href="{{url('loan_repayment_details',$loan->id)}}" id="repayment_view_details" class="btn btn-info btn-sm">View Details</a></td>
+                                            <td>{{$repayment->updated_at}}</td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
                     @endforeach
                     </tbody>
                 </table>

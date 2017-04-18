@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    //code to hide the court judgement
     $("#txtarea").hide();
     $("#bo_court_judgement").change(function () {
         if ($(this).val() == 'yes') {
@@ -203,6 +204,8 @@ $(document).ready(function() {
     $('#browseloans1').dataTable();
     $('#browseloans2').dataTable();
     $('#loanpayment_dt1').dataTable();
+    $('#Pfv1').dataTable();
+    $('#pfv2').dataTable();
 });
 function calculate() {
     // Get the user's input from the form. Assume it is all valid.
@@ -241,5 +244,5 @@ function round(x) {
     return Math.round(x*100)/100;
 }
 
-//code to hide the text area for CourtJudgement
+
 

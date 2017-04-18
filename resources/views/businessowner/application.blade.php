@@ -482,8 +482,8 @@
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('bo_registration_year', 'Registration Year', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
-                                            <div class="col-md-6">
-                                                {!! Form::text('bo_registration_year',null,['class'=>'form-control date-picker-year', 'id'=>'bo_registration_year']) !!}
+                                          <div class="col-md-6 col-sm-6">
+                                                {!! Form::text('bo_registration_year',null,['class'=>'form-control date-picker-year','padding-top'=>'100px', 'id'=>'bo_registration_year']) !!}
                                             </div>
                                         </div>
                                         <div class="form-group">

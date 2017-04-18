@@ -115,7 +115,7 @@
                     @foreach($funds as $fund)
                         @foreach($fundtotals as  $fundtotal)
                             @foreach($investors as $investor)
-                                @if($fund->fund_total_id == $fundtotal->id && $fundtotal->inv_app_id == $investor->id && $fund->fund_status == 'Manager Approved' || $fund->fund_status == 'Manager Rejected')
+                                @if($fund->fund_total_id == $fundtotal->id && $fundtotal->inv_app_id == $investor->id && ($fund->fund_status == 'Manager Approved' || $fund->fund_status == 'Manager Rejected'))
                             <tr>
                                 <td>{{$investor->inv_first_name}} {{$investor->inv_last_name}}</td>
                                 <td>MYR {{$fund->fund_amount}}</td>

@@ -15,15 +15,15 @@ class CreateRepaymentsTable extends Migration
     {
             Schema::create('repayments', function (Blueprint $table) {
                 $table->increments('id');
-                $table->bigInteger('repayment_amount');
+                $table->bigInteger('repayment_amount')->nullable();
                 $table->bigInteger('total_amnt_paid')->nullable();
-                $table->integer('trustee_id')->unsigned();
+                $table->integer('loan_id')->unsigned();
                 $table->string('created_by');
                 $table->string('updated_by');
                 $table->timestamps();
             });
         Schema::table('repayments', function (Blueprint $table) {
-            $table->foreign('trustee_id')->references('id')->on('trustees')->onDelete('cascade');
+            $table->foreign('loan_id')->references('id')->on('loans')->onDelete('cascade');
         });
     }
     public function down()

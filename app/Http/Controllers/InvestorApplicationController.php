@@ -137,7 +137,7 @@ class InvestorApplicationController extends Controller
         $investment->created_by  = ucfirst($user->first_name);
         $investment->updated_by  = ucfirst($user->first_name);
         $investment->save();
-        $investments = Investment::where('investor_application_id',$inv->id)->first();
+        $investments = Investment::where('investor_application_id',$inv->id)->where('invested_amount',$amount)->first();
         $trustee = new Trustee();
         $trustee->invested_amount = $amount;
         $trustee->investment_id = $investments->id;
@@ -159,6 +159,8 @@ class InvestorApplicationController extends Controller
         $funded = $updatedloan->loan_funded_amount/$updatedloan->loan_amount;
         $fundedpercentage = round((float)$funded * 100 );
         Loan::where('id',$id)->update(array('loan_funded_percent' => $fundedpercentage));
+        $fundtotal = FundTotal::where('inv_app_id',$inv->id)->first();
+        FundTotal::where('id',$fundtotal->id)->update(array('funds_total' => $fundtotal->funds_total - $amount, 'updated_by' => $user->first_name));
         $loans = Loan::all();
         $trustees = Trustee::all();
         $request->session()->flash('status', 'Your investment has been submitted successfully');

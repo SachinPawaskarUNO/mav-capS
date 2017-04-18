@@ -19,6 +19,9 @@
         <div class="panel-body" align="center">
             <a href="{{url('/browse_loans')}}" class="btn btn-primary" id="inv_browseloans_button">Browse Loans</a>
         </div>
+        <div class="panel-body" align="center">
+            <a href="{{url('/withdraw_funds')}}" class="btn btn-primary" id="inv_withdrawfunds_button">Withdraw Funds</a>
+        </div>
         @else
         <div class="panel-body" align="center">
             <a href="{{url('/inv_application/create')}}" class="btn btn-primary" id="inv_application_button">Apply!!</a>
