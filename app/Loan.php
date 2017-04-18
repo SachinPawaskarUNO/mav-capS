@@ -22,4 +22,7 @@ class Loan extends Model
     public function trustee() {
         return $this->hasmany('App\Trustee');
     }
+    public function investment() {
+        return $this->hasmany('App\Investment');
+    }
 }

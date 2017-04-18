@@ -29,7 +29,7 @@
                             @endphp
                             @if($loan->loan_status == 'Loan Disbursed' && ($loan->id == $amortization->loan_id && $amortization->paid_status == 'Due'))
                                 @foreach($repayments as $repayment)
-                                    @if($loan->id == $repayment->loan_id)
+                                    @if($loan->id == $repayment->loan_id && $repayment->repayment_amount != null)
                                         <tr>
                                             <td>{{$loan->loan_title}}</td>
                                             <td>MYR {{$loan->loan_amount}}</td>
