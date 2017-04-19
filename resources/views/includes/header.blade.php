@@ -43,6 +43,11 @@
                                     Home
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{url('/profile')}}">
+                                    Profile
+                                </a>
+                            </li>
                             <li id="logout">
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

@@ -11,7 +11,9 @@ use App\LoanPayment;
 use App\Mail\FundsNotification;
 use App\Mail\FundsCancelNotification;
 use App\Mail\FundsReviewNotification;
+use App\Mail\WithdrawFunds;
 use App\Repayment;
+use App\WithdrawFund;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Mail;
@@ -198,9 +200,21 @@ class FundController extends Controller
             'withdraw_amount' => "required|numeric|between:0,$available",
         ]);
         $user = Auth::user();
+        $withdraw = new WithdrawFund();
         $amount = $request->input('withdraw_amount');
+        $withdraw ->withdraw_amount=$amount;
         $uid =mt_rand(1000000000,9999999999);
+        $withdraw ->withdraw_uid=$uid;
+        $withdraw->inv_app_id = $id;
         $fundtotal = FundTotal::where('inv_app_id',$id)->first();
+        $withdraw->created_by = $user->first_name;
+        $withdraw->updated_by = $user->first_name;
+        $withdraw->save();
+        Mail::to($user)->send(new WithdrawFunds($user, $withdraw));
+        $managers = User::where('role_request','manager')->get()->toArray();
+        if($managers){
+            Mail::to($managers)->send(new WithdrawFunds($user, $withdraw));
+        }
         FundTotal::where('inv_app_id',$id)->update(array('funds_total'=>$fundtotal->funds_total - $amount, 'updated_by'=>$user->first_name));
         return Redirect::back()->with('uid', $uid)->with('status', 'Your request has been processed successfully');
     }
