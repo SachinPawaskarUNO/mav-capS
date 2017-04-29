@@ -24,7 +24,7 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->loan_status == 'Borrower Approved')
+                        @if($loan->loan_status == 'Borrower Approved' && $loan->loan_funded_percent < 100)
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>MYR {{$loan->loan_amount}}</td>
