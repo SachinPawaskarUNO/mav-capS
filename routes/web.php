@@ -44,9 +44,6 @@ Route::group([ 'middleware' => 'auth'], function() {
     Route::resource('loan_application','LoanController');
     Route::resource('loandetail','LoanController');
     Route::resource('add_funds','FundController');
-    Route::get('profile','HomeController@adminprofile');
-    Route::get('editadminprofile','HomeController@editadminprofile');
-    Route::post('update_adminprofile','HomeController@updateadminprofile');
     Route::get('review_bo_app','ManagerController@reviewboa');
     Route::get('review_inv_app','ManagerController@reviewia');
     Route::get('lrc','ManagerController@lrc');

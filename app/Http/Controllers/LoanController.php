@@ -136,7 +136,8 @@ class LoanController extends Controller
     public function rejectboloan(Request $request){
         $user = Auth::user();
         $id = $request->input('bo_loan_id');
-        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Rejected'));
+        $loan = Loan::where('id',$id)->first();
+        Loan::where('id',$id)->update(array('loan_status' =>'Borrower Rejected','loan_funded_amount' => $loan->loan_amount));
         $loan = Loan::where('id',$id)->first();
         $managers = User::where('role_request','manager')->get()->toArray();
         if($managers){
@@ -174,10 +175,10 @@ class LoanController extends Controller
            $loan_principal = $loan_principal - $principalformonth;
            $loanamortization = new LoanAmortization();
            $loanamortization-> loan_id = $loan->id;
-           $loanamortization-> monthly_payment = round($monthly_payment);
+           $loanamortization-> monthly_payment = round($monthly_payment,2);
            $loanamortization-> total_amount_paid = 0;
-           $loanamortization-> amount_remaining = round($loan_principal);
-           $loanamortization-> interest_amount = round($interestformonth);
+           $loanamortization-> amount_remaining = round($loan_principal,2);
+           $loanamortization-> interest_amount = round($interestformonth,2);
            $loanamortization-> month= $current_month;
            $loanamortization-> created_by = $user->first_name;;
            $loanamortization-> updated_by = $user->first_name;

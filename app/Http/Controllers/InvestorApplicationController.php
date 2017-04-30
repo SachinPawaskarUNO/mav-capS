@@ -56,8 +56,9 @@ class InvestorApplicationController extends Controller
         $investorapplication->inv_sme_business=$request->input('inv_sme_business');
         $investorapplication->inv_p2p_lending=$request->input('inv_p2p_lending');
         $investorapplication->save();
-        $inv = InvestorApplication::where('inv_first_name',$user->first_name)->first();
         $fund_total->inv_app_id = $investorapplication->id;
+        $fund_total->created_by = ucfirst($user->first_name);
+        $fund_total->updated_by = ucfirst($user->first_name);
         $fund_total->save();
         if($request->hasFile('inv_income_slip')) {
             $file = new File();
@@ -117,15 +118,20 @@ class InvestorApplicationController extends Controller
 
     public function investnow($id)
     {
-        //$id = $request->input('bo_loan_id');
         $loan = Loan::where('id',$id)->first();
-        return view('investor.investnow',compact('loan'));
+        $loan_remaining = number_format($loan->loan_amount - $loan->loan_funded_amount,2,'.','');
+        $user =Auth::user();
+        $inv = InvestorApplication::where('user_id',$user->id)->first();
+        $fundtotal = FundTotal::where('inv_app_id',$inv->id)->first();
+        return view('investor.investnow',compact('loan','fundtotal','loan_remaining'));
     }
 
     public function addinvestment(Request $request)
     {
+        $available = $request->input('available_investment');
+        $remaining = $request->input('available_loanamount');
         $this->validate($request, [
-            'add_investment_amount' => 'required|numeric',
+            'add_investment_amount' => "required|numeric|between:0,$available||between:0,$remaining",
         ]);
         $user =Auth::user();
         $id = $request->input('invested_loan_id');
@@ -164,7 +170,7 @@ class InvestorApplicationController extends Controller
         Loan::where('id',$id)->update(array('loan_funded_amount' => $loan->loan_funded_amount + $request->input('add_investment_amount')));
         $updatedloan = Loan::where('id',$id)->first();
         $funded = $updatedloan->loan_funded_amount/$updatedloan->loan_amount;
-        $fundedpercentage = round((float)$funded * 100 );
+        $fundedpercentage = round((float)$funded * 100 ,2);
         Loan::where('id',$id)->update(array('loan_funded_percent' => $fundedpercentage));
         $fundtotal = FundTotal::where('inv_app_id',$inv->id)->first();
         FundTotal::where('id',$fundtotal->id)->update(array('funds_total' => $fundtotal->funds_total - $amount, 'updated_by' => $user->first_name));

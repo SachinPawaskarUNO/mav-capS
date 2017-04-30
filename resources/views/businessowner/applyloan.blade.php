@@ -27,7 +27,7 @@
                         {!! Form::label('loan_amount', 'Loan Amount', ['class'=>'col-md-4 control-label','id'=>'mandatory-field']) !!}
 
                         <div class="col-md-6">
-                            {!! Form::text('loan_amount',null,['class'=>'form-control', 'id'=>'loan_amount']) !!}
+                            {!! Form::text('loan_amount',null,['class'=>'form-control', 'id'=>'loan_amount', 'onchange'=>'decimal(this)']) !!}
                             @if ($errors->has('loan_amount'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('loan_amount') }}</strong>

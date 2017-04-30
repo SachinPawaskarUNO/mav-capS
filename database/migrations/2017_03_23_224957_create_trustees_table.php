@@ -15,7 +15,7 @@ class CreateTrusteesTable extends Migration
     {
         Schema::create('trustees', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('invested_amount');
+            $table->decimal('invested_amount');
             $table->integer('investment_id')->unsigned();
             $table->string('invested_status');
             $table->integer('loan_id')->unsigned();

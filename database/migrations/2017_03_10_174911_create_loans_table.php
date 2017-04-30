@@ -15,7 +15,7 @@ class CreateLoansTable extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('loan_amount');
+            $table->decimal('loan_amount');
             $table->string('loan_title');
             $table->string('loan_purpose');
             $table->string('loan_duration');
@@ -23,8 +23,8 @@ class CreateLoansTable extends Migration
             $table->string('updated_by');
             $table->decimal('loan_interest_rate')->nullable();
             $table->string('loan_status')->nullable();
-            $table->string('loan_funded_percent')->nullable();
-            $table->bigInteger('loan_funded_amount')->nullable();
+            $table->decimal('loan_funded_percent')->nullable();
+            $table->decimal('loan_funded_amount')->nullable();
             $table->integer('business_owner_application_id')->unsigned();
             $table->timestamps();
         });

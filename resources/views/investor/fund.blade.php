@@ -69,7 +69,7 @@
                 <div class="form-group{{ $errors->has('fund_amount') ? ' has-error' : '' }}">
                     {!! Form::label('fund_amount', 'Enter the amount you wish to invest (MYR)', ['class'=>'col-md-4 control-label', 'id'=>'mandatory-field' ]) !!}
                     <div class="col-md-4">
-                        {!! Form::text('fund_amount', null,['class'=>'form-control', 'id'=>'fund_amount']) !!}
+                        {!! Form::text('fund_amount', null,['class'=>'form-control', 'id'=>'fund_amount', 'onchange'=>'decimal(this)']) !!}
                         @if ($errors->has('fund_amount'))
                             <span class="help-block">
                                     <strong>{{ $errors->first('fund_amount') }}</strong>

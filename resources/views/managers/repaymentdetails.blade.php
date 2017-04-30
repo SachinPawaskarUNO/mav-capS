@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ url()->previous() }}" class="btn btn-info">Back</a>
+            <a href="{{ url('home') }}" class="btn btn-info">Back</a>
         </div>
         <input type="hidden" name="repayment_id" value="{{ $repayment->id }}">
         <input type="hidden" name="repaid_amount" value="{{ $repaidamount}}">

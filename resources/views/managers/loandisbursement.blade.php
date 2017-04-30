@@ -23,7 +23,7 @@
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>{{$loan->loan_funded_amount}}</td>
+                                <td>MYR {{$loan->loan_funded_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_funded_percent}}%</td>
                                 <td>
@@ -77,7 +77,7 @@
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>{{$loan->loan_funded_amount}}</td>
+                                <td>MYR {{$loan->loan_funded_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_status}}</td>
                             </tr>

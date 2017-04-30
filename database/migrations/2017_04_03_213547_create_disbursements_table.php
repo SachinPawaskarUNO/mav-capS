@@ -16,7 +16,7 @@ class CreateDisbursementsTable extends Migration
         Schema::create('disbursements', function (Blueprint $table) {
             $table->increments('id');
             $table->string('disbursement_uid');
-            $table->bigInteger('disbursement_amount');
+            $table->decimal('disbursement_amount');
             $table->integer('loan_id')->unsigned();
             $table->string('created_by');
             $table->string('updated_by');
