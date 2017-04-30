@@ -11,7 +11,9 @@ use App\LoanPayment;
 use App\Mail\FundsNotification;
 use App\Mail\FundsCancelNotification;
 use App\Mail\FundsReviewNotification;
+use App\Mail\WithdrawFunds;
 use App\Repayment;
+use App\WithdrawFund;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Mail;
@@ -136,10 +138,11 @@ class FundController extends Controller
             $remainingamount = $loan->loan_amount - $amount;
             $month =$amortization->month;
             $loan_interest= ($loan->loan_interest_rate)/100;
-            $loan_months = preg_replace("/[^0-9]/","",$loan->loan_duration- ($month -1));
+            $months = preg_replace("/[^0-9]/","",$loan->loan_duration);
+            $loan_months = $months - ($month - 1);
             $monthly_rate=$loan_interest/12;
             $powerpart= pow((1+$monthly_rate),$loan_months);
-            $monthly_payment= $remainingamount*(($monthly_rate * $powerpart)/($powerpart -1));
+            $monthly_payment= $remainingamount*(($monthly_rate * $powerpart)/($powerpart - 1));
             LoanAmortization::where('loan_id',$loanpayment->loan_id)->where('paid_status', null)->delete();
             for ($current_month = $month; $current_month <= $loan_months; $current_month++)
             {
@@ -148,10 +151,10 @@ class FundController extends Controller
                 $loan_principal = $remainingamount - $principalformonth;
                 $loanamortization = new LoanAmortization();
                 $loanamortization-> loan_id = $loan->id;
-                $loanamortization-> monthly_payment = round($monthly_payment);
+                $loanamortization-> monthly_payment = round($monthly_payment,2);
                 $loanamortization-> total_amount_paid = 0;
-                $loanamortization-> amount_remaining = round($loan_principal);
-                $loanamortization-> interest_amount = round($interestformonth);
+                $loanamortization-> amount_remaining = round($loan_principal,2);
+                $loanamortization-> interest_amount = round($interestformonth,2);
                 $loanamortization-> month= $current_month;
                 $loanamortization-> created_by = $user->first_name;;
                 $loanamortization-> updated_by = $user->first_name;
@@ -198,9 +201,21 @@ class FundController extends Controller
             'withdraw_amount' => "required|numeric|between:0,$available",
         ]);
         $user = Auth::user();
+        $withdraw = new WithdrawFund();
         $amount = $request->input('withdraw_amount');
+        $withdraw ->withdraw_amount=$amount;
         $uid =mt_rand(1000000000,9999999999);
+        $withdraw ->withdraw_uid=$uid;
+        $withdraw->inv_app_id = $id;
         $fundtotal = FundTotal::where('inv_app_id',$id)->first();
+        $withdraw->created_by = $user->first_name;
+        $withdraw->updated_by = $user->first_name;
+        $withdraw->save();
+        Mail::to($user)->send(new WithdrawFunds($user, $withdraw));
+        $managers = User::where('role_request','manager')->get()->toArray();
+        if($managers){
+            Mail::to($managers)->send(new WithdrawFunds($user, $withdraw));
+        }
         FundTotal::where('inv_app_id',$id)->update(array('funds_total'=>$fundtotal->funds_total - $amount, 'updated_by'=>$user->first_name));
         return Redirect::back()->with('uid', $uid)->with('status', 'Your request has been processed successfully');
     }

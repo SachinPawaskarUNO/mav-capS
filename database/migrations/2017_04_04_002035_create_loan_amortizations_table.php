@@ -16,10 +16,10 @@ class CreateLoanAmortizationsTable extends Migration
         Schema::create('loan_amortizations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('loan_id')->unsigned();
-            $table->bigInteger('monthly_payment');
-            $table->bigInteger('total_amount_paid');
-            $table->bigInteger('amount_remaining');
-            $table->bigInteger('interest_amount');
+            $table->decimal('monthly_payment');
+            $table->decimal('total_amount_paid');
+            $table->decimal('amount_remaining');
+            $table->decimal('interest_amount');
             $table->date('due_date')->nullable();
             $table->string('paid_status')->nullable();
             $table->integer('month');

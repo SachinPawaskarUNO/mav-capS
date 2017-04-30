@@ -34,16 +34,16 @@
                                         <form role="form" method="POST" action="{{ url('loanpayment_approve_manager') }}">{{ csrf_field() }}
                                             <td>MYR
                                                 <div class="input-group {{ $errors->has('loanpayment_verified_amount') ? ' has-error' : '' }}">
-                                                    {!! Form::text('loanpayment_verified_amount',null,['class'=>'form-control', 'id'=>'loanpayment_verified_amount'])!!}
+                                                    {!! Form::text('loanpayment_verified_amount',null,['class'=>'form-control', 'id'=>'loanpayment_verified_amount', 'onchange'=>'decimal(this)'])!!}
                                                 </div>
                                                 @if ($errors->has('loanpayment_verified_amount'))
                                                     <span class="help-block" style="color: darkred"><strong>{{ $errors->first('loanpayment_verified_amount') }}</strong></span>
                                                 @endif</td>
                                             <td>
                                                 <!--Approve Button-->
-                                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="loanpayment_approval" data-target="#loanpayment_approve">Approve</button>
+                                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="loanpayment_approval" data-target="#loanpayment_approve{{ $loanpayment->id }}">Approve</button>
                                                 <!--Model-->
-                                                <div class="modal fade" id="loanpayment_approve" role="dialog">
+                                                <div class="modal fade" id="loanpayment_approve{{ $loanpayment->id }}" role="dialog">
                                                     <div class="modal-dialog">
                                                         <!--Model Content-->
                                                         <div class="modal-content">
@@ -66,9 +66,9 @@
                                         </td>
                                         <td>
                                             <!--Reject Button-->
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" id="loanpayment_rejection" data-target="#loanpayment_reject">Reject</button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" id="loanpayment_rejection" data-target="#loanpayment_reject{{ $loanpayment->id }}">Reject</button>
                                             <!--Model-->
-                                            <div class="modal fade" id="loanpayment_reject" role="dialog">
+                                            <div class="modal fade" id="loanpayment_reject{{ $loanpayment->id }}" role="dialog">
                                                 <div class="modal-dialog">
                                                     <!--Model Content-->
                                                     <div class="modal-content">

@@ -28,15 +28,15 @@
                             @if($loan->loan_status == 'Manager Approved')
                         <tr>
                             <td>{{$loan->loan_title}}</td>
-                            <td>{{$loan->loan_amount}}</td>
+                            <td>MYR {{$loan->loan_amount}}</td>
                             <td>{{$loan->loan_duration}}</td>
                             <td>{{$loan->loan_purpose}}</td>
                             <td>{{$loan->loan_interest_rate}} %</td>
                             <td>
                                 <!--Approve Button-->
-                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="bo_myloans_approval" data-target="#bo_myloans_approve">Approve</button>
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="bo_myloans_approval" data-target="#bo_myloans_approve{{ $loan->id }}">Approve</button>
                                 <!--Model-->
-                                <div class="modal fade" id="bo_myloans_approve" role="dialog">
+                                <div class="modal fade" id="bo_myloans_approve{{ $loan->id }}" role="dialog">
                                     <div class="modal-dialog">
                                 <!--Model Content-->
                                         <div class="modal-content">
@@ -60,9 +60,9 @@
                                 </td>
                                 <td>
                                 <!--Reject Button-->
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" id="bo_myloans_rejection" data-target="#bo_myloans_reject">Reject</button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" id="bo_myloans_rejection" data-target="#bo_myloans_reject{{ $loan->id }}">Reject</button>
                                 <!--Model-->
-                                    <div class="modal fade" id="bo_myloans_reject" role="dialog">
+                                    <div class="modal fade" id="bo_myloans_reject{{ $loan->id }}" role="dialog">
                                         <div class="modal-dialog">
                                 <!--Model Content-->
                                             <div class="modal-content">
@@ -110,15 +110,15 @@
                         @if($loan->loan_status == 'Borrower Approved' && $loan->loan_funded_percent >= 80)
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
-                                <td>{{$loan->loan_amount}}</td>
+                                <td>MYR {{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
                                 <td>{{$loan->loan_funded_percent}} %</td>
                                 <td>
                                     <!--Approve Button-->
-                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="bo_activeloans_approval" data-target="#bo_activeloans_approve">Approve</button>
+                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="bo_activeloans_approval" data-target="#bo_activeloans_approve{{ $loan->id }}">Approve</button>
                                     <!--Model-->
-                                    <div class="modal fade" id="bo_activeloans_approve" role="dialog">
+                                    <div class="modal fade" id="bo_activeloans_approve{{ $loan->id }}" role="dialog">
                                         <div class="modal-dialog">
                                             <!--Model Content-->
                                             <div class="modal-content">
@@ -142,9 +142,9 @@
                                 </td>
                                 <td>
                                     <!--Reject Button-->
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" id="bo_activeloans_rejection" data-target="#bo_activeloans_reject">Reject</button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" id="bo_activeloans_rejection" data-target="#bo_activeloans_reject{{ $loan->id }}">Reject</button>
                                     <!--Model-->
-                                    <div class="modal fade" id="bo_activeloans_reject" role="dialog">
+                                    <div class="modal fade" id="bo_activeloans_reject{{ $loan->id }}" role="dialog">
                                         <div class="modal-dialog">
                                             <!--Model Content-->
                                             <div class="modal-content">
@@ -170,10 +170,10 @@
                         @elseif($loan->loan_status == 'Borrower Approved' && $loan->loan_funded_percent < 80)
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
-                                <td>{{$loan->loan_amount}}</td>
+                                <td>MYR {{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>{{$loan->loan_funded_percent == '' ? '0' : $loan->loan_funded_percent}} %</td>
+                                <td>{{$loan->loan_funded_percent == '' ? '0.00' : $loan->loan_funded_percent}} %</td>
                                 <td><button type="button" class="btn btn-success btn-sm" disabled>Approve</button>
                                 </td>
                                 <td><button type="button" class="btn btn-danger btn-sm" disabled>Reject</button>
@@ -203,10 +203,10 @@
                         @if($loan->loan_status == 'Borrower Accepted' || $loan->loan_status == 'Borrower Rejected' || $loan->loan_status == 'Manager Rejected' || $loan->loan_status == 'Loan Disbursed')
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
-                                <td>{{$loan->loan_funded_amount}}</td>
+                                <td>MYR {{$loan->loan_funded_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>{{$loan->loan_interest_rate == '' ? '00.00' : $loan->loan_interest_rate}} %</td>
+                                <td>{{$loan->loan_interest_rate == '' ? '0.00' : $loan->loan_interest_rate}} %</td>
                                 <td>{{$loan->loan_status == '' ? 'Pending' : $loan->loan_status}}</td>
                             </tr>
                         @endif

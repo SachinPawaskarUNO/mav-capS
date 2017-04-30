@@ -206,6 +206,16 @@ $(document).ready(function() {
     $('#loanpayment_dt1').dataTable();
     $('#Pfv1').dataTable();
     $('#pfv2').dataTable();
+
+    $('#extra_monthly_amount').attr('disabled', 'disabled');
+    $('#extra_monthly_amount').val('');
+    $('#extra_radio').click(function () {
+        $('#extra_monthly_amount').attr('disabled', false);
+    });
+    $('#monthly_radio').click(function () {
+        $('#extra_monthly_amount').attr('disabled', 'disabled');
+        $('#extra_monthly_amount').val('');
+    });
 });
 function calculate() {
     // Get the user's input from the form. Assume it is all valid.
@@ -242,6 +252,10 @@ function calculate() {
 // This simple method rounds a number to two decimal places.
 function round(x) {
     return Math.round(x*100)/100;
+}
+
+function decimal(el) {
+    el.value = parseFloat(el.value).toFixed(2);
 }
 
 

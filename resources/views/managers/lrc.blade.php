@@ -62,7 +62,7 @@
                                 <form role="form" method="POST" action="{{ url('bo_loan_approve_manager') }}">{{ csrf_field() }}
                                     <td>{{$loan->loan_interest_rate}}
                                         <div class="input-group {{ $errors->has('loan_interest_rate') ? ' has-error' : '' }}">
-                                                {!! Form::text('loan_interest_rate',null,['class'=>'form-control', 'id'=>'loan_interest_rate'])!!}
+                                                {!! Form::text('loan_interest_rate',null,['class'=>'form-control', 'id'=>'loan_interest_rate', 'onchange'=>'decimal(this)'])!!}
                                                 <span class="input-group-addon" id="percentage">%</span>
                                             </div>
                                         @if ($errors->has('loan_interest_rate'))
@@ -70,9 +70,9 @@
                                         @endif</td>
                                         <td>
                                             <!--Approve Button-->
-                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="loan_interest_rate_approval" data-target="#bo_interest_approve">Approve</button>
+                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" id="loan_interest_rate_approval" data-target="#bo_interest_approve{{ $loan->id }}">Approve</button>
                                             <!--Model-->
-                                            <div class="modal fade" id="bo_interest_approve" role="dialog">
+                                            <div class="modal fade" id="bo_interest_approve{{ $loan->id }}" role="dialog">
                                                 <div class="modal-dialog">
                                                     <!--Model Content-->
                                                     <div class="modal-content">
@@ -85,8 +85,8 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <input type="hidden" name="bo_loan_manager_approve_id" value="{{ $loan->id }}">
-                                                            <button type="submit" id="myloan_manager_accept" class="btn btn-danger btn-sm">Approve</button>
-                                                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="myloan_manager_approve_no">No</button>
+                                                            <button type="submit" id="myloan_manager_accept" class="btn btn-success btn-sm">Approve</button>
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="myloan_manager_approve_no">No</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,9 +95,9 @@
                                         </td>
                                     <td>
                                         <!--Reject Button-->
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" id="loan_interest_rate_rejection" data-target="#bo_interest_reject">Reject</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" id="loan_interest_rate_rejection" data-target="#bo_interest_reject{{ $loan->id }}">Reject</button>
                                         <!--Model-->
-                                        <div class="modal fade" id="bo_interest_reject" role="dialog">
+                                        <div class="modal fade" id="bo_interest_reject{{ $loan->id }}" role="dialog">
                                             <div class="modal-dialog">
                                                 <!--Model Content-->
                                                 <div class="modal-content">
@@ -112,7 +112,7 @@
                                                         <form role="form" method="POST" action="{{ url('bo_loan_reject_manager') }}">{{ csrf_field() }}
                                                             <input type="hidden" name="loan_reject_manager" value="{{ $loan->id }}">
                                                             <button type="submit" id="myloan_manager_reject" class="btn btn-danger btn-sm">Reject</button>
-                                                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="myloan_manager_reject_no">No</button>
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="myloan_manager_reject_no">No</button>
                                                         </form>
                                                     </div>
                                                 </div>

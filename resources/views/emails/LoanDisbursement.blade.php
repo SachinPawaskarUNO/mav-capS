@@ -10,7 +10,7 @@ Bank Name: {{$boapp->bo_bank_name}}<br>
 Bank Account Number: {{$boapp->bo_bank_account}}<br>
 UID: {{$disbursement-> disbursement_uid }}<br>
 Loan Title: {{ $loan->loan_title }} <br>
-Loan Amount: MYR {{ $loan->loan_amount }} <br>
+Loan Amount: MYR {{ $loan->loan_funded_amount }} <br>
 
 
 @component('mail::button', ['url' => URL::to('/login'), 'id' => 'btn_BOLoanDisbursedMail_notify'])

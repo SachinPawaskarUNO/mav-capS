@@ -15,8 +15,8 @@ class CreateRepaymentsTable extends Migration
     {
             Schema::create('repayments', function (Blueprint $table) {
                 $table->increments('id');
-                $table->bigInteger('repayment_amount')->nullable();
-                $table->bigInteger('total_amnt_paid')->nullable();
+                $table->decimal('repayment_amount')->nullable();
+                $table->decimal('total_amnt_paid')->nullable();
                 $table->integer('loan_id')->unsigned();
                 $table->string('created_by');
                 $table->string('updated_by');

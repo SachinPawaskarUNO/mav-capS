@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {

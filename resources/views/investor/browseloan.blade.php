@@ -24,13 +24,13 @@
                     </thead>
                     <tbody>
                     @foreach($loans as $loan)
-                        @if($loan->loan_status == 'Borrower Approved')
+                        @if($loan->loan_status == 'Borrower Approved' && $loan->loan_funded_percent < 100)
                             <tr>
                                 <td>{{$loan->loan_title}}</td>
                                 <td>MYR {{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>MYR {{$loan->loan_funded_amount == '' ? '0' : $loan->loan_funded_amount}}</td>
+                                <td>MYR {{$loan->loan_funded_amount == '' ? '0.00' : $loan->loan_funded_amount}}</td>
                                 <td><a href="{{url('invest_now',['id' => $loan->id])}}"><button id="browseloans_invest" class="btn btn-success btn-sm">Invest Now</button></a></td>
                             </tr>
                         @endif
@@ -60,7 +60,7 @@
                                 <td>MYR {{$loan->loan_amount}}</td>
                                 <td>{{$loan->loan_duration}}</td>
                                 <td>{{$loan->loan_purpose}}</td>
-                                <td>MYR {{$loan->loan_funded_amount == '' ? '0' : $loan->loan_funded_amount}}</td>
+                                <td>MYR {{$loan->loan_funded_amount == '' ? '0.00' : $loan->loan_funded_amount}}</td>
                                 <td>MYR {{$trustee->invested_amount}}</td>
                             </tr>
                         @endif
