@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="18784" started-at="2017-05-02T09:51:29Z" finished-at="2017-05-02T09:51:48Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="18784" started-at="2017-05-02T09:51:29Z" finished-at="2017-05-02T09:51:48Z">
+      <class name="Tests.Sprint1.VerifyFunds_LoanPayment_Reject">
+        <test-method status="PASS" signature="LoanPaymentButtonTest()[pri:0, instance:Tests.Sprint1.VerifyFunds_LoanPayment_Reject@28f3b248]" name="LoanPaymentButtonTest" duration-ms="4599" started-at="2017-05-02T04:51:29Z" finished-at="2017-05-02T04:51:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoanPaymentButtonTest -->
+        <test-method status="PASS" signature="RejectNoTest()[pri:0, instance:Tests.Sprint1.VerifyFunds_LoanPayment_Reject@28f3b248]" name="RejectNoTest" duration-ms="2266" started-at="2017-05-02T04:51:34Z" depends-on-methods="Tests.Sprint1.VerifyFunds_LoanPayment_Reject.LoanPaymentButtonTest" finished-at="2017-05-02T04:51:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RejectNoTest -->
+        <test-method status="PASS" signature="RejectYesTest()[pri:0, instance:Tests.Sprint1.VerifyFunds_LoanPayment_Reject@28f3b248]" name="RejectYesTest" duration-ms="11802" started-at="2017-05-02T04:51:36Z" depends-on-methods="Tests.Sprint1.VerifyFunds_LoanPayment_Reject.RejectNoTest" finished-at="2017-05-02T04:51:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- RejectYesTest -->
+        <test-method status="PASS" signature="CloseBrowser()[pri:0, instance:Tests.Sprint1.VerifyFunds_LoanPayment_Reject@28f3b248]" name="CloseBrowser" is-config="true" duration-ms="81" started-at="2017-05-02T04:51:48Z" finished-at="2017-05-02T04:51:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CloseBrowser -->
+      </class> <!-- Tests.Sprint1.VerifyFunds_LoanPayment_Reject -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
